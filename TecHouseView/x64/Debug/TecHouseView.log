@@ -1,1 +1,8 @@
-﻿
+﻿  frmContraseña.cpp
+  frmPrincipal.cpp
+  main.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generando código...
+  frmContraseña.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+LINK : error LNK2001: símbolo externo main sin resolver
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\x64\Debug\TecHouseView.exe : fatal error LNK1120: 1 externos sin resolver
