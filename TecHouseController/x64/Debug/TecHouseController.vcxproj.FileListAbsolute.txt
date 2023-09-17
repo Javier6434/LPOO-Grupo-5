@@ -1,0 +1,2 @@
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\TecHouse\TecHouseController\x64\Debug\TecHouseController.vcxproj.AssemblyReference.cache
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\TecHouse\TecHouseController\x64\Debug\TecHouseController.vcxproj.CopyComplete
