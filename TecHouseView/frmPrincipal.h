@@ -104,24 +104,24 @@ namespace TecHouseView {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmPrincipal::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->configuraciónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->contraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->configuraciónDeControlAutomáticoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->configurarNombresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->actualizarContraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->puertasYVentanasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->temperaturaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->configurarNombresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->contraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->actualizarContraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
-			this->menúPrincipalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
+			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menúPrincipalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -132,24 +132,24 @@ namespace TecHouseView {
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
-			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
-			this->menuStrip2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->menuStrip2->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->groupBox3->SuspendLayout();
@@ -183,14 +183,6 @@ namespace TecHouseView {
 			this->configuraciónToolStripMenuItem->Size = System::Drawing::Size(111, 20);
 			this->configuraciónToolStripMenuItem->Text = L"Configuración";
 			// 
-			// contraseñaToolStripMenuItem
-			// 
-			this->contraseñaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->actualizarContraseñaToolStripMenuItem });
-			this->contraseñaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"contraseñaToolStripMenuItem.Image")));
-			this->contraseñaToolStripMenuItem->Name = L"contraseñaToolStripMenuItem";
-			this->contraseñaToolStripMenuItem->Size = System::Drawing::Size(95, 20);
-			this->contraseñaToolStripMenuItem->Text = L"Contraseña";
-			// 
 			// configuraciónDeControlAutomáticoToolStripMenuItem
 			// 
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
@@ -200,18 +192,7 @@ namespace TecHouseView {
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Name = L"configuraciónDeControlAutomáticoToolStripMenuItem";
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Size = System::Drawing::Size(275, 22);
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Text = L"Configuración de Control Automático";
-			// 
-			// configurarNombresToolStripMenuItem
-			// 
-			this->configurarNombresToolStripMenuItem->Name = L"configurarNombresToolStripMenuItem";
-			this->configurarNombresToolStripMenuItem->Size = System::Drawing::Size(275, 22);
-			this->configurarNombresToolStripMenuItem->Text = L"Configurar Nombres";
-			// 
-			// actualizarContraseñaToolStripMenuItem
-			// 
-			this->actualizarContraseñaToolStripMenuItem->Name = L"actualizarContraseñaToolStripMenuItem";
-			this->actualizarContraseñaToolStripMenuItem->Size = System::Drawing::Size(189, 22);
-			this->actualizarContraseñaToolStripMenuItem->Text = L"Actualizar Contraseña";
+			this->configuraciónDeControlAutomáticoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::configuraciónDeControlAutomáticoToolStripMenuItem_Click);
 			// 
 			// puertasYVentanasToolStripMenuItem
 			// 
@@ -224,6 +205,26 @@ namespace TecHouseView {
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
 			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
+			// 
+			// configurarNombresToolStripMenuItem
+			// 
+			this->configurarNombresToolStripMenuItem->Name = L"configurarNombresToolStripMenuItem";
+			this->configurarNombresToolStripMenuItem->Size = System::Drawing::Size(275, 22);
+			this->configurarNombresToolStripMenuItem->Text = L"Configurar Nombres";
+			// 
+			// contraseñaToolStripMenuItem
+			// 
+			this->contraseñaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->actualizarContraseñaToolStripMenuItem });
+			this->contraseñaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"contraseñaToolStripMenuItem.Image")));
+			this->contraseñaToolStripMenuItem->Name = L"contraseñaToolStripMenuItem";
+			this->contraseñaToolStripMenuItem->Size = System::Drawing::Size(95, 20);
+			this->contraseñaToolStripMenuItem->Text = L"Contraseña";
+			// 
+			// actualizarContraseñaToolStripMenuItem
+			// 
+			this->actualizarContraseñaToolStripMenuItem->Name = L"actualizarContraseñaToolStripMenuItem";
+			this->actualizarContraseñaToolStripMenuItem->Size = System::Drawing::Size(189, 22);
+			this->actualizarContraseñaToolStripMenuItem->Text = L"Actualizar Contraseña";
 			// 
 			// groupBox1
 			// 
@@ -244,73 +245,15 @@ namespace TecHouseView {
 			this->groupBox1->Text = L"Temperatura";
 			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmPrincipal::groupBox1_Enter);
 			// 
-			// menuStrip2
+			// pictureBox1
 			// 
-			this->menuStrip2->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menúPrincipalActualToolStripMenuItem });
-			this->menuStrip2->Location = System::Drawing::Point(0, 0);
-			this->menuStrip2->Name = L"menuStrip2";
-			this->menuStrip2->Size = System::Drawing::Size(645, 24);
-			this->menuStrip2->TabIndex = 3;
-			this->menuStrip2->Text = L"menuStrip2";
-			// 
-			// menúPrincipalToolStripMenuItem
-			// 
-			this->menúPrincipalToolStripMenuItem->Name = L"menúPrincipalToolStripMenuItem";
-			this->menúPrincipalToolStripMenuItem->Size = System::Drawing::Size(144, 20);
-			this->menúPrincipalToolStripMenuItem->Text = L"Menú Principal (Actual)";
-			// 
-			// menúPrincipalActualToolStripMenuItem
-			// 
-			this->menúPrincipalActualToolStripMenuItem->Name = L"menúPrincipalActualToolStripMenuItem";
-			this->menúPrincipalActualToolStripMenuItem->Size = System::Drawing::Size(144, 20);
-			this->menúPrincipalActualToolStripMenuItem->Text = L"Menú Principal (Actual)";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Location = System::Drawing::Point(-3, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(85, 13);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"_____________";
-			this->label1->Click += gcnew System::EventHandler(this, &frmPrincipal::label1_Click);
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(98, 29);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(44, 20);
-			this->textBox1->TabIndex = 5;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmPrincipal::textBox1_TextChanged);
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(13, 32);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(70, 13);
-			this->label2->TabIndex = 6;
-			this->label2->Text = L"Habitacion 1:";
-			this->label2->Click += gcnew System::EventHandler(this, &frmPrincipal::label2_Click);
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(13, 58);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(70, 13);
-			this->label3->TabIndex = 8;
-			this->label3->Text = L"Habitacion 2:";
-			this->label3->Click += gcnew System::EventHandler(this, &frmPrincipal::label3_Click);
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(98, 55);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(44, 20);
-			this->textBox2->TabIndex = 7;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &frmPrincipal::textBox2_TextChanged);
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(148, 29);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(118, 68);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 11;
+			this->pictureBox1->TabStop = false;
 			// 
 			// label4
 			// 
@@ -330,15 +273,73 @@ namespace TecHouseView {
 			this->textBox3->TabIndex = 9;
 			this->textBox3->TextChanged += gcnew System::EventHandler(this, &frmPrincipal::textBox3_TextChanged);
 			// 
-			// pictureBox1
+			// label3
 			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(148, 29);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(118, 68);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox1->TabIndex = 11;
-			this->pictureBox1->TabStop = false;
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(13, 58);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(70, 13);
+			this->label3->TabIndex = 8;
+			this->label3->Text = L"Habitacion 2:";
+			this->label3->Click += gcnew System::EventHandler(this, &frmPrincipal::label3_Click);
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(98, 55);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(44, 20);
+			this->textBox2->TabIndex = 7;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &frmPrincipal::textBox2_TextChanged);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(13, 32);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(70, 13);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"Habitacion 1:";
+			this->label2->Click += gcnew System::EventHandler(this, &frmPrincipal::label2_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(98, 29);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(44, 20);
+			this->textBox1->TabIndex = 5;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmPrincipal::textBox1_TextChanged);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Location = System::Drawing::Point(-3, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(85, 13);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"_____________";
+			this->label1->Click += gcnew System::EventHandler(this, &frmPrincipal::label1_Click);
+			// 
+			// menuStrip2
+			// 
+			this->menuStrip2->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menúPrincipalActualToolStripMenuItem });
+			this->menuStrip2->Location = System::Drawing::Point(0, 0);
+			this->menuStrip2->Name = L"menuStrip2";
+			this->menuStrip2->Size = System::Drawing::Size(645, 24);
+			this->menuStrip2->TabIndex = 3;
+			this->menuStrip2->Text = L"menuStrip2";
+			// 
+			// menúPrincipalActualToolStripMenuItem
+			// 
+			this->menúPrincipalActualToolStripMenuItem->Name = L"menúPrincipalActualToolStripMenuItem";
+			this->menúPrincipalActualToolStripMenuItem->Size = System::Drawing::Size(144, 20);
+			this->menúPrincipalActualToolStripMenuItem->Text = L"Menú Principal (Actual)";
+			// 
+			// menúPrincipalToolStripMenuItem
+			// 
+			this->menúPrincipalToolStripMenuItem->Name = L"menúPrincipalToolStripMenuItem";
+			this->menúPrincipalToolStripMenuItem->Size = System::Drawing::Size(144, 20);
+			this->menúPrincipalToolStripMenuItem->Text = L"Menú Principal (Actual)";
 			// 
 			// groupBox2
 			// 
@@ -452,6 +453,45 @@ namespace TecHouseView {
 			this->groupBox3->Text = L"Cantidad de Personas";
 			this->groupBox3->Enter += gcnew System::EventHandler(this, &frmPrincipal::groupBox3_Enter);
 			// 
+			// textBox10
+			// 
+			this->textBox10->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->textBox10->Location = System::Drawing::Point(199, 10);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->Size = System::Drawing::Size(44, 20);
+			this->textBox10->TabIndex = 14;
+			// 
+			// textBox7
+			// 
+			this->textBox7->Location = System::Drawing::Point(89, 81);
+			this->textBox7->Name = L"textBox7";
+			this->textBox7->Size = System::Drawing::Size(44, 20);
+			this->textBox7->TabIndex = 14;
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->BackColor = System::Drawing::SystemColors::GradientInactiveCaption;
+			this->label13->Location = System::Drawing::Point(156, 13);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(34, 13);
+			this->label13->TabIndex = 13;
+			this->label13->Text = L"Casa:";
+			// 
+			// textBox8
+			// 
+			this->textBox8->Location = System::Drawing::Point(89, 55);
+			this->textBox8->Name = L"textBox8";
+			this->textBox8->Size = System::Drawing::Size(44, 20);
+			this->textBox8->TabIndex = 13;
+			// 
+			// textBox9
+			// 
+			this->textBox9->Location = System::Drawing::Point(89, 29);
+			this->textBox9->Name = L"textBox9";
+			this->textBox9->Size = System::Drawing::Size(44, 20);
+			this->textBox9->TabIndex = 12;
+			// 
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
@@ -499,45 +539,6 @@ namespace TecHouseView {
 			this->label12->TabIndex = 4;
 			this->label12->Text = L"__________________";
 			this->label12->Click += gcnew System::EventHandler(this, &frmPrincipal::label12_Click);
-			// 
-			// textBox7
-			// 
-			this->textBox7->Location = System::Drawing::Point(89, 81);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(44, 20);
-			this->textBox7->TabIndex = 14;
-			// 
-			// textBox8
-			// 
-			this->textBox8->Location = System::Drawing::Point(89, 55);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(44, 20);
-			this->textBox8->TabIndex = 13;
-			// 
-			// textBox9
-			// 
-			this->textBox9->Location = System::Drawing::Point(89, 29);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(44, 20);
-			this->textBox9->TabIndex = 12;
-			// 
-			// textBox10
-			// 
-			this->textBox10->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->textBox10->Location = System::Drawing::Point(199, 10);
-			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(44, 20);
-			this->textBox10->TabIndex = 14;
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->BackColor = System::Drawing::SystemColors::GradientInactiveCaption;
-			this->label13->Location = System::Drawing::Point(156, 13);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(34, 13);
-			this->label13->TabIndex = 13;
-			this->label13->Text = L"Casa:";
 			// 
 			// groupBox4
 			// 
@@ -599,9 +600,9 @@ namespace TecHouseView {
 			this->menuStrip1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->menuStrip2->ResumeLayout(false);
 			this->menuStrip2->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -618,29 +619,38 @@ namespace TecHouseView {
 		}
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
+	// esta zona es cuando presionas literalmente "configuracion"
+
+
+	//es para entrar a la ventana de Actualizar contraseña CORREGIR, DEBERIA ESTAR SOLO AL PRESIONAR ACTUALIZAR CONTRASEÑA
+	frmContraseña^ ventanaContraseña = gcnew frmContraseña();
+	ventanaContraseña->ShowDialog();
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	//es para entrar a la ventana de Actualizar contraseña
-
-}
+}	
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 }
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
+	//aquí se coloca la ventana que se abrirá incluso antes que la principal, si no se coloca nada se abre la principal
+
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+
 }
 private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -651,6 +661,9 @@ private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void groupBox3_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void configuraciónDeControlAutomáticoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

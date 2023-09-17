@@ -1,0 +1,2 @@
+#include "frmTemperatura.h"
+
