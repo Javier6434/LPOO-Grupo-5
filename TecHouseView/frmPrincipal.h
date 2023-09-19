@@ -1,5 +1,8 @@
 #pragma once
 #include "frmContraseña.h"
+#include "frmPuertasYVentanas.h"
+#include "frmConfigNombres.h"
+#include "frmTemperatura.h"
 
 namespace TecHouseView {
 
@@ -199,18 +202,21 @@ namespace TecHouseView {
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
 			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
+			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
 			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
+			this->temperaturaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::temperaturaToolStripMenuItem_Click);
 			// 
 			// configurarNombresToolStripMenuItem
 			// 
 			this->configurarNombresToolStripMenuItem->Name = L"configurarNombresToolStripMenuItem";
 			this->configurarNombresToolStripMenuItem->Size = System::Drawing::Size(275, 22);
 			this->configurarNombresToolStripMenuItem->Text = L"Configurar Nombres";
+			this->configurarNombresToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::configurarNombresToolStripMenuItem_Click);
 			// 
 			// contraseñaToolStripMenuItem
 			// 
@@ -225,6 +231,7 @@ namespace TecHouseView {
 			this->actualizarContraseñaToolStripMenuItem->Name = L"actualizarContraseñaToolStripMenuItem";
 			this->actualizarContraseñaToolStripMenuItem->Size = System::Drawing::Size(189, 22);
 			this->actualizarContraseñaToolStripMenuItem->Text = L"Actualizar Contraseña";
+			this->actualizarContraseñaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::actualizarContraseñaToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
@@ -625,9 +632,6 @@ private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Win
 	// esta zona es cuando presionas literalmente "configuracion"
 
 
-	//es para entrar a la ventana de Actualizar contraseña CORREGIR, DEBERIA ESTAR SOLO AL PRESIONAR ACTUALIZAR CONTRASEÑA
-	frmContraseña^ ventanaContraseña = gcnew frmContraseña();
-	ventanaContraseña->ShowDialog();
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -664,6 +668,28 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 
 }
 private: System::Void configuraciónDeControlAutomáticoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void actualizarContraseñaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	//ESTO ES AL HACER CLICK AL ACTUALIZAR CONTRASEÑA
+	//es para entrar a la ventana de Actualizar contraseña CORREGIR, DEBERIA ESTAR SOLO AL PRESIONAR ACTUALIZAR CONTRASEÑA
+	frmContraseña^ ventanaContraseña = gcnew frmContraseña();
+	ventanaContraseña->ShowDialog();
+
+}
+private: System::Void puertasYVentanasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	frmPuertasYVentanas^ ventanaPuertasYVentanas = gcnew frmPuertasYVentanas();
+	ventanaPuertasYVentanas->ShowDialog();
+}
+private: System::Void temperaturaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	frmTemperatura^ ventanaTemperatura = gcnew frmTemperatura();
+	ventanaTemperatura->ShowDialog();
+}
+private: System::Void configurarNombresToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	frmConfigNombres^ ventanaConfigNombres = gcnew frmConfigNombres();
+	ventanaConfigNombres->ShowDialog();
 }
 };
 }
