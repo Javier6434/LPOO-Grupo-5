@@ -1,6 +1,5 @@
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\TecHouse\TecHouseView\x64\Debug\TecHouseView.vcxproj.AssemblyReference.cache
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.vcxproj.AssemblyReference.cache
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmContraseña.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmPrincipal.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.vcxproj.GenerateResource.cache
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmConfigNombres.resources
@@ -8,3 +7,4 @@ C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHous
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmTemperatura.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmIniciarSesionCasa.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmSeleccionarCasa.resources
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmActualizarContraseña.resources

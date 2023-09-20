@@ -1,5 +1,5 @@
 #pragma once
-#include "frmContraseña.h"
+#include "frmActualizarContraseña.h"
 #include "frmPuertasYVentanas.h"
 #include "frmConfigNombres.h"
 #include "frmTemperatura.h"

@@ -44,7 +44,7 @@
     <ClInclude Include="frmPrincipal.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="frmContraseña.h">
+    <ClInclude Include="frmActualizarContraseña.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmConfigNombres.h">

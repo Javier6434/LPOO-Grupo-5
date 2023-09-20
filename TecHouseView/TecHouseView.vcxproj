@@ -134,7 +134,7 @@
     <ClInclude Include="frmConfigNombres.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="frmContraseña.h">
+    <ClInclude Include="frmActualizarContraseña.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmIniciarSesionCasa.h">
@@ -157,8 +157,8 @@
     <EmbeddedResource Include="frmConfigNombres.resx">
       <DependentUpon>frmConfigNombres.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmContraseña.resx">
-      <DependentUpon>frmContraseña.h</DependentUpon>
+    <EmbeddedResource Include="frmActualizarContraseña.resx">
+      <DependentUpon>frmActualizarContraseña.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciarSesionCasa.resx">
       <DependentUpon>frmIniciarSesionCasa.h</DependentUpon>
