@@ -1,7 +1,9 @@
   TecHouseView.frmConfigNombres.resources - Embedded, ContainedInManifestFile, 
   TecHouseView.frmContraseña.resources - Embedded, ContainedInManifestFile, 
+  TecHouseView.frmIniciarSesionCasa.resources - Embedded, ContainedInManifestFile, 
   TecHouseView.frmPrincipal.resources - Embedded, ContainedInManifestFile, 
   TecHouseView.frmPuertasYVentanas.resources - Embedded, ContainedInManifestFile, 
+  TecHouseView.frmSeleccionarCasa.resources - Embedded, ContainedInManifestFile, 
   TecHouseView.frmTemperatura.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly TecHouseView, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
@@ -24,10 +26,16 @@ Class TecHouseView.frmConfigNombres: AutoLayout, AnsiClass, Class, Public, Befor
 Class TecHouseView.frmContraseña: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class TecHouseView.frmIniciarSesionCasa: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class TecHouseView.frmPuertasYVentanas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class TecHouseView.frmTemperatura: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class TecHouseView.frmSeleccionarCasa: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class TecHouseView.frmPrincipal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

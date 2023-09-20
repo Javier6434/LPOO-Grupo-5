@@ -6,3 +6,5 @@ C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHous
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmConfigNombres.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmPuertasYVentanas.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmTemperatura.resources
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmIniciarSesionCasa.resources
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmSeleccionarCasa.resources

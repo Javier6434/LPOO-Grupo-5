@@ -3,6 +3,7 @@
 #include "frmPuertasYVentanas.h"
 #include "frmConfigNombres.h"
 #include "frmTemperatura.h"
+#include "frmSeleccionarCasa.h"
 
 namespace TecHouseView {
 
@@ -651,7 +652,11 @@ private: System::Void textBox3_TextChanged(System::Object^ sender, System::Event
 }
 private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
 	//aquí se coloca la ventana que se abrirá incluso antes que la principal, si no se coloca nada se abre la principal
-
+	//Se seleccionará la casa, se mostrará una lista de casas según el distrito q hayas elegido, de ahí
+	//tendremos que iniciar sesion (abrir otra ventana), si son correctos los datos, se abre la
+	//ventana frmPrincipal (de por sí siempre abierta pero no se veré, estará al fondo)
+	frmSeleccionarCasa^ ventanaSeleccionarCasa = gcnew frmSeleccionarCasa();
+	ventanaSeleccionarCasa->ShowDialog();
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 

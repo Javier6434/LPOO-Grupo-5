@@ -116,8 +116,10 @@
   <ItemGroup>
     <ClCompile Include="frmConfigNombres.cpp" />
     <ClCompile Include="frmContraseña.cpp" />
+    <ClCompile Include="frmIniciarSesionCasa.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmPuertasYVentanas.cpp" />
+    <ClCompile Include="frmSeleccionarCasa.cpp" />
     <ClCompile Include="frmTemperatura.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -135,10 +137,16 @@
     <ClInclude Include="frmContraseña.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmIniciarSesionCasa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPuertasYVentanas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmSeleccionarCasa.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmTemperatura.h">
@@ -152,11 +160,17 @@
     <EmbeddedResource Include="frmContraseña.resx">
       <DependentUpon>frmContraseña.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmIniciarSesionCasa.resx">
+      <DependentUpon>frmIniciarSesionCasa.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPuertasYVentanas.resx">
       <DependentUpon>frmPuertasYVentanas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeleccionarCasa.resx">
+      <DependentUpon>frmSeleccionarCasa.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTemperatura.resx">
       <DependentUpon>frmTemperatura.h</DependentUpon>
