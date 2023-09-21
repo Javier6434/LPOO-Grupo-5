@@ -1,5 +1,7 @@
 #include"Iluminacion.h"
 
+using namespace TecHouseModel;
+
 Iluminacion::Iluminacion() {
 
 }

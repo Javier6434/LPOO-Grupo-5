@@ -1,5 +1,7 @@
 #include"Sensores.h"
 
+using namespace TecHouseModel;
+
 Sensores::Sensores() {
 
 }

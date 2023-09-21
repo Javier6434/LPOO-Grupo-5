@@ -1,5 +1,7 @@
 #include"ConfigCasa.h"
 
+using namespace TecHouseModel;
+
 ConfigCasa::ConfigCasa() {
 
 }

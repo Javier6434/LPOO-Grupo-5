@@ -1,5 +1,7 @@
 #include"Servomotores.h"
 
+using namespace TecHouseModel;
+
 Servomotores::Servomotores() {
 
 }

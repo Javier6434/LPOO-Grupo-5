@@ -1,5 +1,7 @@
 #include "Alarma.h"
 
+using namespace TecHouseModel;
+
 Alarma::Alarma() {
 
 }

@@ -1,5 +1,7 @@
 #include"Usuario.h"
 
+using namespace TecHouseModel;
+
 Usuario::Usuario() {
 
 }

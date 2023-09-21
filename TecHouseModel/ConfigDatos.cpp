@@ -1,5 +1,7 @@
 #include"ConfigDatos.h"
 
+using namespace TecHouseModel;
+
 ConfigDatos::ConfigDatos() {
 
 }

@@ -1,5 +1,7 @@
 #include"Casa.h"
 
+using namespace TecHouseModel;
+
 Casa::Casa() {
 
 }

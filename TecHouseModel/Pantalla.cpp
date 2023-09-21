@@ -1,5 +1,7 @@
 #include"Pantalla.h"
 
+using namespace TecHouseModel;
+
 Pantalla::Pantalla() {
 
 }

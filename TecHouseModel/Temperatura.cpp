@@ -1,5 +1,7 @@
 #include"Temperatura.h"
 
+using namespace TecHouseModel;
+
 Temperatura::Temperatura() {
 
 }

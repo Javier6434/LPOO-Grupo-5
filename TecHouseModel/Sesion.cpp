@@ -1,5 +1,7 @@
 #include"Sesion.h"
 
+using namespace TecHouseModel;
+
 Sesion::Sesion() {
 
 }

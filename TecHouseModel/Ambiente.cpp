@@ -1,5 +1,7 @@
 #include"Ambiente.h"
 
+using namespace TecHouseModel;
+
 Ambiente::Ambiente() {
 
 }
