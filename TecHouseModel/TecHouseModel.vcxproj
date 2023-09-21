@@ -112,6 +112,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Alarma.h" />
+    <ClInclude Include="Ambiente.h" />
+    <ClInclude Include="Casa.h" />
+    <ClInclude Include="ConfigCasa.h" />
+    <ClInclude Include="ConfigDatos.h" />
+    <ClInclude Include="Iluminacion.h" />
+    <ClInclude Include="Pantalla.h" />
+    <ClInclude Include="Sensores.h" />
+    <ClInclude Include="Servomotores.h" />
+    <ClInclude Include="Sesion.h" />
+    <ClInclude Include="Temperatura.h" />
+    <ClInclude Include="Ubicacion.h" />
+    <ClInclude Include="Usuario.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Alarma.cpp" />
+    <ClCompile Include="Ambiente.cpp" />
+    <ClCompile Include="Casa.cpp" />
+    <ClCompile Include="ConfigCasa.cpp" />
+    <ClCompile Include="ConfigDatos.cpp" />
+    <ClCompile Include="Iluminacion.cpp" />
+    <ClCompile Include="Pantalla.cpp" />
+    <ClCompile Include="Sensores.cpp" />
+    <ClCompile Include="Servomotores.cpp" />
+    <ClCompile Include="Sesion.cpp" />
+    <ClCompile Include="Temperatura.cpp" />
+    <ClCompile Include="Ubicacion.cpp" />
+    <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
