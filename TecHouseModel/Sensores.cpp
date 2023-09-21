@@ -12,5 +12,5 @@ Sensores::Sensores(int codigo, String^ tipo, bool estado, Temperatura^ objTemper
 	this-> objAmbiente = objAmbiente;
 	this-> objIluminacion = objIluminacion;
 	this-> objConfigCasa = objConfigCasa;
-	this-> objServomotores= objServomotores
+	this-> objServomotores = objServomotores;
 }

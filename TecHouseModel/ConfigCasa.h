@@ -11,11 +11,11 @@ private:
 	int codigo;
 	bool Orden;
 	//Asociacion con Ambiente
-	Ambiente^ ojAmbiente;
+	Ambiente^ objAmbiente;
 	//Asociacion con Alarma
-	Alarma^ Alarma;
+	Alarma^ objAlarma;
 	/*segundo: se definen los metodos*/
 public:
 	ConfigCasa();
-	ConfigCasa(int codigo, bool Orden, Ambiente^ ojAmbiente, Alarma^ Alarma);
+	ConfigCasa(int codigo, bool Orden, Ambiente^ objAmbiente, Alarma^ objAlarma);
 };

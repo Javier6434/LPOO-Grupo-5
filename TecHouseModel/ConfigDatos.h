@@ -10,6 +10,7 @@ private:
 	int codigo;
 	String^ DatoActual;
 	String^ DatoNuevo;
+	//Asociacion con Sesion
 	Sesion^ objSesion;
 	/*segundo: se definen los metodos*/
 public:

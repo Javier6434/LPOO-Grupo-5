@@ -123,7 +123,6 @@
     <ClInclude Include="Servomotores.h" />
     <ClInclude Include="Sesion.h" />
     <ClInclude Include="Temperatura.h" />
-    <ClInclude Include="Ubicacion.h" />
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +137,6 @@
     <ClCompile Include="Servomotores.cpp" />
     <ClCompile Include="Sesion.cpp" />
     <ClCompile Include="Temperatura.cpp" />
-    <ClCompile Include="Ubicacion.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
