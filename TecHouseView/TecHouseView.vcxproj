@@ -115,7 +115,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmConfigNombres.cpp" />
-    <ClCompile Include="frmContraseña.cpp" />
+    <ClCompile Include="frmActualizarContraseña.cpp" />
     <ClCompile Include="frmIniciarSesionCasa.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmPuertasYVentanas.cpp" />

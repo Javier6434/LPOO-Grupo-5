@@ -21,7 +21,7 @@
     <ClCompile Include="frmPrincipal.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="frmContraseña.cpp">
+    <ClCompile Include="frmActualizarContraseña.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="frmConfigNombres.cpp">
