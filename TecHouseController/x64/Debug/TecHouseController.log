@@ -1,0 +1,14 @@
+﻿  CasaController.cpp
+  FiguraController.cpp
+  SesionController.cpp
+  UsuarioController.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generando código...
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\UsuarioController.cpp(95): warning C4715: 'TecHouseController::UsuarioController::buscarTipoUsuarioxCodigo': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\UsuarioController.cpp(104): warning C4715: 'TecHouseController::UsuarioController::buscarUsuarioxCodigo': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\SesionController.cpp(102): warning C4715: 'TecHouseController::SesionController::buscarCodigoSesionxID': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\SesionController.cpp(112): warning C4715: 'TecHouseController::SesionController::buscarSesionxCodigo': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\SesionController.cpp(121): warning C4715: 'TecHouseController::SesionController::buscarCodigoSesionxCodCasa': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\CasaController.cpp(93): warning C4715: 'TecHouseController::CasaController::buscarCasaxCodigo': no todas las rutas de acceso de control devuelven un valor
+  CasaController.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+  TecHouseController.vcxproj -> C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\x64\Debug\TecHouseController.dll

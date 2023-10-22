@@ -1,0 +1,4 @@
+C:\Users\Lenovo\source\repos\TecHouse\TecHouseController\x64\Debug\TecHouseController.vcxproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\TecHouse\TecHouseController\x64\Debug\TecHouseController.vcxproj.CopyComplete
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\x64\Debug\TecHouseController.vcxproj.AssemblyReference.cache
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseController\x64\Debug\TecHouseController.vcxproj.CopyComplete

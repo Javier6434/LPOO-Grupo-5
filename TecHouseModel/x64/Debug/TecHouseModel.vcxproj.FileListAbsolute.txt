@@ -1,0 +1,2 @@
+C:\Users\Lenovo\source\repos\TecHouse\TecHouseModel\x64\Debug\TecHouseModel.vcxproj.AssemblyReference.cache
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseModel\x64\Debug\TecHouseModel.vcxproj.AssemblyReference.cache
