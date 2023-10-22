@@ -136,7 +136,6 @@ namespace TecHouseView {
 			// 
 			// textBox5
 			// 
-			this->textBox5->Enabled = false;
 			this->textBox5->Location = System::Drawing::Point(124, 193);
 			this->textBox5->Margin = System::Windows::Forms::Padding(2);
 			this->textBox5->Name = L"textBox5";
@@ -155,7 +154,6 @@ namespace TecHouseView {
 			// 
 			// textBox4
 			// 
-			this->textBox4->Enabled = false;
 			this->textBox4->Location = System::Drawing::Point(124, 155);
 			this->textBox4->Margin = System::Windows::Forms::Padding(2);
 			this->textBox4->Name = L"textBox4";
@@ -174,7 +172,6 @@ namespace TecHouseView {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Enabled = false;
 			this->textBox3->Location = System::Drawing::Point(124, 114);
 			this->textBox3->Margin = System::Windows::Forms::Padding(2);
 			this->textBox3->Name = L"textBox3";
@@ -183,7 +180,6 @@ namespace TecHouseView {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Enabled = false;
 			this->textBox2->Location = System::Drawing::Point(124, 73);
 			this->textBox2->Margin = System::Windows::Forms::Padding(2);
 			this->textBox2->Name = L"textBox2";
@@ -192,7 +188,6 @@ namespace TecHouseView {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(124, 37);
 			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
