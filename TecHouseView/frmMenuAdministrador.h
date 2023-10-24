@@ -3,6 +3,7 @@
 #include "frmMantenimientoUsuarios.h"
 #include "frmNuevoUsuarioAdmi.h"
 #include "frmDiseñoCasa.h"
+#include "frmReporteNroUsuariosxTipo.h"
 
 namespace TecHouseView {
 
@@ -60,6 +61,7 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ diseñoDeCasaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ diseñarCasaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarCasaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ númeroCasasPorDistritoToolStripMenuItem;
 
 
 
@@ -94,6 +96,7 @@ namespace TecHouseView {
 			this->mantenimientoUsuariosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->buscarCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->númeroCasasPorDistritoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->diseñoDeCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->diseñarCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -146,11 +149,15 @@ namespace TecHouseView {
 			// 
 			// contraseñaToolStripMenuItem
 			// 
-			this->contraseñaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->buscarCasaToolStripMenuItem });
+			this->contraseñaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->buscarCasaToolStripMenuItem,
+					this->númeroCasasPorDistritoToolStripMenuItem
+			});
 			this->contraseñaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"contraseñaToolStripMenuItem.Image")));
 			this->contraseñaToolStripMenuItem->Name = L"contraseñaToolStripMenuItem";
-			this->contraseñaToolStripMenuItem->Size = System::Drawing::Size(123, 24);
-			this->contraseñaToolStripMenuItem->Text = L"Control de Casa";
+			this->contraseñaToolStripMenuItem->Size = System::Drawing::Size(128, 24);
+			this->contraseñaToolStripMenuItem->Text = L"Control de Casas";
+			this->contraseñaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::contraseñaToolStripMenuItem_Click);
 			// 
 			// buscarCasaToolStripMenuItem
 			// 
@@ -158,6 +165,13 @@ namespace TecHouseView {
 			this->buscarCasaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->buscarCasaToolStripMenuItem->Text = L"Buscar Casa";
 			this->buscarCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::buscarCasaToolStripMenuItem_Click);
+			// 
+			// númeroCasasPorDistritoToolStripMenuItem
+			// 
+			this->númeroCasasPorDistritoToolStripMenuItem->Name = L"númeroCasasPorDistritoToolStripMenuItem";
+			this->númeroCasasPorDistritoToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->númeroCasasPorDistritoToolStripMenuItem->Text = L"Número Usuarios";
+			this->númeroCasasPorDistritoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::númeroCasasPorDistritoToolStripMenuItem_Click);
 			// 
 			// menuStrip2
 			// 
@@ -235,7 +249,13 @@ namespace TecHouseView {
 		//Y tambien hacer que los menus sean conscientes (como private objeto) de la cuante ingresada, seria god
 	}
 
-private: System::Void configuraciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void configuraciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void contraseñaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void númeroCasasPorDistritoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmReporteNroUsuariosxTipo^ ventanaReporte = gcnew frmReporteNroUsuariosxTipo();
+		ventanaReporte->Show();
+	}
 };
 }

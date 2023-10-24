@@ -159,3 +159,27 @@ List<String^>^ UsuarioController::obtenerNombres() {
 	}
 	return listaNombres;
 }
+
+List<Usuario^>^ UsuarioController::buscarUsuariosxTipo(String^ Tipo) {
+	/*En esta lista vamos a colocar la información de los proyectos que encontremos en el archivo de texto*/
+	List<Usuario^>^ listaUsuariosEncontrados = gcnew List<Usuario^>();
+	array<String^>^ lineas = File::ReadAllLines("Usuarios.txt");
+
+	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
+	/*Esta instruccion for each nos permite ir elemento por elemento de un array*/
+	for each (String ^ lineaCarrera in lineas) {
+		/*Voy a separar cada elemento del String por ; con el split*/
+		array<String^>^ datos = lineaCarrera->Split(separadores->ToCharArray());
+		int codigoUsuario = Convert::ToInt32(datos[0]);
+		String^ TipoUsuario = datos[1];
+		String^ NombreUsuario = datos[2];
+		String^ ApellidoMaternoUsuario = datos[3];
+		String^ ApellidoPaternoUsuario = datos[4];
+		String^ FechaDeNacimientoUsuario = datos[5];
+		if (TipoUsuario->Contains(Tipo)) {
+			Usuario^ objUsuario = gcnew Usuario(codigoUsuario, TipoUsuario, NombreUsuario, ApellidoMaternoUsuario, ApellidoPaternoUsuario, FechaDeNacimientoUsuario);
+			listaUsuariosEncontrados->Add(objUsuario);
+		}
+	}
+	return listaUsuariosEncontrados;
+}

@@ -19,5 +19,6 @@ namespace TecHouseController {
 		void actualizarUsuario(Usuario^ objUsuario);
 		List<String^>^ obtenerTipos();
 		List<String^>^ obtenerNombres();
+		List <Usuario^>^ buscarUsuariosxTipo(String^ Tipo);
 	};
 }
