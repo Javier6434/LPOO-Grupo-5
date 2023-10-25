@@ -29,3 +29,4 @@ C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHous
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.vcxproj.GenerateResource.cache
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.vcxproj.CopyComplete
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmReporteNroUsuariosxTipo.resources
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmVerCasaNoAdmin.resources

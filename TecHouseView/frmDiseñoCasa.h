@@ -59,6 +59,11 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ColorDialog^ colorDialog2;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog2;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	private: System::Windows::Forms::ToolStripMenuItem^ nuevoToolStripMenuItem;
+	private: int borrarContenido=0;			//si borrarContenido es 1, se borra y resetea el paint, todo en blanco
+	private: System::Windows::Forms::Button^ button4;
+		   //si borrarContenido es 0, todo continúa con normalidad
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -78,11 +83,13 @@ namespace TecHouseView {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->nuevoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->abrirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->guardarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->colorDialog2 = (gcnew System::Windows::Forms::ColorDialog());
 			this->saveFileDialog2 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -144,25 +151,32 @@ namespace TecHouseView {
 			// 
 			// archivoToolStripMenuItem
 			// 
-			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->abrirToolStripMenuItem,
-					this->guardarToolStripMenuItem
+			this->archivoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->nuevoToolStripMenuItem,
+					this->abrirToolStripMenuItem, this->guardarToolStripMenuItem
 			});
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
 			this->archivoToolStripMenuItem->Size = System::Drawing::Size(60, 20);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
+			// nuevoToolStripMenuItem
+			// 
+			this->nuevoToolStripMenuItem->Name = L"nuevoToolStripMenuItem";
+			this->nuevoToolStripMenuItem->Size = System::Drawing::Size(150, 22);
+			this->nuevoToolStripMenuItem->Text = L"Nuevo";
+			this->nuevoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::nuevoToolStripMenuItem_Click);
+			// 
 			// abrirToolStripMenuItem
 			// 
 			this->abrirToolStripMenuItem->Name = L"abrirToolStripMenuItem";
-			this->abrirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->abrirToolStripMenuItem->Size = System::Drawing::Size(150, 22);
 			this->abrirToolStripMenuItem->Text = L"Abrir";
 			this->abrirToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::abrirToolStripMenuItem_Click);
 			// 
 			// guardarToolStripMenuItem
 			// 
 			this->guardarToolStripMenuItem->Name = L"guardarToolStripMenuItem";
-			this->guardarToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->guardarToolStripMenuItem->Size = System::Drawing::Size(150, 22);
 			this->guardarToolStripMenuItem->Text = L"Guardar como";
 			this->guardarToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::guardarToolStripMenuItem_Click);
 			// 
@@ -170,11 +184,22 @@ namespace TecHouseView {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(270, 512);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(128, 29);
+			this->button4->TabIndex = 10;
+			this->button4->Text = L"CERRAR";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::button4_Click);
+			// 
 			// frmDiseñoCasa
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(670, 509);
+			this->ClientSize = System::Drawing::Size(670, 553);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -240,19 +265,35 @@ namespace TecHouseView {
 	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		Graphics^ objGraphics = e->Graphics;
 		/*Voy a dibujar todas las figuras que esten en la lista de figuras*/
-		for (int i = 0; i < this->listaFiguras->Count; i++) {
-			Figura^ objFigura = this->listaFiguras[i];
-			Pen^ objLapiz = gcnew Pen(objFigura->getColor());
-			if (objFigura->getTipo() == 1) {
-				/*Aqui hay que dibujar un rectangulo*/
-				objGraphics->DrawRectangle(objLapiz, objFigura->getPuntoInicioX(), objFigura->getPuntoInicioY(), objFigura->getPuntoFinX() - objFigura->getPuntoInicioX(), objFigura->getPuntoFinY() - objFigura->getPuntoInicioY());
-			}
-			else {
-				/*Aqui hay que dibujar una elipse*/
-				objGraphics->DrawEllipse(objLapiz, objFigura->getPuntoInicioX(), objFigura->getPuntoInicioY(), objFigura->getPuntoFinX() - objFigura->getPuntoInicioX(), objFigura->getPuntoFinY() - objFigura->getPuntoInicioY());
+
+		if (borrarContenido == 1) {		//si borrarContenido está a 1, se resetea el paint, todo en blanco
+			e->Graphics->Clear(panel1->BackColor);
+			borrarContenido = 0;
+		}
+		else {
+			for (int i = 0; i < this->listaFiguras->Count; i++) {
+				Figura^ objFigura = this->listaFiguras[i];
+				Pen^ objLapiz = gcnew Pen(objFigura->getColor());
+				if (objFigura->getTipo() == 1) {
+					/*Aqui hay que dibujar un rectangulo*/
+					objGraphics->DrawRectangle(objLapiz, objFigura->getPuntoInicioX(), objFigura->getPuntoInicioY(), objFigura->getPuntoFinX() - objFigura->getPuntoInicioX(), objFigura->getPuntoFinY() - objFigura->getPuntoInicioY());
+				}
+				else {
+					/*Aqui hay que dibujar una elipse*/
+					objGraphics->DrawEllipse(objLapiz, objFigura->getPuntoInicioX(), objFigura->getPuntoInicioY(), objFigura->getPuntoFinX() - objFigura->getPuntoInicioX(), objFigura->getPuntoFinY() - objFigura->getPuntoInicioY());
+				}
 			}
 		}
 	}
 
+	private: System::Void nuevoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	//se limpia la hoja, vacía el paint
+		borrarContenido = 1;
+		listaFiguras->Clear();
+		this->panel1->Invalidate();			//va a actualizar el panel
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+	}
 };
 }

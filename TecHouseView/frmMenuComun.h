@@ -1,4 +1,5 @@
 #pragma once
+#include "frmVerCasaNoAdmin.h"
 
 namespace TecHouseView {
 
@@ -88,6 +89,7 @@ namespace TecHouseView {
 	private: System::Windows::Forms::MenuStrip^ menuStrip2;
 	private: System::Windows::Forms::ToolStripMenuItem^ menúPrincipalActualToolStripMenuItem;
 	private: System::Windows::Forms::TextBox^ textBox12;
+	private: System::Windows::Forms::ToolStripMenuItem^ verCasaToolStripMenuItem;
 
 	protected:
 
@@ -151,6 +153,7 @@ namespace TecHouseView {
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->verCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -487,7 +490,10 @@ namespace TecHouseView {
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->configuraciónToolStripMenuItem });
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->configuraciónToolStripMenuItem,
+					this->verCasaToolStripMenuItem
+			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 24);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
@@ -552,6 +558,13 @@ namespace TecHouseView {
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 23;
 			// 
+			// verCasaToolStripMenuItem
+			// 
+			this->verCasaToolStripMenuItem->Name = L"verCasaToolStripMenuItem";
+			this->verCasaToolStripMenuItem->Size = System::Drawing::Size(63, 24);
+			this->verCasaToolStripMenuItem->Text = L"Ver Casa";
+			this->verCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::verCasaToolStripMenuItem_Click);
+			// 
 			// frmMenuComun
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -599,6 +612,11 @@ namespace TecHouseView {
 		this->textBox12->Text = "Bienvenido de nuevo " + nombre + "!";
 		this->textBox10->Text = Convert::ToString(objUsuario->getCodigo());
 		this->textBox11->Text = "Activa";
+	}
+	private: System::Void verCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		//se abrirá la ventana para ver su casa: frmVerCasaNoAdmin.h:
+		frmVerCasaNoAdmin^ ventanaVerCasa = gcnew frmVerCasaNoAdmin(codigo);
+		ventanaVerCasa->ShowDialog();
 	}
 };
 }
