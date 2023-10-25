@@ -206,7 +206,7 @@ namespace TecHouseView {
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"frmDiseñoCasa";
-			this->Text = L"frmDiseñoCasa";
+			this->Text = L"Diseña una casa!";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);

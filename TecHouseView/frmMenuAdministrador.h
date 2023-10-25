@@ -1,9 +1,9 @@
 #pragma once
 #include "frmMantenimientoCasas.h"
 #include "frmMantenimientoUsuarios.h"
-#include "frmNuevoUsuarioAdmi.h"
 #include "frmDiseñoCasa.h"
 #include "frmReporteNroUsuariosxTipo.h"
+#include "frmAdminSeleccionarCasa.h"
 
 namespace TecHouseView {
 
@@ -181,15 +181,15 @@ namespace TecHouseView {
 			// buscarCasaToolStripMenuItem
 			// 
 			this->buscarCasaToolStripMenuItem->Name = L"buscarCasaToolStripMenuItem";
-			this->buscarCasaToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->buscarCasaToolStripMenuItem->Text = L"Buscar Casa";
+			this->buscarCasaToolStripMenuItem->Size = System::Drawing::Size(230, 22);
+			this->buscarCasaToolStripMenuItem->Text = L"Tomar Control de Casa";
 			this->buscarCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::buscarCasaToolStripMenuItem_Click);
 			// 
 			// númeroCasasPorDistritoToolStripMenuItem
 			// 
 			this->númeroCasasPorDistritoToolStripMenuItem->Name = L"númeroCasasPorDistritoToolStripMenuItem";
-			this->númeroCasasPorDistritoToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->númeroCasasPorDistritoToolStripMenuItem->Text = L"Número Usuarios";
+			this->númeroCasasPorDistritoToolStripMenuItem->Size = System::Drawing::Size(230, 22);
+			this->númeroCasasPorDistritoToolStripMenuItem->Text = L"Número de Usuarios Actuales";
 			this->númeroCasasPorDistritoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::númeroCasasPorDistritoToolStripMenuItem_Click);
 			// 
 			// menuStrip2
@@ -264,7 +264,7 @@ namespace TecHouseView {
 			this->Controls->Add(this->menuStrip2);
 			this->Controls->Add(this->menuStrip3);
 			this->Name = L"frmMenuAdministrador";
-			this->Text = L"frmMenuAdministrador";
+			this->Text = L"Menú Administrador";
 			this->Load += gcnew System::EventHandler(this, &frmMenuAdministrador::frmMenuAdministrador_Load);
 			this->menuStrip3->ResumeLayout(false);
 			this->menuStrip3->PerformLayout();
@@ -295,14 +295,9 @@ namespace TecHouseView {
 	}
 
 	private: System::Void buscarCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Lo que se busca es que seleccione una Casa y el "Codigo" de la casa se pase al CodCasa de los Administradores, ya que 
-		//estos podrian cambiar su CodCasa a voluntad para entrar a cualquier casa elegida
-		//Pdst: Es un hueco en el codigo, filtrar los tipos de usuarios para que los clientes no creen admis y al momento de iniciar 
-		//una sesion y se pase al menu de cada categoria, que este sepa que usuario haya entrado, lit. hay un libre albedrio de sesiones
-		//Pero si asumimos que solo una casa es la "funcional" y el resto de adorno, entonces es nuestro hardware esa unica casa funcional.
-		//
-		//Si puedes llegar a realizar que los admis cambien de en su sesion el CodCasa con seleccionar casa, seria genial
-		//Y tambien hacer que los menus sean conscientes (como private objeto) de la cuante ingresada, seria god
+		//EL ADMINISTRADOR PODRÁ TOMAR CONTROL DE UNA CASA
+		frmAdminSeleccionarCasa^ ventanaSeleccionarCasa = gcnew frmAdminSeleccionarCasa();
+		ventanaSeleccionarCasa->Show();
 	}
 
 	private: System::Void configuraciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

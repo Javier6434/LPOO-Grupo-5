@@ -1,7 +1,7 @@
 ﻿  frmIniciarSesion.cpp
-  frmMenuComun.cpp
+  frmMenuAdministrador.cpp
   main.cpp
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\main.cpp(9,1): warning C4829: Parámetros posiblemente incorrectos para la función main. Utilice 'int main(Platform::Array<Platform::String^>^ argv)'
   Generando código...
-  frmDiseñoCasa.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+  frmAdminSeleccionarCasa.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   TecHouseView.vcxproj -> C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\x64\Debug\TecHouseView.exe

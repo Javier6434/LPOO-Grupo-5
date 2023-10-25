@@ -26,6 +26,12 @@ namespace TecHouseView {
 			//
 		}
 
+		frmNuevoUsuario(int codigo)
+		{
+			InitializeComponent();
+			this->codigo = codigo;
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -39,7 +45,7 @@ namespace TecHouseView {
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox5;
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::Label^ label4;
@@ -60,6 +66,9 @@ namespace TecHouseView {
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::TextBox^ textBox8;
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: int codigo;
+	private: Usuario^ objUsuario;
 
 	private:
 		/// <summary>
@@ -83,9 +92,9 @@ namespace TecHouseView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
@@ -191,14 +200,6 @@ namespace TecHouseView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código :";
 			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(124, 30);
-			this->textBox5->Margin = System::Windows::Forms::Padding(2);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(160, 20);
-			this->textBox5->TabIndex = 9;
-			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
@@ -211,9 +212,9 @@ namespace TecHouseView {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->comboBox1);
 			this->groupBox2->Controls->Add(this->label9);
 			this->groupBox2->Controls->Add(this->textBox8);
-			this->groupBox2->Controls->Add(this->textBox5);
 			this->groupBox2->Controls->Add(this->dateTimePicker1);
 			this->groupBox2->Controls->Add(this->label5);
 			this->groupBox2->Controls->Add(this->textBox6);
@@ -229,6 +230,14 @@ namespace TecHouseView {
 			this->groupBox2->TabIndex = 10;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Datos del Usuario";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(124, 34);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(158, 21);
+			this->comboBox1->TabIndex = 12;
 			// 
 			// label9
 			// 
@@ -336,7 +345,8 @@ namespace TecHouseView {
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmNuevoUsuario";
-			this->Text = L"frmNuevoUsuario";
+			this->Text = L"Nuevo Usuario";
+			this->Load += gcnew System::EventHandler(this, &frmNuevoUsuario::frmNuevoUsuario_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -350,7 +360,7 @@ namespace TecHouseView {
 		int CodCasa = Convert::ToInt32(this->textBox2->Text);
 		String^ ID = this->textBox3->Text;
 		String^ Clave = this->textBox4->Text;
-		String^ Tipo = this->textBox5->Text;
+		String^ Tipo = this->comboBox1->Text;
 		String^ Nombre = this->textBox6->Text;
 		String^ ApellidoMaterno = this->textBox7->Text;
 		String^ ApellidoPaterno = this->textBox8->Text;
@@ -370,7 +380,33 @@ namespace TecHouseView {
 		this->Close();
 	}
 
-private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void frmNuevoUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		this->objUsuario = objUsuarioController->buscarUsuarioxCodigo(this->codigo);
+		//la ventana ya reconoció al usuario que ha ingresado
+
+		if (objUsuario->getTipo() == "Administrador") {
+			//el administrador puedo añadir, eliminar y editar usuarios; los demás solo pueden editar su usuario
+			//el administrador tiene la opción de crear más administradores y demás usuarios
+			//los usuarios comunes solo pueden crear familiar y 
+			List<String^>^ listaTipos = objUsuarioController->obtenerTipos();
+			this->comboBox1->Items->Clear();
+			for (int i = 0; i < listaTipos->Count; i++) {
+				this->comboBox1->Items->Add(listaTipos[i]);		//obtendra los nombres de los proyectos
+			}
+		}
+		else {
+			//todos los demás tipos de usuario pueden crear familiares o cuidadores únicamente
+			List<String^>^ listaTipos = objUsuarioController->obtenerTipos();
+			this->comboBox1->Items->Clear();
+			for (int i = 0; i < listaTipos->Count; i++) {
+				if (listaTipos[i] == "Familiar" || listaTipos[i] == "Cuidador") {
+					this->comboBox1->Items->Add(listaTipos[i]);		//obtendra los nombres de los proyectos
+				}
+			}
+		}
+	}
 };
 }

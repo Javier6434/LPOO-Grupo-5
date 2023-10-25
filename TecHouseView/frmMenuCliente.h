@@ -151,11 +151,11 @@ namespace TecHouseView {
 			this->temperaturaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->actualizarContraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->verCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
-			this->verCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -540,8 +540,8 @@ namespace TecHouseView {
 			this->contraseñaToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->actualizarContraseñaToolStripMenuItem });
 			this->contraseñaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"contraseñaToolStripMenuItem.Image")));
 			this->contraseñaToolStripMenuItem->Name = L"contraseñaToolStripMenuItem";
-			this->contraseñaToolStripMenuItem->Size = System::Drawing::Size(99, 24);
-			this->contraseñaToolStripMenuItem->Text = L"Contraseña";
+			this->contraseñaToolStripMenuItem->Size = System::Drawing::Size(117, 24);
+			this->contraseñaToolStripMenuItem->Text = L"Usuarios Casas";
 			// 
 			// actualizarContraseñaToolStripMenuItem
 			// 
@@ -549,6 +549,13 @@ namespace TecHouseView {
 			this->actualizarContraseñaToolStripMenuItem->Size = System::Drawing::Size(220, 22);
 			this->actualizarContraseñaToolStripMenuItem->Text = L"Mantenimiento de Usuarios";
 			this->actualizarContraseñaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::actualizarContraseñaToolStripMenuItem_Click);
+			// 
+			// verCasaToolStripMenuItem
+			// 
+			this->verCasaToolStripMenuItem->Name = L"verCasaToolStripMenuItem";
+			this->verCasaToolStripMenuItem->Size = System::Drawing::Size(63, 24);
+			this->verCasaToolStripMenuItem->Text = L"Ver Casa";
+			this->verCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::verCasaToolStripMenuItem_Click);
 			// 
 			// menuStrip2
 			// 
@@ -593,13 +600,6 @@ namespace TecHouseView {
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 22;
 			// 
-			// verCasaToolStripMenuItem
-			// 
-			this->verCasaToolStripMenuItem->Name = L"verCasaToolStripMenuItem";
-			this->verCasaToolStripMenuItem->Size = System::Drawing::Size(63, 24);
-			this->verCasaToolStripMenuItem->Text = L"Ver Casa";
-			this->verCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::verCasaToolStripMenuItem_Click);
-			// 
 			// frmMenuCliente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -639,7 +639,7 @@ namespace TecHouseView {
 	}
 
 	private: System::Void actualizarContraseñaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmMantenimientoUsuarios^ ventanaMantenimientoUsuarios = gcnew frmMantenimientoUsuarios();
+		frmMantenimientoUsuarios^ ventanaMantenimientoUsuarios = gcnew frmMantenimientoUsuarios(codigo);
 		ventanaMantenimientoUsuarios->ShowDialog();
 	}
 	private: System::Void frmMenuCliente_Load(System::Object^ sender, System::EventArgs^ e) {

@@ -348,7 +348,7 @@ namespace TecHouseView {
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmEditarUsuario";
-			this->Text = L"frmEditarUsuario";
+			this->Text = L"Editar Usuario";
 			this->Load += gcnew System::EventHandler(this, &frmEditarUsuario::frmEditarUsuario_Load);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();

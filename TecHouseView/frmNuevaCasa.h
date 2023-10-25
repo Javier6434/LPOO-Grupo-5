@@ -226,7 +226,7 @@ namespace TecHouseView {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmNuevaCasa";
-			this->Text = L"frmNuevaCasa";
+			this->Text = L"Nueva Casa";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);

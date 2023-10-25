@@ -1,6 +1,6 @@
 #pragma once
-#include "frmEditarCasa.h"
-#include "frmNuevaCasa.h"
+#include "frmMenuCliente.h"
+#include "frmMenuComun.h"
 
 namespace TecHouseView {
 
@@ -11,16 +11,15 @@ namespace TecHouseView {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace TecHouseController;
-	using namespace System::Collections::Generic;
 	using namespace TecHouseModel;
 
 	/// <summary>
-	/// Resumen de frmMantenimientoCasas
+	/// Resumen de frmAdminSeleccionarCasa
 	/// </summary>
-	public ref class frmMantenimientoCasas : public System::Windows::Forms::Form
+	public ref class frmAdminSeleccionarCasa : public System::Windows::Forms::Form
 	{
 	public:
-		frmMantenimientoCasas(void)
+		frmAdminSeleccionarCasa(void)
 		{
 			InitializeComponent();
 			//
@@ -32,38 +31,27 @@ namespace TecHouseView {
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~frmMantenimientoCasas()
+		~frmAdminSeleccionarCasa()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button4;
-	protected:
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button2;
+	protected:
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-
-
-
-
-	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::ComboBox^ comboBox2;
-	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ CantAmbientes;
-
-
-
-
-
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Label^ label1;
 
 	private:
 		/// <summary>
@@ -78,9 +66,7 @@ namespace TecHouseView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -97,38 +83,16 @@ namespace TecHouseView {
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(346, 320);
-			this->button4->Margin = System::Windows::Forms::Padding(2);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(56, 19);
-			this->button4->TabIndex = 9;
-			this->button4->Text = L"Eliminar";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &frmMantenimientoCasas::button4_Click);
-			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(249, 320);
+			this->button3->Location = System::Drawing::Point(186, 298);
 			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(56, 19);
-			this->button3->TabIndex = 8;
-			this->button3->Text = L"Editar";
+			this->button3->Size = System::Drawing::Size(112, 24);
+			this->button3->TabIndex = 13;
+			this->button3->Text = L"Ingresar a la Casa";
 			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &frmMantenimientoCasas::button3_Click);
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(156, 320);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(56, 19);
-			this->button2->TabIndex = 7;
-			this->button2->Text = L"Nuevo";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &frmMantenimientoCasas::button2_Click);
+			this->button3->Click += gcnew System::EventHandler(this, &frmAdminSeleccionarCasa::button3_Click);
 			// 
 			// dataGridView1
 			// 
@@ -137,13 +101,13 @@ namespace TecHouseView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->CantAmbientes
 			});
-			this->dataGridView1->Location = System::Drawing::Point(35, 143);
+			this->dataGridView1->Location = System::Drawing::Point(11, 125);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(484, 158);
-			this->dataGridView1->TabIndex = 6;
+			this->dataGridView1->TabIndex = 11;
 			// 
 			// Column1
 			// 
@@ -185,12 +149,12 @@ namespace TecHouseView {
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(35, 29);
+			this->groupBox1->Location = System::Drawing::Point(11, 11);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox1->Size = System::Drawing::Size(484, 97);
-			this->groupBox1->TabIndex = 5;
+			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Criterios de Búsqueda";
 			// 
@@ -222,7 +186,7 @@ namespace TecHouseView {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &frmMantenimientoCasas::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &frmAdminSeleccionarCasa::button1_Click);
 			// 
 			// comboBox1
 			// 
@@ -243,19 +207,17 @@ namespace TecHouseView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Departamento:";
 			// 
-			// frmMantenimientoCasas
+			// frmAdminSeleccionarCasa
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(557, 371);
-			this->Controls->Add(this->button4);
+			this->ClientSize = System::Drawing::Size(518, 346);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox1);
-			this->Name = L"frmMantenimientoCasas";
-			this->Text = L"Mantenimiento de Casas";
-			this->Load += gcnew System::EventHandler(this, &frmMantenimientoCasas::frmMantenimientoCasas_Load);
+			this->Name = L"frmAdminSeleccionarCasa";
+			this->Text = L"Seleccionar Casa de un usuario";
+			this->Load += gcnew System::EventHandler(this, &frmAdminSeleccionarCasa::frmAdminSeleccionarCasa_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -265,7 +227,7 @@ namespace TecHouseView {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Buscar
-		String^ departamento = this->comboBox1->Text; 
+		String^ departamento = this->comboBox1->Text;
 		String^ distrito = this->comboBox2->Text;
 		CasaController^ objProyectoController = gcnew CasaController();
 		List<Casa^>^ listaProyectos = objProyectoController->buscarCasas(departamento, distrito);
@@ -287,41 +249,8 @@ namespace TecHouseView {
 		}
 	}
 
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Nuevo
-		frmNuevaCasa^ ventanaNuevaCasa = gcnew frmNuevaCasa();
-		ventanaNuevaCasa->ShowDialog();
-	}
-
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Editar
-		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
-		int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-		CasaController^ objCasaController = gcnew CasaController();
-		Casa^ objCasa = objCasaController->buscarCasaxCodigo(codigoEditar);
-		frmEditarCasa^ ventanaEditarCasa = gcnew frmEditarCasa(objCasa);
-		ventanaEditarCasa->ShowDialog();
-	}
-
-	
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Eliminar
-		CasaController^ objetoCasa;
-		SesionController^ objetoSesion;
-		UsuarioController^ objetoUsuario;
-		int CodUsuario;
-		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
-		int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-		objetoCasa->eliminarCasaFisica(codigoEliminar);
-		SesionController^ objSesionController = gcnew SesionController();
-		CodUsuario = (objSesionController->buscarCodigoSesionxCodCasa(codigoEliminar));
-		objetoSesion->eliminarSesionFisicaxCodCasa(codigoEliminar);
-		objetoUsuario->eliminarUsuarioFisica(CodUsuario);
-		MessageBox::Show("La Casa ha sido eliminado con éxito");
-	}
-
-	private: System::Void frmMantenimientoCasas_Load(System::Object^ sender, System::EventArgs^ e) {
-		CasaController^ objCasaController = gcnew CasaController();
+	private: System::Void frmAdminSeleccionarCasa_Load(System::Object^ sender, System::EventArgs^ e) {
+			CasaController^ objCasaController = gcnew CasaController();
 		List<String^>^ listaDepartamentos = objCasaController->obtenerDepartamentos();
 		List<String^>^ listaDistritos = objCasaController->obtenerDistritos();
 		this->comboBox1->Items->Clear();
@@ -330,6 +259,37 @@ namespace TecHouseView {
 		}
 		for (int j = 0; j < listaDistritos->Count; j++) {
 			this->comboBox2->Items->Add(listaDistritos[j]);
+		}
+}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+		int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+		//ya tengo el código de la casa seleccionada
+		if (codigoEditar == 5) {
+			codigoEditar = 4; //no existe todavía casa 5, así que utilizaremos la 4
+		}
+		//ahora el admin entrará a una ventana según el código que seleccionó (casa seleccionada)
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		String^ Tipo = (objUsuarioController->buscarTipoUsuarioxCodigo(codigoEditar));
+		if (Tipo != "Administrador") {
+			//un administrador no puede entrar a la casa de un administrador, ya que los administradores no poseen casa asociada
+			if (Tipo == "Cliente") {
+				frmMenuCliente^ ventanaMenuCliente = gcnew frmMenuCliente(codigoEditar);
+				ventanaMenuCliente->Show();
+			}
+			else {
+				if (Tipo == "Familiar") {
+					frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun(codigoEditar);
+					ventanaMenuComun->Show();
+				}
+				else {
+					if (Tipo == "Cuidador") {
+						frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun(codigoEditar);
+						ventanaMenuComun->Show();
+					}
+				}
+			}
 		}
 	}
 };

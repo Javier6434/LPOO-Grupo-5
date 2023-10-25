@@ -233,7 +233,7 @@ namespace TecHouseView {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmEditarCasa";
-			this->Text = L"frmEditarCasa";
+			this->Text = L"Editar Casa";
 			this->Load += gcnew System::EventHandler(this, &frmEditarCasa::frmEditarCasa_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();

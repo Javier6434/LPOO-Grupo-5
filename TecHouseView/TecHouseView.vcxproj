@@ -114,6 +114,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="frmAdminSeleccionarCasa.cpp" />
     <ClCompile Include="frmDiseñoCasa.cpp" />
     <ClCompile Include="frmEditarCasa.cpp" />
     <ClCompile Include="frmEditarUsuario.cpp" />
@@ -125,7 +126,6 @@
     <ClCompile Include="frmMenuComun.cpp" />
     <ClCompile Include="frmNuevaCasa.cpp" />
     <ClCompile Include="frmNuevoUsuario.cpp" />
-    <ClCompile Include="frmNuevoUsuarioAdmi.cpp" />
     <ClCompile Include="frmReporteNroUsuariosxTipo.cpp" />
     <ClCompile Include="frmVerCasaNoAdmin.cpp" />
     <ClCompile Include="main.cpp" />
@@ -139,6 +139,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frmAdminSeleccionarCasa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmDiseñoCasa.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -172,9 +175,6 @@
     <ClInclude Include="frmNuevoUsuario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="frmNuevoUsuarioAdmi.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="frmReporteNroUsuariosxTipo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -183,6 +183,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmAdminSeleccionarCasa.resx">
+      <DependentUpon>frmAdminSeleccionarCasa.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDiseñoCasa.resx">
       <DependentUpon>frmDiseñoCasa.h</DependentUpon>
     </EmbeddedResource>
@@ -215,9 +218,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoUsuario.resx">
       <DependentUpon>frmNuevoUsuario.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNuevoUsuarioAdmi.resx">
-      <DependentUpon>frmNuevoUsuarioAdmi.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteNroUsuariosxTipo.resx">
       <DependentUpon>frmReporteNroUsuariosxTipo.h</DependentUpon>

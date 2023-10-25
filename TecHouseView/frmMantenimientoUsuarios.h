@@ -28,6 +28,15 @@ namespace TecHouseView {
 			//
 		}
 
+		frmMantenimientoUsuarios(int codigo)
+		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+			this->codigo = codigo;
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -60,7 +69,7 @@ namespace TecHouseView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ApellidoPaterno;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FechaNacimiento;
-
+	private: int codigo;
 
 
 
@@ -261,7 +270,7 @@ namespace TecHouseView {
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantenimientoUsuarios";
-			this->Text = L"frmMantenimientoUsuarios";
+			this->Text = L"Mantenimiento de Usuarios";
 			this->Load += gcnew System::EventHandler(this, &frmMantenimientoUsuarios::frmMantenimientoUsuarios_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
@@ -297,8 +306,9 @@ namespace TecHouseView {
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Nuevo
-		frmNuevoUsuario^ ventanaNuevoUsuario = gcnew frmNuevoUsuario();
+		frmNuevoUsuario^ ventanaNuevoUsuario = gcnew frmNuevoUsuario(codigo);
 		ventanaNuevoUsuario->ShowDialog();
+		
 	}
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -333,6 +343,13 @@ namespace TecHouseView {
 		for (int j = 0; j < listaNombres->Count; j++) {
 			this->comboBox2->Items->Add(listaNombres[j]);
 		}
+		//ahora para filtrar si el usuario que ha entrado a esta ventana es admin o no, (no podrá eliminar otros usuarios si no es admin)
+		String^ tipoUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo)->getTipo();
+		if (tipoUsuario != "Administrador") {
+			//si no es administrador, se bloquea el botón de eliminar:
+			this->button4->Enabled = false;
+		}
+		
 	}
 
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
