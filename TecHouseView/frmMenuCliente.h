@@ -27,6 +27,15 @@ namespace TecHouseView {
 			//
 		}
 
+		frmMenuCliente(int codigo)
+		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+			this->codigo = codigo;
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -83,6 +92,8 @@ namespace TecHouseView {
 	private: System::Windows::Forms::MenuStrip^ menuStrip2;
 	private: System::Windows::Forms::ToolStripMenuItem^ menúPrincipalActualToolStripMenuItem;
 	private: System::Windows::Forms::GroupBox^ groupBox6;
+	private: int codigo;
+	private: System::Windows::Forms::TextBox^ textBox12;
 
 	private:
 		/// <summary>
@@ -141,6 +152,7 @@ namespace TecHouseView {
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -568,16 +580,28 @@ namespace TecHouseView {
 			this->groupBox6->TabIndex = 22;
 			this->groupBox6->TabStop = false;
 			// 
+			// textBox12
+			// 
+			this->textBox12->Enabled = false;
+			this->textBox12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox12->Location = System::Drawing::Point(302, 24);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(307, 26);
+			this->textBox12->TabIndex = 22;
+			// 
 			// frmMenuCliente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(628, 350);
+			this->Controls->Add(this->textBox12);
 			this->Controls->Add(this->groupBox6);
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->menuStrip2);
 			this->Name = L"frmMenuCliente";
-			this->Text = L"frmMenuCliente";
+			this->Text = L"Menú Cliente";
+			this->Load += gcnew System::EventHandler(this, &frmMenuCliente::frmMenuCliente_Load);
 			this->groupBox5->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->groupBox4->ResumeLayout(false);
@@ -607,6 +631,16 @@ namespace TecHouseView {
 	private: System::Void actualizarContraseñaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmMantenimientoUsuarios^ ventanaMantenimientoUsuarios = gcnew frmMantenimientoUsuarios();
 		ventanaMantenimientoUsuarios->ShowDialog();
+	}
+	private: System::Void frmMenuCliente_Load(System::Object^ sender, System::EventArgs^ e) {
+	//LOAD:
+	//dará la bienvenida al usuario con su respectivo nombre
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
+		String^ nombre = objUsuario->getNombre();
+		this->textBox12->Text = "Bienvenido de nuevo " + nombre + "!";
+		this->textBox10->Text = Convert::ToString(objUsuario->getCodigo());
+		this->textBox11->Text = "Activa";
 	}
 };
 }

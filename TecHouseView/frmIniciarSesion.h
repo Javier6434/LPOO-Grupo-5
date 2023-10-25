@@ -173,7 +173,7 @@ namespace TecHouseView {
 			this->ClientSize = System::Drawing::Size(577, 299);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmIniciarSesion";
-			this->Text = L"frmIniciarSesion";
+			this->Text = L"Iniciar Sesión";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -194,20 +194,20 @@ namespace TecHouseView {
 			UsuarioController^ objUsuarioController = gcnew UsuarioController();
 			Tipo = (objUsuarioController->buscarTipoUsuarioxCodigo(Codigo));
 			if (Tipo == "Administrador") {
-				frmMenuAdministrador^ ventanaMenuAdministrador = gcnew frmMenuAdministrador();
+				frmMenuAdministrador^ ventanaMenuAdministrador = gcnew frmMenuAdministrador(Codigo);
 				ventanaMenuAdministrador->Show();
 			}else {
 				if(Tipo == "Cliente"){
-					frmMenuCliente^ ventanaMenuCliente = gcnew frmMenuCliente();
+					frmMenuCliente^ ventanaMenuCliente = gcnew frmMenuCliente(Codigo);
 					ventanaMenuCliente->Show();
 				}else {
 					if (Tipo == "Familiar") {
-						frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun();
+						frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun(Codigo);
 						ventanaMenuComun->Show();
 					}
 					else {
 						if (Tipo == "Cuidador") {
-							frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun();
+							frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun(Codigo);
 							ventanaMenuComun->Show();
 						}
 					}

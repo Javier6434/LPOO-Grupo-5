@@ -8,6 +8,9 @@ namespace TecHouseView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace TecHouseController;
+	using namespace TecHouseModel;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de frmMenuComun
@@ -21,6 +24,12 @@ namespace TecHouseView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+		}
+
+		frmMenuComun(int codigo)
+		{
+			InitializeComponent();
+			this->codigo = codigo;
 		}
 
 	protected:
@@ -73,11 +82,12 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ configuraciónDeControlAutomáticoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ puertasYVentanasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ temperaturaToolStripMenuItem;
-
+	private: int codigo;
 
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip2;
 	private: System::Windows::Forms::ToolStripMenuItem^ menúPrincipalActualToolStripMenuItem;
+	private: System::Windows::Forms::TextBox^ textBox12;
 
 	protected:
 
@@ -140,6 +150,7 @@ namespace TecHouseView {
 			this->temperaturaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -531,6 +542,16 @@ namespace TecHouseView {
 			this->menúPrincipalActualToolStripMenuItem->Size = System::Drawing::Size(144, 20);
 			this->menúPrincipalActualToolStripMenuItem->Text = L"Menú Principal (Actual)";
 			// 
+			// textBox12
+			// 
+			this->textBox12->Enabled = false;
+			this->textBox12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox12->Location = System::Drawing::Point(303, 24);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(307, 26);
+			this->textBox12->TabIndex = 23;
+			// 
 			// frmMenuComun
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -538,6 +559,7 @@ namespace TecHouseView {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(633, 394);
+			this->Controls->Add(this->textBox12);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
@@ -546,7 +568,8 @@ namespace TecHouseView {
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->menuStrip2);
 			this->Name = L"frmMenuComun";
-			this->Text = L"frmMenuComun";
+			this->Text = L"Menú Común";
+			this->Load += gcnew System::EventHandler(this, &frmMenuComun::frmMenuComun_Load);
 			this->groupBox5->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->groupBox4->ResumeLayout(false);
@@ -569,5 +592,13 @@ namespace TecHouseView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void frmMenuComun_Load(System::Object^ sender, System::EventArgs^ e) {
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
+		String^ nombre = objUsuario->getNombre();
+		this->textBox12->Text = "Bienvenido de nuevo " + nombre + "!";
+		this->textBox10->Text = Convert::ToString(objUsuario->getCodigo());
+		this->textBox11->Text = "Activa";
+	}
+};
 }

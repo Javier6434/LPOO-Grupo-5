@@ -31,6 +31,15 @@ namespace TecHouseView {
 			//
 		}
 
+		frmMenuAdministrador(int codigo)
+		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+			this->codigo = codigo;
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -63,10 +72,11 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarCasaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ númeroCasasPorDistritoToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-
+	private: int codigo;
 	private:
 
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ textBox1;
 
 
 
@@ -107,6 +117,7 @@ namespace TecHouseView {
 			this->diseñarCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip3->SuspendLayout();
 			this->menuStrip2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -231,17 +242,30 @@ namespace TecHouseView {
 			this->label1->TabIndex = 14;
 			this->label1->Text = L"Administrador";
 			// 
+			// textBox1
+			// 
+			this->textBox1->Enabled = false;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(180, 296);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(307, 26);
+			this->textBox1->TabIndex = 15;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmMenuAdministrador::textBox1_TextChanged);
+			// 
 			// frmMenuAdministrador
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(667, 346);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip2);
 			this->Controls->Add(this->menuStrip3);
 			this->Name = L"frmMenuAdministrador";
 			this->Text = L"frmMenuAdministrador";
+			this->Load += gcnew System::EventHandler(this, &frmMenuAdministrador::frmMenuAdministrador_Load);
 			this->menuStrip3->ResumeLayout(false);
 			this->menuStrip3->PerformLayout();
 			this->menuStrip2->ResumeLayout(false);
@@ -288,6 +312,16 @@ namespace TecHouseView {
 	private: System::Void númeroCasasPorDistritoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmReporteNroUsuariosxTipo^ ventanaReporte = gcnew frmReporteNroUsuariosxTipo();
 		ventanaReporte->Show();
+	}
+	private: System::Void frmMenuAdministrador_Load(System::Object^ sender, System::EventArgs^ e) {
+	//LOAD:
+	//dará la bienvenida al usuario con su respectivo nombre
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
+		String^ nombre = objUsuario->getNombre();
+		this->textBox1->Text = "Bienvenido de nuevo " + nombre + "!";
+	}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 };
 }
