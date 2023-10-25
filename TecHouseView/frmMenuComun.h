@@ -311,7 +311,7 @@ namespace TecHouseView {
 			this->groupBox2->Controls->Add(this->label8);
 			this->groupBox2->Location = System::Drawing::Point(303, 64);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(272, 125);
+			this->groupBox2->Size = System::Drawing::Size(272, 112);
 			this->groupBox2->TabIndex = 11;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Sistema de Luces";
@@ -400,7 +400,7 @@ namespace TecHouseView {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Location = System::Drawing::Point(12, 64);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(272, 125);
+			this->groupBox1->Size = System::Drawing::Size(272, 112);
 			this->groupBox1->TabIndex = 9;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Temperatura";
@@ -505,13 +505,13 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
 			// 
 			// menuStrip2
@@ -535,6 +535,8 @@ namespace TecHouseView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(633, 394);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);

@@ -58,6 +58,7 @@ namespace TecHouseView {
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::Windows::Forms::ColorDialog^ colorDialog2;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog2;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -81,6 +82,7 @@ namespace TecHouseView {
 			this->guardarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->colorDialog2 = (gcnew System::Windows::Forms::ColorDialog());
 			this->saveFileDialog2 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -104,7 +106,7 @@ namespace TecHouseView {
 			this->button2->TabIndex = 8;
 			this->button2->Text = L"Círculo";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::button2_Click_1);
+			this->button2->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::button2_Click);
 			// 
 			// button1
 			// 
@@ -126,8 +128,8 @@ namespace TecHouseView {
 			this->panel1->Size = System::Drawing::Size(550, 472);
 			this->panel1->TabIndex = 6;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &frmDiseñoCasa::panel1_Paint);
-			this->panel1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &frmDiseñoCasa::panel1_MouseDown_1);
-			this->panel1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &frmDiseñoCasa::panel1_MouseUp_1);
+			this->panel1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &frmDiseñoCasa::panel1_MouseDown);
+			this->panel1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &frmDiseñoCasa::panel1_MouseUp);
 			// 
 			// menuStrip1
 			// 
@@ -153,16 +155,20 @@ namespace TecHouseView {
 			// abrirToolStripMenuItem
 			// 
 			this->abrirToolStripMenuItem->Name = L"abrirToolStripMenuItem";
-			this->abrirToolStripMenuItem->Size = System::Drawing::Size(150, 22);
+			this->abrirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->abrirToolStripMenuItem->Text = L"Abrir";
 			this->abrirToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::abrirToolStripMenuItem_Click);
 			// 
 			// guardarToolStripMenuItem
 			// 
 			this->guardarToolStripMenuItem->Name = L"guardarToolStripMenuItem";
-			this->guardarToolStripMenuItem->Size = System::Drawing::Size(150, 22);
+			this->guardarToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->guardarToolStripMenuItem->Text = L"Guardar como";
 			this->guardarToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmDiseñoCasa::guardarToolStripMenuItem_Click);
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
 			// frmDiseñoCasa
 			// 
@@ -187,18 +193,18 @@ namespace TecHouseView {
 		this->tipoFigura = 1;
 	}
 
-	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->tipoFigura = 2;
 	}
 
-	private: System::Void panel1_MouseDown_1(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	private: System::Void panel1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
 			this->inicioX = e->X;
 			this->inicioY = e->Y;
 		}
 	}
 
-	private: System::Void panel1_MouseUp_1(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	private: System::Void panel1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
 			int finX = e->X;
 			int finY = e->Y;
@@ -210,17 +216,22 @@ namespace TecHouseView {
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->colorDialog2->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			this->objColor = this->colorDialog1->Color;
+			this->objColor = this->colorDialog2->Color;
 		}
 	}
 
 	private: System::Void abrirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		if (this->openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			String^ nombreArchivo = this->openFileDialog1->FileName;
+			FiguraController^ objFiguraController = gcnew FiguraController();
+			this->listaFiguras = objFiguraController->leerArchivo(nombreArchivo);
+			this->panel1->Invalidate();			//va a actualizar el panel
+		}
 	}
 
 	private: System::Void guardarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (this->saveFileDialog2->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			String^ nombreArchivo = this->saveFileDialog1->FileName;
+			String^ nombreArchivo = this->saveFileDialog2->FileName;
 			FiguraController^ objFiguraController = gcnew FiguraController();
 			objFiguraController->guardarArchivo(this->listaFiguras, nombreArchivo);
 		};

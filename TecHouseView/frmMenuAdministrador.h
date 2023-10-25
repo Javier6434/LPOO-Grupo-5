@@ -62,6 +62,11 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ diseñarCasaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarCasaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ númeroCasasPorDistritoToolStripMenuItem;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
+	private:
+
+	private: System::Windows::Forms::Label^ label1;
 
 
 
@@ -100,8 +105,11 @@ namespace TecHouseView {
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->diseñoDeCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->diseñarCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip3->SuspendLayout();
 			this->menuStrip2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip3
@@ -162,14 +170,14 @@ namespace TecHouseView {
 			// buscarCasaToolStripMenuItem
 			// 
 			this->buscarCasaToolStripMenuItem->Name = L"buscarCasaToolStripMenuItem";
-			this->buscarCasaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->buscarCasaToolStripMenuItem->Size = System::Drawing::Size(166, 22);
 			this->buscarCasaToolStripMenuItem->Text = L"Buscar Casa";
 			this->buscarCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::buscarCasaToolStripMenuItem_Click);
 			// 
 			// númeroCasasPorDistritoToolStripMenuItem
 			// 
 			this->númeroCasasPorDistritoToolStripMenuItem->Name = L"númeroCasasPorDistritoToolStripMenuItem";
-			this->númeroCasasPorDistritoToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->númeroCasasPorDistritoToolStripMenuItem->Size = System::Drawing::Size(166, 22);
 			this->númeroCasasPorDistritoToolStripMenuItem->Text = L"Número Usuarios";
 			this->númeroCasasPorDistritoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::númeroCasasPorDistritoToolStripMenuItem_Click);
 			// 
@@ -202,11 +210,34 @@ namespace TecHouseView {
 			this->diseñarCasaToolStripMenuItem->Text = L"Diseñar Casa";
 			this->diseñarCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuAdministrador::diseñarCasaToolStripMenuItem_Click);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(0, 55);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(667, 235);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 13;
+			this->pictureBox1->TabStop = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(170, 65);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(333, 55);
+			this->label1->TabIndex = 14;
+			this->label1->Text = L"Administrador";
+			// 
 			// frmMenuAdministrador
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(667, 346);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->menuStrip2);
 			this->Controls->Add(this->menuStrip3);
 			this->Name = L"frmMenuAdministrador";
@@ -215,6 +246,7 @@ namespace TecHouseView {
 			this->menuStrip3->PerformLayout();
 			this->menuStrip2->ResumeLayout(false);
 			this->menuStrip2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

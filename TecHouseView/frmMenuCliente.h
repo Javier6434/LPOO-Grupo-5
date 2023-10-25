@@ -82,6 +82,7 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ actualizarContraseñaToolStripMenuItem;
 	private: System::Windows::Forms::MenuStrip^ menuStrip2;
 	private: System::Windows::Forms::ToolStripMenuItem^ menúPrincipalActualToolStripMenuItem;
+	private: System::Windows::Forms::GroupBox^ groupBox6;
 
 	private:
 		/// <summary>
@@ -139,6 +140,7 @@ namespace TecHouseView {
 			this->actualizarContraseñaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -150,13 +152,14 @@ namespace TecHouseView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->menuStrip2->SuspendLayout();
+			this->groupBox6->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox5
 			// 
 			this->groupBox5->BackColor = System::Drawing::Color::Linen;
 			this->groupBox5->Controls->Add(this->pictureBox4);
-			this->groupBox5->Location = System::Drawing::Point(466, 224);
+			this->groupBox5->Location = System::Drawing::Point(466, 173);
 			this->groupBox5->Name = L"groupBox5";
 			this->groupBox5->Size = System::Drawing::Size(143, 106);
 			this->groupBox5->TabIndex = 21;
@@ -177,7 +180,7 @@ namespace TecHouseView {
 			// 
 			this->groupBox4->BackColor = System::Drawing::Color::Peru;
 			this->groupBox4->Controls->Add(this->textBox11);
-			this->groupBox4->Location = System::Drawing::Point(12, 240);
+			this->groupBox4->Location = System::Drawing::Point(12, 189);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(111, 42);
 			this->groupBox4->TabIndex = 20;
@@ -204,9 +207,9 @@ namespace TecHouseView {
 			this->groupBox3->Controls->Add(this->label10);
 			this->groupBox3->Controls->Add(this->label11);
 			this->groupBox3->Controls->Add(this->label12);
-			this->groupBox3->Location = System::Drawing::Point(160, 211);
+			this->groupBox3->Location = System::Drawing::Point(175, 162);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(272, 125);
+			this->groupBox3->Size = System::Drawing::Size(256, 125);
 			this->groupBox3->TabIndex = 19;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Cantidad de Personas";
@@ -308,9 +311,9 @@ namespace TecHouseView {
 			this->groupBox2->Controls->Add(this->label7);
 			this->groupBox2->Controls->Add(this->textBox6);
 			this->groupBox2->Controls->Add(this->label8);
-			this->groupBox2->Location = System::Drawing::Point(303, 71);
+			this->groupBox2->Location = System::Drawing::Point(303, 20);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(272, 125);
+			this->groupBox2->Size = System::Drawing::Size(272, 109);
 			this->groupBox2->TabIndex = 18;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Sistema de Luces";
@@ -397,9 +400,9 @@ namespace TecHouseView {
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(12, 71);
+			this->groupBox1->Location = System::Drawing::Point(12, 20);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(272, 125);
+			this->groupBox1->Size = System::Drawing::Size(272, 109);
 			this->groupBox1->TabIndex = 16;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Temperatura";
@@ -507,14 +510,14 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
 			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
 			// 
 			// contraseñaToolStripMenuItem
@@ -549,16 +552,28 @@ namespace TecHouseView {
 			this->menúPrincipalActualToolStripMenuItem->Size = System::Drawing::Size(144, 20);
 			this->menúPrincipalActualToolStripMenuItem->Text = L"Menú Principal (Actual)";
 			// 
+			// groupBox6
+			// 
+			this->groupBox6->BackColor = System::Drawing::SystemColors::Window;
+			this->groupBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"groupBox6.BackgroundImage")));
+			this->groupBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->groupBox6->Controls->Add(this->groupBox5);
+			this->groupBox6->Controls->Add(this->groupBox4);
+			this->groupBox6->Controls->Add(this->groupBox3);
+			this->groupBox6->Controls->Add(this->groupBox2);
+			this->groupBox6->Controls->Add(this->groupBox1);
+			this->groupBox6->Location = System::Drawing::Point(0, 51);
+			this->groupBox6->Name = L"groupBox6";
+			this->groupBox6->Size = System::Drawing::Size(627, 299);
+			this->groupBox6->TabIndex = 22;
+			this->groupBox6->TabStop = false;
+			// 
 			// frmMenuCliente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(628, 350);
-			this->Controls->Add(this->groupBox5);
-			this->Controls->Add(this->groupBox4);
-			this->Controls->Add(this->groupBox3);
-			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->groupBox6);
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->menuStrip2);
 			this->Name = L"frmMenuCliente";
@@ -580,6 +595,7 @@ namespace TecHouseView {
 			this->menuStrip1->PerformLayout();
 			this->menuStrip2->ResumeLayout(false);
 			this->menuStrip2->PerformLayout();
+			this->groupBox6->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

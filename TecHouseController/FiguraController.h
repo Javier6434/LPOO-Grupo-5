@@ -10,5 +10,6 @@ namespace TecHouseController {
 	public:
 		FiguraController();
 		void guardarArchivo(List<Figura^>^ listaFiguras, String^ nombreArchivo);
+		List<Figura^>^ leerArchivo(String^ nombreArchivo);
 	};
 }
