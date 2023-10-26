@@ -1,6 +1,8 @@
 #pragma once
 #include "frmMantenimientoUsuarios.h"
 #include "frmVerCasaNoAdmin.h"
+#include "frmConfigPuertasYVentanas.h"
+#include "frmConfigTemperatura.h"
 
 namespace TecHouseView {
 
@@ -525,15 +527,16 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
 			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
+			this->temperaturaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::temperaturaToolStripMenuItem_Click);
 			// 
 			// contraseñaToolStripMenuItem
 			// 
@@ -636,6 +639,8 @@ namespace TecHouseView {
 		}
 #pragma endregion
 	private: System::Void puertasYVentanasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmConfigPuertasYVentanas^ ventanaConfigPuertasYVentanas = gcnew frmConfigPuertasYVentanas();
+		ventanaConfigPuertasYVentanas->ShowDialog();
 	}
 
 	private: System::Void actualizarContraseñaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -657,5 +662,9 @@ private: System::Void verCasaToolStripMenuItem_Click(System::Object^ sender, Sys
 	frmVerCasaNoAdmin^ ventanaVerCasa = gcnew frmVerCasaNoAdmin(codigo);
 	ventanaVerCasa->ShowDialog();
 }
+	private: System::Void temperaturaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmConfigTemperatura^ ventanaConfigTemperatura = gcnew frmConfigTemperatura();
+		ventanaConfigTemperatura->ShowDialog();
+	}
 };
 }

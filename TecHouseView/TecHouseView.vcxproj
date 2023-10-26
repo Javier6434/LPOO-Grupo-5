@@ -115,6 +115,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmAdminSeleccionarCasa.cpp" />
+    <ClCompile Include="frmConfigPuertasYVentanas.cpp" />
+    <ClCompile Include="frmConfigTemperatura.cpp" />
     <ClCompile Include="frmDiseñoCasa.cpp" />
     <ClCompile Include="frmEditarCasa.cpp" />
     <ClCompile Include="frmEditarUsuario.cpp" />
@@ -140,6 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmAdminSeleccionarCasa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmConfigPuertasYVentanas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmConfigTemperatura.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmDiseñoCasa.h">
@@ -185,6 +193,12 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAdminSeleccionarCasa.resx">
       <DependentUpon>frmAdminSeleccionarCasa.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigPuertasYVentanas.resx">
+      <DependentUpon>frmConfigPuertasYVentanas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigTemperatura.resx">
+      <DependentUpon>frmConfigTemperatura.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDiseñoCasa.resx">
       <DependentUpon>frmDiseñoCasa.h</DependentUpon>

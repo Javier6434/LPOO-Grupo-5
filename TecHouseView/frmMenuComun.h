@@ -1,5 +1,7 @@
 #pragma once
 #include "frmVerCasaNoAdmin.h"
+#include "frmConfigPuertasYVentanas.h"
+#include "frmConfigTemperatura.h"
 
 namespace TecHouseView {
 
@@ -150,10 +152,10 @@ namespace TecHouseView {
 			this->configuraciónDeControlAutomáticoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->puertasYVentanasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->temperaturaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->verCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
-			this->verCasaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -522,14 +524,23 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
+			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
+			this->temperaturaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::temperaturaToolStripMenuItem_Click);
+			// 
+			// verCasaToolStripMenuItem
+			// 
+			this->verCasaToolStripMenuItem->Name = L"verCasaToolStripMenuItem";
+			this->verCasaToolStripMenuItem->Size = System::Drawing::Size(63, 24);
+			this->verCasaToolStripMenuItem->Text = L"Ver Casa";
+			this->verCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::verCasaToolStripMenuItem_Click);
 			// 
 			// menuStrip2
 			// 
@@ -557,13 +568,6 @@ namespace TecHouseView {
 			this->textBox12->Name = L"textBox12";
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 23;
-			// 
-			// verCasaToolStripMenuItem
-			// 
-			this->verCasaToolStripMenuItem->Name = L"verCasaToolStripMenuItem";
-			this->verCasaToolStripMenuItem->Size = System::Drawing::Size(63, 24);
-			this->verCasaToolStripMenuItem->Text = L"Ver Casa";
-			this->verCasaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::verCasaToolStripMenuItem_Click);
 			// 
 			// frmMenuComun
 			// 
@@ -617,6 +621,14 @@ namespace TecHouseView {
 		//se abrirá la ventana para ver su casa: frmVerCasaNoAdmin.h:
 		frmVerCasaNoAdmin^ ventanaVerCasa = gcnew frmVerCasaNoAdmin(codigo);
 		ventanaVerCasa->ShowDialog();
+	}
+	private: System::Void puertasYVentanasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmConfigPuertasYVentanas^ ventanaConfigPuertasYVentanas = gcnew frmConfigPuertasYVentanas();
+		ventanaConfigPuertasYVentanas->ShowDialog();
+	}
+	private: System::Void temperaturaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmConfigTemperatura^ ventanaConfigTemperatura = gcnew frmConfigTemperatura();
+		ventanaConfigTemperatura->ShowDialog();
 	}
 };
 }
