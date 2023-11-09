@@ -142,7 +142,7 @@ namespace TecHouseView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(484, 158);
+			this->dataGridView1->Size = System::Drawing::Size(652, 158);
 			this->dataGridView1->TabIndex = 6;
 			// 
 			// Column1
@@ -247,7 +247,7 @@ namespace TecHouseView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(557, 371);
+			this->ClientSize = System::Drawing::Size(699, 371);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -306,17 +306,14 @@ namespace TecHouseView {
 	
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Eliminar
-		CasaController^ objetoCasa;
-		SesionController^ objetoSesion;
-		UsuarioController^ objetoUsuario;
-		int CodUsuario;
+		CasaController^ objetoCasa = gcnew CasaController();
+		SesionController^ objetoSesion = gcnew SesionController;
+		UsuarioController^ objetoUsuario = gcnew UsuarioController();
 		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 		int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 		objetoCasa->eliminarCasaFisica(codigoEliminar);
-		SesionController^ objSesionController = gcnew SesionController();
-		CodUsuario = (objSesionController->buscarCodigoSesionxCodCasa(codigoEliminar));
 		objetoSesion->eliminarSesionFisicaxCodCasa(codigoEliminar);
-		objetoUsuario->eliminarUsuarioFisica(CodUsuario);
+		objetoUsuario->eliminarUsuarioFisica(codigoEliminar);
 		MessageBox::Show("La Casa ha sido eliminado con éxito");
 	}
 

@@ -152,11 +152,11 @@ namespace TecHouseView {
 	}
 	private: System::Void frmVerCasaNoAdmin_Load(System::Object^ sender, System::EventArgs^ e) {
 		//cargo el archivo según el código que haya recibido, codigo=1 => abro dibujoCasa1
-		String^ nombreArchivo = "dibujoCasa" + Convert::ToString(codigo);
+		String^ nombreArchivo = "dibujoCasa" + Convert::ToString(codigo-1);
 			FiguraController^ objFiguraController = gcnew FiguraController();
 			this->listaFiguras = objFiguraController->leerArchivo(nombreArchivo);
 			this->panel1->Invalidate();			//va a actualizar el panel
-			this->textBox1->Text = "Casa Número " + Convert::ToString(codigo);
+			this->textBox1->Text = "Casa Número " + Convert::ToString(codigo-1);
 		}
 	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		Graphics^ objGraphics = e->Graphics;

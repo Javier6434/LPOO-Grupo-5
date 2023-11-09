@@ -7,80 +7,92 @@ using namespace System::IO;
 
 
 CasaController::CasaController(){
-
+	this->objConexion = gcnew SqlConnection();
 }
 
-List<Casa^>^ CasaController::buscarCasas(String^ Departamento, String^ Distrito) {
-	/*En esta lista vamos a colocar la información de los proyectos que encontremos en el archivo de texto*/
-	List<Casa^>^ listaCasasEncontrados = gcnew List<Casa^>();
-	array<String^>^ lineas = File::ReadAllLines("Casas.txt");
+void CasaController::abrirConexionBD() {
+	/*Cadena de conexion: Servidor de BD, nombre de la BD, Casa de BD, password BD*/
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20212459;User Id=a20212459;Password=dxMPsqiw";	//tiene los datos de mi B.D. propia Piero Urbano
+	this->objConexion->Open(); /*Apertura de la conexion a BD*/
+}
 
-	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
-	/*Esta instruccion for each nos permite ir elemento por elemento de un array*/
-	for each (String ^ lineaCarrera in lineas) {
-		/*Voy a separar cada elemento del String por ; con el split*/
-		array<String^>^ datos = lineaCarrera->Split(separadores->ToCharArray());
-		int codigoCasa = Convert::ToInt32(datos[0]);
-		String^ DepartamentoCasa = datos[1];
-		String^ DistritoCasa = datos[2];
-		String^ avenidaCasa = datos[3];
-		int cantAmbientesCasa = Convert::ToInt32(datos[4]);
-		if (DepartamentoCasa->Contains(Departamento) && DistritoCasa->Contains(Distrito)) {
-			Casa^ objCasa = gcnew Casa(codigoCasa, DepartamentoCasa, DistritoCasa, avenidaCasa, cantAmbientesCasa);
-			listaCasasEncontrados->Add(objCasa);
-		}
+void CasaController::cerrarConexionBD() {
+	this->objConexion->Close();
+}
+
+
+List<Casa^>^ CasaController::buscarCasas(String^ Departamento, String^ Distrito) {
+	List<Casa^>^ listaCasas = gcnew List<Casa^>();
+
+	abrirConexionBD();	//primero abro la conexión, y luego tendré que cerrar la conexión, indispensables ambas acciones
+	/*SqlCommand viene a ser el objeto que utilizare para usar/trabajar el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->Connection = this->objConexion; /*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->CommandText = "select * from TH_Casas where departamento like '%" + Departamento + "%' and distrito like '%" + Distrito + "%'"; 	/*Aqui voy a indicar la sentencia que voy a ejecutar, mi Query*/
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();	//SIEMPRE EXECUTE READER PARA LEER LO QUE NOS DEVOLVIÓ AL USAR SELECT
+	while (objData->Read()) {		//ahora vamos a leer cada registro y asociarlo al objeto que quería extraer con sus atributos etc
+		int codigo = safe_cast<int>(objData[0]);		//los de la derecha son cada columna de la BD,  el índice es la columna, y le aplicamos un casteo para convertir int de BD a int de programación
+		String^ Departamento = safe_cast<String^>(objData[1]);
+		String^ Distrito = safe_cast<String^>(objData[2]);
+		String^ Avenida = safe_cast<String^>(objData[3]);
+		int cantAmbientes = safe_cast<int>(objData[4]);		//todos son con safe_cast
+		Casa^ objCasa = gcnew Casa(codigo, Departamento, Distrito, Avenida, cantAmbientes);
+		listaCasas->Add(objCasa);
 	}
-	return listaCasasEncontrados;
+	cerrarConexionBD();	//cierro la conexión
+	return listaCasas;
 }
 
 List<Casa^>^ CasaController::buscarAll() {
-	/*En esta lista vamos a colocar la información de los proyectos que encontremos en el archivo de texto*/
-	List<Casa^>^ listaCasasEncontrados = gcnew List<Casa^>();
-	array<String^>^ lineas = File::ReadAllLines("Casas.txt");
+	List<Casa^>^ listaCasas = gcnew List<Casa^>();
 
-	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
-	/*Esta instruccion for each nos permite ir elemento por elemento de un array*/
-	for each (String ^ lineaCarrera in lineas) {
-		/*Voy a separar cada elemento del String por ; con el split*/
-		array<String^>^ datos = lineaCarrera->Split(separadores->ToCharArray());
-		int codigoCasa = Convert::ToInt32(datos[0]);
-		String^ DepartamentoCasa = datos[1];
-		String^ DistritoCasa = datos[2];
-		String^ avenidaCasa = datos[3];
-		int cantAmbientesCasa = Convert::ToInt32(datos[4]);
-		/*aquí había un if, pero esta función busca TODO*/
-		Casa^ objCasa = gcnew Casa(codigoCasa, DepartamentoCasa, DistritoCasa, avenidaCasa, cantAmbientesCasa);
-		listaCasasEncontrados->Add(objCasa);
+	abrirConexionBD();	//primero abro la conexión, y luego tendré que cerrar la conexión, indispensables ambas acciones
+	/*SqlCommand viene a ser el objeto que utilizare para usar/trabajar el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->Connection = this->objConexion; /*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->CommandText = "select * from TH_Casas"; 	/*Aqui voy a indicar la sentencia que voy a ejecutar, mi Query*/
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();	//SIEMPRE EXECUTE READER PARA LEER LO QUE NOS DEVOLVIÓ AL USAR SELECT
+	while (objData->Read()) {		//ahora vamos a leer cada registro y asociarlo al objeto que quería extraer con sus atributos etc
+		int codigo = safe_cast<int>(objData[0]);		//los de la derecha son cada columna de la BD,  el índice es la columna, y le aplicamos un casteo para convertir int de BD a int de programación
+		String^ Departamento = safe_cast<String^>(objData[1]);
+		String^ Distrito = safe_cast<String^>(objData[2]);
+		String^ Avenida = safe_cast<String^>(objData[3]);
+		int cantAmbientes = safe_cast<int>(objData[4]);		//todos son con safe_cast
+		Casa^ objCasa = gcnew Casa(codigo, Departamento,Distrito,Avenida,cantAmbientes);
+		listaCasas->Add(objCasa);
 	}
-	return listaCasasEncontrados;
+	cerrarConexionBD();	//cierro la conexión
+	return listaCasas;
 }
 
-void CasaController::escribirArchivo(List<Casa^>^ listaCasas) {
-	array<String^>^ lineasArchivo = gcnew array<String^>(listaCasas->Count); //cuento cuantos proyectos o líneas hay
-	for (int i = 0; i < listaCasas->Count; i++) {
-
-		Casa^ objeto = listaCasas[i];
-
-		lineasArchivo[i] = objeto->getCodigo() + ";" + objeto->getDepartamento() + ";" + objeto->getDistrito() + ";" + objeto->getAvenida() + ";" + objeto->getcantAmbientes();
-	}
-	File::WriteAllLines("Casas.txt", lineasArchivo);
-}
 
 void CasaController::eliminarCasaFisica(int codigo) {
-	List<Casa^>^ listaCasas = buscarAll();
-	for (int i = 0; i < listaCasas->Count; i++) {
-		/*encontrar*/
-		if (listaCasas[i]->getCodigo() == codigo) {
-			listaCasas->RemoveAt(i);
-		}
-	}
-	escribirArchivo(listaCasas);
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "delete TH_Casas where codigo=" + codigo;
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
 }
 
 void CasaController::agregarCasa(Casa^ objCasa) {
-	List<Casa^>^ listaCasas = buscarAll();
-	listaCasas->Add(objCasa);
-	escribirArchivo(listaCasas);
+	int codigo = objCasa->getCodigo();
+	String^ Departamento = objCasa->getDepartamento();
+	String^ Distrito = objCasa->getDistrito();
+	String^ Avenida = objCasa->getAvenida();
+	int cantAmbientes = objCasa ->getcantAmbientes();
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();	//la tabla de usuarios se llama TH_Usuario
+	objSentencia->CommandText = "insert into TH_Casas(Departamento,Distrito,Avenida,cantAmbientes) values ('" + Departamento + "','" + Distrito + "','" + Avenida + "'," + cantAmbientes + ")"; //todo varchar va entre comillas simples ', '
+	objSentencia->Connection = this->objConexion; /*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->ExecuteNonQuery();	//notar que el Connection y el CommandText son al revés que en select
+	cerrarConexionBD();
 }
 
 Casa^ CasaController::buscarCasaxCodigo(int codigo) {
@@ -93,18 +105,17 @@ Casa^ CasaController::buscarCasaxCodigo(int codigo) {
 }
 
 void CasaController::actualizarCasa(Casa^ objCasa) {
-	List<Casa^>^ listaCasas = buscarAll();
-	for (int i = 0; i < listaCasas->Count; i++) {
-		if (listaCasas[i]->getCodigo() == objCasa->getCodigo()) {
-			/*Voy a actualizar cada dato de ese proyecto en la lista*/
-			listaCasas[i]->setDepartamento(objCasa->getDepartamento());
-			listaCasas[i]->setDistrito(objCasa->getDistrito());
-			listaCasas[i]->setAvenida(objCasa->getAvenida());
-			listaCasas[i]->setcantAmbientes(objCasa->getcantAmbientes());
-			break;
-		}
-	}
-	escribirArchivo(listaCasas);
+	int codigo = objCasa->getCodigo();
+	String^ Departamento = objCasa->getDepartamento();
+	String^ Distrito = objCasa->getDistrito();
+	String^ Avenida = objCasa->getAvenida();
+	int cantAmbientes = objCasa->getcantAmbientes();
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "update TH_Casas set Departamento='" + Departamento + "', Distrito='" + Distrito + "', Avenida='" + Avenida + "', cantAmbientes=" + cantAmbientes + "where codigo = " + codigo;
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
 }
 
 List<String^>^ CasaController::obtenerDepartamentos() {

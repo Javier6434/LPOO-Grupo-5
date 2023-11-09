@@ -284,7 +284,7 @@ namespace TecHouseView {
 		String^ Tipo = this->comboBox1->Text; 
 		String^ Nombre = this->comboBox2->Text;
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarUsuarios(Tipo, Nombre);
+		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarUsuariosxTipoyNombre(Tipo, Nombre);
 		mostrarGrilla(listaUsuarios);
 	}
 
@@ -293,13 +293,13 @@ namespace TecHouseView {
 		for (int i = 0; i < listaUsuarios->Count; i++) {
 			Usuario^ objUsuario = listaUsuarios[i];
 			/*Esta filaGrilla representa una fila del data grid de la pantalla*/
-			array<String^>^ filaGrilla = gcnew array<String^>(5);
+			array<String^>^ filaGrilla = gcnew array<String^>(6);
 			filaGrilla[0] = Convert::ToString(objUsuario->getCodigo());
 			filaGrilla[1] = objUsuario->getTipo();
-			filaGrilla[1] = objUsuario->getNombre();
-			filaGrilla[2] = objUsuario->getApellidoMaterno();
-			filaGrilla[3] = objUsuario->getApellidoPaterno();
-			filaGrilla[4] = objUsuario->getFechaDeNacimiento();
+			filaGrilla[2] = objUsuario->getNombre();
+			filaGrilla[3] = objUsuario->getApellidoMaterno();
+			filaGrilla[4] = objUsuario->getApellidoPaterno();
+			filaGrilla[5] = objUsuario->getFechaDeNacimiento();
 			this->dataGridView1->Rows->Add(filaGrilla);
 		}
 	}
@@ -325,10 +325,12 @@ namespace TecHouseView {
 
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Eliminar
-		UsuarioController^ objeto;
+		UsuarioController^ objeto = gcnew UsuarioController();
+		SesionController^ objetoSesion = gcnew SesionController();
 		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; 
 		int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 		objeto->eliminarUsuarioFisica(codigoEliminar);
+		objetoSesion->eliminarSesionFisica(codigoEliminar);
 		MessageBox::Show("El Usuario ha sido eliminado con éxito");
 	}
 

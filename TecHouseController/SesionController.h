@@ -2,15 +2,21 @@
 using namespace System;
 using namespace System::Collections::Generic;
 using namespace TecHouseModel;
+using namespace System::Data::SqlClient;
 
 namespace TecHouseController {
 
 	public ref class SesionController {
+
+	private:
+		SqlConnection^ objConexion;
+
 	public:
 		SesionController();
 		int verificarSesion(String^ ID, String^ Clave);
+		void abrirConexionBD();
+		void cerrarConexionBD();
 		List<Sesion^>^ buscarAll();
-		void escribirArchivo(List<Sesion^>^ listaSesions);
 		void eliminarSesionFisica(int codigo);
 		void eliminarSesionFisicaxCodCasa(int CodCasa);
 		int buscarCodigoSesionxCodCasa(int CodCasa);

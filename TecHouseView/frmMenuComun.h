@@ -614,7 +614,7 @@ namespace TecHouseView {
 		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
 		String^ nombre = objUsuario->getNombre();
 		this->textBox12->Text = "Bienvenido de nuevo " + nombre + "!";
-		this->textBox10->Text = Convert::ToString(objUsuario->getCodigo());
+		this->textBox10->Text = Convert::ToString((objUsuario->getCodigo()-1));
 		this->textBox11->Text = "Activa";
 	}
 	private: System::Void verCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

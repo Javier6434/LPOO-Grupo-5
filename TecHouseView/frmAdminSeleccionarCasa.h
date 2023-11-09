@@ -266,10 +266,11 @@ namespace TecHouseView {
 		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 		int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 		//ya tengo el código de la casa seleccionada
-		if (codigoEditar == 5) {
-			codigoEditar = 4; //no existe todavía casa 5, así que utilizaremos la 4
-		}
+		codigoEditar = codigoEditar + 1; //ya que las casas comienzan del 1 al 5 mientras que javier parriba tenemos codigos 2 parriba
 		//ahora el admin entrará a una ventana según el código que seleccionó (casa seleccionada)
+		if (codigoEditar >= 6) {
+			codigoEditar = 5;
+		}
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		String^ Tipo = (objUsuarioController->buscarTipoUsuarioxCodigo(codigoEditar));
 		if (Tipo != "Administrador") {

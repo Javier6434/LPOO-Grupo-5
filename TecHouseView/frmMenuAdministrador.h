@@ -72,7 +72,7 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarCasaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ númeroCasasPorDistritoToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: int codigo;
+	private: int codigo;			//el de acá empieza en1,2,3...    
 	private:
 
 	private: System::Windows::Forms::Label^ label1;
@@ -286,7 +286,7 @@ namespace TecHouseView {
 	}
 
 	private: System::Void mantenimientoUsuariosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmMantenimientoUsuarios^ ventanaMantenimientoUsuarios = gcnew frmMantenimientoUsuarios();
+		frmMantenimientoUsuarios^ ventanaMantenimientoUsuarios = gcnew frmMantenimientoUsuarios(codigo);
 		ventanaMantenimientoUsuarios->ShowDialog();
 	}
 	private: System::Void diseñarCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

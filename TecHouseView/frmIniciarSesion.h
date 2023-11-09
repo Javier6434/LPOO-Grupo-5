@@ -190,7 +190,7 @@ namespace TecHouseView {
 		SesionController^ objSesionController = gcnew SesionController();
 		SiExiste = (objSesionController->verificarSesion(ID, Clave));
 		if (SiExiste==1) {
-			Codigo= (objSesionController->buscarCodigoSesionxID(ID));
+			Codigo= (objSesionController->buscarCodigoSesionxID(ID));			
 			UsuarioController^ objUsuarioController = gcnew UsuarioController();
 			Tipo = (objUsuarioController->buscarTipoUsuarioxCodigo(Codigo));
 			if (Tipo == "Administrador") {

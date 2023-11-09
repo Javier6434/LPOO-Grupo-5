@@ -1,6 +1,4 @@
 ﻿  frmAdminSeleccionarCasa.cpp
-  frmConfigPuertasYVentanas.cpp
-  frmConfigTemperatura.cpp
   frmIniciarSesion.cpp
   frmMenuAdministrador.cpp
   frmMenuCliente.cpp

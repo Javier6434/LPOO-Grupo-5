@@ -1,5 +1,0 @@
-1;Lima;Carabayllo;Av. Los Rosales;5
-2;Cuzco;San Jeronimo;Av. Llocllampata;6
-3;Lima;San Miguel;Av. Arrivaguero;4
-4;Puno;Las Torres;Av. Los Reyes;3
-5;Lima;Los Olivos;Av. Universitaria;4

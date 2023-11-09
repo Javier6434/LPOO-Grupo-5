@@ -251,7 +251,7 @@ namespace TecHouseView {
 
 		Casa^ objCasa = gcnew Casa(codigo, Departamento, Distrito, Avenida, cantAmbientes);
 		CasaController^ objCasaController = gcnew CasaController();
-		objCasaController->agregarCasa(objCasa);
+		objCasaController->actualizarCasa(objCasa);
 		MessageBox::Show("El proyecto se ha agregado con éxito");
 		this->Close();
 	}

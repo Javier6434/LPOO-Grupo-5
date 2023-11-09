@@ -35,6 +35,10 @@
       <Project>{1ddcd216-1eb7-4dd8-8a25-433a01447fb9}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{89F36BD4-3F0C-4BA4-844A-B52D99CFEEC2}</ProjectGuid>
