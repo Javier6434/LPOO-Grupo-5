@@ -86,12 +86,16 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ puertasYVentanasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ temperaturaToolStripMenuItem;
 	private: int codigo;
-
+	private: double tempH1, tempH2, tempH3;		//mostrarán la temperatura de cada habitación
+	private: bool LuzH1, LuzH2, LuzH3;			//mostrarán si la luz está encendida (1) o apagada (0) por habitación
+	private: int cantPerH1, cantPerH2, cantPerH3;	//cantidad de personas por habitación, solo enteros del 0 a más
+	private: int estadoCasa = 0;					//inicializada con 0 para mostrar Casa Segura
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip2;
 	private: System::Windows::Forms::ToolStripMenuItem^ menúPrincipalActualToolStripMenuItem;
 	private: System::Windows::Forms::TextBox^ textBox12;
 	private: System::Windows::Forms::ToolStripMenuItem^ verCasaToolStripMenuItem;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
 
 	protected:
 
@@ -156,6 +160,7 @@ namespace TecHouseView {
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
@@ -167,11 +172,13 @@ namespace TecHouseView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->menuStrip2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox5
 			// 
 			this->groupBox5->BackColor = System::Drawing::Color::Linen;
+			this->groupBox5->Controls->Add(this->pictureBox5);
 			this->groupBox5->Controls->Add(this->pictureBox4);
 			this->groupBox5->Location = System::Drawing::Point(466, 217);
 			this->groupBox5->Name = L"groupBox5";
@@ -203,6 +210,7 @@ namespace TecHouseView {
 			// 
 			// textBox11
 			// 
+			this->textBox11->Enabled = false;
 			this->textBox11->Location = System::Drawing::Point(16, 16);
 			this->textBox11->Name = L"textBox11";
 			this->textBox11->Size = System::Drawing::Size(76, 20);
@@ -231,6 +239,7 @@ namespace TecHouseView {
 			// textBox10
 			// 
 			this->textBox10->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->textBox10->Enabled = false;
 			this->textBox10->Location = System::Drawing::Point(199, 10);
 			this->textBox10->Name = L"textBox10";
 			this->textBox10->Size = System::Drawing::Size(44, 20);
@@ -238,6 +247,7 @@ namespace TecHouseView {
 			// 
 			// textBox7
 			// 
+			this->textBox7->Enabled = false;
 			this->textBox7->Location = System::Drawing::Point(89, 81);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->Size = System::Drawing::Size(44, 20);
@@ -255,6 +265,7 @@ namespace TecHouseView {
 			// 
 			// textBox8
 			// 
+			this->textBox8->Enabled = false;
 			this->textBox8->Location = System::Drawing::Point(89, 55);
 			this->textBox8->Name = L"textBox8";
 			this->textBox8->Size = System::Drawing::Size(44, 20);
@@ -262,6 +273,7 @@ namespace TecHouseView {
 			// 
 			// textBox9
 			// 
+			this->textBox9->Enabled = false;
 			this->textBox9->Location = System::Drawing::Point(89, 29);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->Size = System::Drawing::Size(44, 20);
@@ -353,6 +365,7 @@ namespace TecHouseView {
 			// 
 			// textBox4
 			// 
+			this->textBox4->Enabled = false;
 			this->textBox4->Location = System::Drawing::Point(89, 81);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(53, 20);
@@ -370,6 +383,7 @@ namespace TecHouseView {
 			// 
 			// textBox5
 			// 
+			this->textBox5->Enabled = false;
 			this->textBox5->Location = System::Drawing::Point(89, 55);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(53, 20);
@@ -387,6 +401,7 @@ namespace TecHouseView {
 			// 
 			// textBox6
 			// 
+			this->textBox6->Enabled = false;
 			this->textBox6->Location = System::Drawing::Point(89, 29);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(53, 20);
@@ -442,6 +457,7 @@ namespace TecHouseView {
 			// 
 			// textBox3
 			// 
+			this->textBox3->Enabled = false;
 			this->textBox3->Location = System::Drawing::Point(98, 81);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(44, 20);
@@ -458,6 +474,7 @@ namespace TecHouseView {
 			// 
 			// textBox2
 			// 
+			this->textBox2->Enabled = false;
 			this->textBox2->Location = System::Drawing::Point(98, 55);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(44, 20);
@@ -474,6 +491,7 @@ namespace TecHouseView {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(98, 29);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(44, 20);
@@ -524,14 +542,14 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
 			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
 			this->temperaturaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::temperaturaToolStripMenuItem_Click);
 			// 
@@ -569,6 +587,16 @@ namespace TecHouseView {
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 23;
 			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
+			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox5->Location = System::Drawing::Point(25, 21);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(100, 67);
+			this->pictureBox5->TabIndex = 24;
+			this->pictureBox5->TabStop = false;
+			// 
 			// frmMenuComun
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -604,6 +632,7 @@ namespace TecHouseView {
 			this->menuStrip1->PerformLayout();
 			this->menuStrip2->ResumeLayout(false);
 			this->menuStrip2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -616,7 +645,57 @@ namespace TecHouseView {
 		this->textBox12->Text = "Bienvenido de nuevo " + nombre + "!";
 		this->textBox10->Text = Convert::ToString((objUsuario->getCodigo()-1));
 		this->textBox11->Text = "Activa";
+
+		//cargará los datos actuales del Arduino a la pantalla como temperatura en cuartos, Sistema de luces y cantidad de personas
+		tempH1 = 17, tempH2 = 21, tempH3 = 19;		//las inicializo con esos números pq no hay conexión con el arduino todavía
+		LuzH1 = 1, LuzH2 = 0, LuzH3 = 1;				//cuando la haya se extraerán los datos del Arduino y se les asignarán a los valores de esta ventana
+		cantPerH1 = 2, cantPerH2 = 0, cantPerH3 = 4;
+		MostrarTemperaturas(tempH1, tempH2, tempH3);
+		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
+		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3);
+		if (estadoCasa == 0) {	//estado de la casa: Seguro (0) o En Peligro (Por incendio,1)
+			textBox11->Text = "Seguro";
+		}
+		else if (estadoCasa == 1) {
+			textBox11->Text = "EN PELIGRO!";
+		}
 	}
+
+	private: Void MostrarTemperaturas(double tempH1, double tempH2, double tempH3) {
+		textBox1->Text = Convert::ToString(tempH1);
+		textBox2->Text = Convert::ToString(tempH2);
+		textBox3->Text = Convert::ToString(tempH3);
+	}
+
+	private: Void MostrarEstadoLuces(bool LuzH1, bool LuzH2, bool LuzH3) {
+		if (LuzH1 == 1) {
+			textBox6->Text = "ON";
+		}
+		else {
+			textBox6->Text = "OFF";
+		}
+
+		if (LuzH2 == 1) {
+			textBox5->Text = "ON";
+		}
+		else {
+			textBox5->Text = "OFF";
+		}
+
+		if (LuzH3 == 1) {
+			textBox4->Text = "ON";
+		}
+		else {
+			textBox4->Text = "OFF";
+		}
+	}
+
+	private: Void MostrarCantPersonas(int cantPerH1, int cantPerH2, int cantPerH3) {
+		textBox9->Text = Convert::ToString(cantPerH1);
+		textBox8->Text = Convert::ToString(cantPerH2);
+		textBox7->Text = Convert::ToString(cantPerH3);
+	}
+
 	private: System::Void verCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		//se abrirá la ventana para ver su casa: frmVerCasaNoAdmin.h:
 		frmVerCasaNoAdmin^ ventanaVerCasa = gcnew frmVerCasaNoAdmin(codigo);

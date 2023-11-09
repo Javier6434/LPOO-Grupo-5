@@ -49,11 +49,13 @@ namespace TecHouseView {
 
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::TextBox^ textBox5;
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 
 	private:
 		/// <summary>
@@ -69,7 +71,6 @@ namespace TecHouseView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -79,12 +80,13 @@ namespace TecHouseView {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox5);
+			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->textBox4);
 			this->groupBox1->Controls->Add(this->label4);
@@ -100,14 +102,6 @@ namespace TecHouseView {
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos de la Casa";
-			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(120, 165);
-			this->textBox5->Margin = System::Windows::Forms::Padding(2);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(107, 20);
-			this->textBox5->TabIndex = 9;
 			// 
 			// label5
 			// 
@@ -195,6 +189,18 @@ namespace TecHouseView {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &frmNuevaCasa::button2_Click);
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(15) {
+				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
+					L"9", L"10", L"11", L"12", L"13", L"14", L"15"
+			});
+			this->comboBox1->Location = System::Drawing::Point(120, 168);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(102, 21);
+			this->comboBox1->TabIndex = 11;
+			// 
 			// frmNuevaCasa
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -216,7 +222,7 @@ namespace TecHouseView {
 		String^ Departamento = this->textBox2->Text;
 		String^ Distrito = this->textBox3->Text;
 		String^ Avenida = this->textBox4->Text;
-		int cantAmbientes = Convert::ToInt32(this->textBox5->Text);
+		int cantAmbientes = Convert::ToInt32(this->comboBox1->Text);
 
 		
 		Casa^ objCasa = gcnew Casa(0, Departamento, Distrito, Avenida, cantAmbientes);

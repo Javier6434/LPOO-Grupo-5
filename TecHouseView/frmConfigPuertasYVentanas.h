@@ -45,8 +45,10 @@ namespace TecHouseView {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-
-
+	private: int estadoAutomatizacion=1;  // 0 para no tener automatizado nada y 1 para que las puertas y ventanas se abran y cierren automáticamente
+	private: int gradoAutomatizacion = 2;	//del 1 al 3, siendo al 3 máximo grado de automatización, mientras que en 1 el menor
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 
 
 
@@ -67,12 +69,14 @@ namespace TecHouseView {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmConfigPuertasYVentanas::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -81,6 +85,8 @@ namespace TecHouseView {
 			this->groupBox1->BackColor = System::Drawing::SystemColors::Window;
 			this->groupBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"groupBox1.BackgroundImage")));
 			this->groupBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->textBox5);
 			this->groupBox1->Controls->Add(this->label7);
@@ -93,38 +99,43 @@ namespace TecHouseView {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			// 
-			// label3
+			// label2
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(57, 39);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(125, 18);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"Establecer modo:";
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(24, 138);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(39, 13);
+			this->label2->TabIndex = 16;
+			this->label2->Text = L"Índice:";
 			// 
-			// button1
+			// label1
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button1->Location = System::Drawing::Point(44, 215);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(121, 53);
-			this->button1->TabIndex = 10;
-			this->button1->Text = L"Desactivar automatización en puertas y ventanas";
-			this->button1->UseVisualStyleBackColor = false;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(69, 127);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(113, 39);
+			this->label1->TabIndex = 15;
+			this->label1->Text = L"(1) Casi libre albedrío\r\n(2) Seguridad regular\r\n(3) Seguridad absoluta";
 			// 
-			// button2
+			// comboBox1
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button2->Location = System::Drawing::Point(171, 216);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(110, 52);
-			this->button2->TabIndex = 11;
-			this->button2->Text = L"Activar automatización en puertas y ventanas";
-			this->button2->UseVisualStyleBackColor = false;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"1", L"2", L"3" });
+			this->comboBox1->Location = System::Drawing::Point(47, 94);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(135, 21);
+			this->comboBox1->TabIndex = 14;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmConfigPuertasYVentanas::comboBox1_SelectedIndexChanged);
+			this->comboBox1->TextChanged += gcnew System::EventHandler(this, &frmConfigPuertasYVentanas::comboBox1_TextChanged);
+			// 
+			// textBox5
+			// 
+			this->textBox5->Enabled = false;
+			this->textBox5->Location = System::Drawing::Point(314, 157);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(97, 20);
+			this->textBox5->TabIndex = 13;
+			this->textBox5->Text = L"2";
 			// 
 			// label7
 			// 
@@ -137,26 +148,40 @@ namespace TecHouseView {
 			this->label7->TabIndex = 12;
 			this->label7->Text = L"Estado actual:";
 			// 
-			// textBox5
+			// button2
 			// 
-			this->textBox5->Enabled = false;
-			this->textBox5->Location = System::Drawing::Point(314, 157);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(97, 20);
-			this->textBox5->TabIndex = 13;
-			this->textBox5->Text = L"1/2/3";
+			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button2->Location = System::Drawing::Point(171, 216);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(110, 52);
+			this->button2->TabIndex = 11;
+			this->button2->Text = L"Activar/actualizar automatización en puertas y ventanas";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &frmConfigPuertasYVentanas::button2_Click);
 			// 
-			// comboBox1
+			// button1
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
-				L"(1) Seguridad absoluta", L"(2) Seguridad regular",
-					L"(3) Libre albedrío"
-			});
-			this->comboBox1->Location = System::Drawing::Point(47, 95);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(135, 21);
-			this->comboBox1->TabIndex = 14;
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button1->Location = System::Drawing::Point(44, 215);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(121, 53);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"Desactivar automatización en puertas y ventanas";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &frmConfigPuertasYVentanas::button1_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(57, 39);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(125, 18);
+			this->label3->TabIndex = 2;
+			this->label3->Text = L"Establecer modo:";
 			// 
 			// frmConfigPuertasYVentanas
 			// 
@@ -166,11 +191,50 @@ namespace TecHouseView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmConfigPuertasYVentanas";
 			this->Text = L"Configurar Puertas Y Ventanas";
+			this->Load += gcnew System::EventHandler(this, &frmConfigPuertasYVentanas::frmConfigPuertasYVentanas_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	};
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		//botón automatizar puertas y ventanas
+		estadoAutomatizacion = 1;
+		//selecciono un grado de automatizacion del 1 al 3, al asignarle un valor se actualizará el textbox
+		//que muestra en qué grado de automatizacion se encuentra actualmente, obs: si el estadoAutomatizacion es 0
+		//entonces no importará el grado, siempre será 0 el textbox en ese caso
+		if (comboBox1->Text=="" || Convert::ToInt32(comboBox1->Text) > 3 || Convert::ToInt32(comboBox1->Text) < 1) {
+			//los valores introducidos no son válidos
+			MessageBox::Show("Por favor escoja entre los modos disponibles de automatización (1,2 o 3)");
+		}
+		else {
+			gradoAutomatizacion = Convert::ToInt32(comboBox1->Text);
+			if (gradoAutomatizacion == 1) {
+				textBox5->Text = "1";
+			}
+			else if (gradoAutomatizacion == 2) {
+				textBox5->Text = "2";
+			}
+			else {
+				//grado de automatización es 3
+				textBox5->Text = "3";
+			}
+		}
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//botón NO automatizar puertas y ventanas (desactivarlas completamente)
+		estadoAutomatizacion = 0;
+		textBox5->Text = "Desactivado";		//para que detecte que se cambiaron datos y por nuestro criterio, al estar desactivada la autom. entonces el estado es 0
+	}
+	private: System::Void comboBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+	}
+	private: System::Void frmConfigPuertasYVentanas_Load(System::Object^ sender, System::EventArgs^ e) {
+		//LOAD:
+		textBox5->Text = "2";		//se tendrá que extraer el valor del arduino
+	}
+};
 }
