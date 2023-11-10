@@ -119,6 +119,7 @@ namespace TecHouseView {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmMenuComun::typeid));
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
@@ -160,8 +161,8 @@ namespace TecHouseView {
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
-			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox5->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox4->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -172,7 +173,6 @@ namespace TecHouseView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->menuStrip2->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox5
@@ -180,12 +180,22 @@ namespace TecHouseView {
 			this->groupBox5->BackColor = System::Drawing::Color::Linen;
 			this->groupBox5->Controls->Add(this->pictureBox5);
 			this->groupBox5->Controls->Add(this->pictureBox4);
-			this->groupBox5->Location = System::Drawing::Point(466, 217);
+			this->groupBox5->Location = System::Drawing::Point(537, 214);
 			this->groupBox5->Name = L"groupBox5";
 			this->groupBox5->Size = System::Drawing::Size(143, 106);
 			this->groupBox5->TabIndex = 14;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"ALERTA DE INCENDIO:";
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
+			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox5->Location = System::Drawing::Point(25, 21);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(100, 67);
+			this->pictureBox5->TabIndex = 24;
+			this->pictureBox5->TabStop = false;
 			// 
 			// pictureBox4
 			// 
@@ -201,7 +211,7 @@ namespace TecHouseView {
 			// 
 			this->groupBox4->BackColor = System::Drawing::Color::Peru;
 			this->groupBox4->Controls->Add(this->textBox11);
-			this->groupBox4->Location = System::Drawing::Point(12, 233);
+			this->groupBox4->Location = System::Drawing::Point(57, 234);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(111, 42);
 			this->groupBox4->TabIndex = 13;
@@ -229,7 +239,7 @@ namespace TecHouseView {
 			this->groupBox3->Controls->Add(this->label10);
 			this->groupBox3->Controls->Add(this->label11);
 			this->groupBox3->Controls->Add(this->label12);
-			this->groupBox3->Location = System::Drawing::Point(160, 204);
+			this->groupBox3->Location = System::Drawing::Point(236, 204);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(272, 125);
 			this->groupBox3->TabIndex = 12;
@@ -337,7 +347,7 @@ namespace TecHouseView {
 			this->groupBox2->Controls->Add(this->label7);
 			this->groupBox2->Controls->Add(this->textBox6);
 			this->groupBox2->Controls->Add(this->label8);
-			this->groupBox2->Location = System::Drawing::Point(303, 64);
+			this->groupBox2->Location = System::Drawing::Point(408, 64);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(272, 112);
 			this->groupBox2->TabIndex = 11;
@@ -429,7 +439,7 @@ namespace TecHouseView {
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(12, 64);
+			this->groupBox1->Location = System::Drawing::Point(73, 64);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(272, 112);
 			this->groupBox1->TabIndex = 9;
@@ -517,7 +527,7 @@ namespace TecHouseView {
 			this->menuStrip1->Location = System::Drawing::Point(0, 24);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(633, 28);
+			this->menuStrip1->Size = System::Drawing::Size(728, 28);
 			this->menuStrip1->TabIndex = 8;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -567,7 +577,7 @@ namespace TecHouseView {
 			this->menuStrip2->Location = System::Drawing::Point(0, 0);
 			this->menuStrip2->Name = L"menuStrip2";
 			this->menuStrip2->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip2->Size = System::Drawing::Size(633, 24);
+			this->menuStrip2->Size = System::Drawing::Size(728, 24);
 			this->menuStrip2->TabIndex = 10;
 			this->menuStrip2->Text = L"menuStrip2";
 			// 
@@ -582,20 +592,10 @@ namespace TecHouseView {
 			this->textBox12->Enabled = false;
 			this->textBox12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox12->Location = System::Drawing::Point(303, 24);
+			this->textBox12->Location = System::Drawing::Point(408, 24);
 			this->textBox12->Name = L"textBox12";
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 23;
-			// 
-			// pictureBox5
-			// 
-			this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
-			this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox5->Location = System::Drawing::Point(25, 21);
-			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(100, 67);
-			this->pictureBox5->TabIndex = 24;
-			this->pictureBox5->TabStop = false;
 			// 
 			// frmMenuComun
 			// 
@@ -603,7 +603,7 @@ namespace TecHouseView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(633, 394);
+			this->ClientSize = System::Drawing::Size(728, 394);
 			this->Controls->Add(this->textBox12);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
@@ -616,6 +616,7 @@ namespace TecHouseView {
 			this->Text = L"Menú Común";
 			this->Load += gcnew System::EventHandler(this, &frmMenuComun::frmMenuComun_Load);
 			this->groupBox5->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->groupBox4->ResumeLayout(false);
 			this->groupBox4->PerformLayout();
@@ -632,7 +633,6 @@ namespace TecHouseView {
 			this->menuStrip1->PerformLayout();
 			this->menuStrip2->ResumeLayout(false);
 			this->menuStrip2->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

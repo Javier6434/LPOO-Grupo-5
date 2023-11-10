@@ -52,6 +52,16 @@ namespace TecHouseView {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::Button^ button2;
+
+	private: System::Void ventanaMenuCliente_FormClosed(System::Object^ sender, FormClosedEventArgs^ e) {
+		groupBox2->Visible = true;
+	}
+
+	private: System::Void ventanaMenuComun_FormClosed(System::Object^ sender, FormClosedEventArgs^ e) {
+		groupBox2->Visible = true;
+	}
 
 	private:
 		/// <summary>
@@ -79,16 +89,21 @@ namespace TecHouseView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
+			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(186, 298);
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(111, 290);
 			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(112, 24);
+			this->button3->Size = System::Drawing::Size(145, 24);
 			this->button3->TabIndex = 13;
 			this->button3->Text = L"Ingresar a la Casa";
 			this->button3->UseVisualStyleBackColor = true;
@@ -101,7 +116,7 @@ namespace TecHouseView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->CantAmbientes
 			});
-			this->dataGridView1->Location = System::Drawing::Point(11, 125);
+			this->dataGridView1->Location = System::Drawing::Point(29, 119);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
@@ -149,7 +164,9 @@ namespace TecHouseView {
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(11, 11);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->Location = System::Drawing::Point(5, 6);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
@@ -161,10 +178,10 @@ namespace TecHouseView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(175, 67);
+			this->comboBox2->Location = System::Drawing::Point(200, 69);
 			this->comboBox2->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(112, 21);
+			this->comboBox2->Size = System::Drawing::Size(112, 24);
 			this->comboBox2->TabIndex = 4;
 			// 
 			// label2
@@ -173,7 +190,7 @@ namespace TecHouseView {
 			this->label2->Location = System::Drawing::Point(87, 70);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(42, 13);
+			this->label2->Size = System::Drawing::Size(51, 16);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Distrito:";
 			// 
@@ -182,7 +199,7 @@ namespace TecHouseView {
 			this->button1->Location = System::Drawing::Point(338, 51);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(56, 19);
+			this->button1->Size = System::Drawing::Size(73, 35);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -191,10 +208,10 @@ namespace TecHouseView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(175, 34);
+			this->comboBox1->Location = System::Drawing::Point(200, 34);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(112, 21);
+			this->comboBox1->Size = System::Drawing::Size(112, 24);
 			this->comboBox1->TabIndex = 1;
 			// 
 			// label1
@@ -203,24 +220,49 @@ namespace TecHouseView {
 			this->label1->Location = System::Drawing::Point(87, 37);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(77, 13);
+			this->label1->Size = System::Drawing::Size(96, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Departamento:";
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->button2);
+			this->groupBox2->Controls->Add(this->button3);
+			this->groupBox2->Controls->Add(this->dataGridView1);
+			this->groupBox2->Controls->Add(this->groupBox1);
+			this->groupBox2->Location = System::Drawing::Point(78, 12);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(566, 343);
+			this->groupBox2->TabIndex = 14;
+			this->groupBox2->TabStop = false;
+			// 
+			// button2
+			// 
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(282, 290);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(145, 24);
+			this->button2->TabIndex = 14;
+			this->button2->Text = L"Cancelar";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmAdminSeleccionarCasa::button2_Click);
 			// 
 			// frmAdminSeleccionarCasa
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(518, 346);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->groupBox1);
+			this->ClientSize = System::Drawing::Size(831, 398);
+			this->Controls->Add(this->groupBox2);
+			this->IsMdiContainer = true;
 			this->Name = L"frmAdminSeleccionarCasa";
 			this->Text = L"Seleccionar Casa de un usuario";
 			this->Load += gcnew System::EventHandler(this, &frmAdminSeleccionarCasa::frmAdminSeleccionarCasa_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			this->groupBox2->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -262,6 +304,8 @@ namespace TecHouseView {
 		}
 }
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+
 
 		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 		int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
@@ -277,21 +321,34 @@ namespace TecHouseView {
 			//un administrador no puede entrar a la casa de un administrador, ya que los administradores no poseen casa asociada
 			if (Tipo == "Cliente") {
 				frmMenuCliente^ ventanaMenuCliente = gcnew frmMenuCliente(codigoEditar);
+				ventanaMenuCliente->FormClosed += gcnew FormClosedEventHandler(this, &frmAdminSeleccionarCasa::ventanaMenuCliente_FormClosed);
+				ventanaMenuCliente->MdiParent = this;
+				groupBox2->Visible = false;
 				ventanaMenuCliente->Show();
 			}
 			else {
 				if (Tipo == "Familiar") {
 					frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun(codigoEditar);
+					ventanaMenuComun->FormClosed += gcnew FormClosedEventHandler(this, &frmAdminSeleccionarCasa::ventanaMenuComun_FormClosed);
+					ventanaMenuComun->MdiParent = this;
+					groupBox2->Visible = false;
 					ventanaMenuComun->Show();
 				}
 				else {
 					if (Tipo == "Cuidador") {
 						frmMenuComun^ ventanaMenuComun = gcnew frmMenuComun(codigoEditar);
+						ventanaMenuComun->FormClosed += gcnew FormClosedEventHandler(this, &frmAdminSeleccionarCasa::ventanaMenuComun_FormClosed);
+						ventanaMenuComun->MdiParent = this;
+						groupBox2->Visible = false;
 						ventanaMenuComun->Show();
 					}
 				}
 			}
 		}
+	}
+
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
 	}
 };
 }

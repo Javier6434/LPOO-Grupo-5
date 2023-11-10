@@ -363,6 +363,13 @@ private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^
 }
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (dateTimePicker1->Text=="" || textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "" || textBox5->Text == "" || textBox6->Text == "" || textBox7->Text == "" || textBox8->Text == "") {
+			//datos no válidos
+			MessageBox::Show("Por favor, inserte datos en todas las casillas");
+		}
+		else {
+			//datos válidos
+		
 		int codigo = Convert::ToInt32(this->textBox1->Text);
 		int CodCasa = Convert::ToInt32(this->textBox2->Text);
 		String^ ID = this->textBox3->Text;
@@ -380,6 +387,7 @@ private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^
 		objUsuarioController->actualizarUsuario(objUsuario);
 		MessageBox::Show("El Usuario se ha actualizado con éxito");
 		this->Close();
+		}
 	}
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {

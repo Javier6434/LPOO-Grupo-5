@@ -339,22 +339,27 @@ namespace TecHouseView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		int CodCasa = Convert::ToInt32(this->comboBox2->Text);
-		String^ ID = this->textBox3->Text;
-		String^ Clave = this->textBox4->Text;
-		String^ Tipo = this->comboBox1->Text;
-		String^ Nombre = this->textBox6->Text;
-		String^ ApellidoMaterno = this->textBox7->Text;
-		String^ ApellidoPaterno = this->textBox8->Text;
-		String^ FechaDeNacimiento = this->dateTimePicker1->Text;
-
-		Sesion^ objSesion = gcnew Sesion(codigo,CodCasa, ID, Clave, nullptr, nullptr);
-		SesionController^ objSesionController = gcnew SesionController();
-		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		objSesionController->agregarSesion(objSesion); 
-		objUsuarioController->agregarUsuario(Tipo, Nombre, ApellidoMaterno, ApellidoPaterno, FechaDeNacimiento);
-		MessageBox::Show("El Usuario se ha agregado con éxito");
-		this->Close();
+		if (comboBox1->Text == "" || textBox3->Text == "" || textBox4->Text == "" || textBox6->Text == "" || textBox7->Text == "" || textBox8->Text == "" || dateTimePicker1->Text=="") {
+			//datos no válidos
+			MessageBox::Show("Por favor, inserte datos en todas las casillas");
+		}
+		else {
+			int CodCasa = Convert::ToInt32(this->comboBox2->Text);
+			String^ ID = this->textBox3->Text;
+			String^ Clave = this->textBox4->Text;
+			String^ Tipo = this->comboBox1->Text;
+			String^ Nombre = this->textBox6->Text;
+			String^ ApellidoMaterno = this->textBox7->Text;
+			String^ ApellidoPaterno = this->textBox8->Text;
+			String^ FechaDeNacimiento = this->dateTimePicker1->Text;
+			Sesion^ objSesion = gcnew Sesion(codigo, CodCasa, ID, Clave, nullptr, nullptr);
+			SesionController^ objSesionController = gcnew SesionController();
+			UsuarioController^ objUsuarioController = gcnew UsuarioController();
+			objSesionController->agregarSesion(objSesion);
+			objUsuarioController->agregarUsuario(Tipo, Nombre, ApellidoMaterno, ApellidoPaterno, FechaDeNacimiento);
+			MessageBox::Show("El Usuario se ha agregado con éxito");
+			this->Close();
+		}
 	}
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {

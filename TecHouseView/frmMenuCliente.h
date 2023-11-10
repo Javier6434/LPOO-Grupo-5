@@ -185,7 +185,7 @@ namespace TecHouseView {
 			this->groupBox5->BackColor = System::Drawing::Color::Linen;
 			this->groupBox5->Controls->Add(this->pictureBox5);
 			this->groupBox5->Controls->Add(this->pictureBox4);
-			this->groupBox5->Location = System::Drawing::Point(466, 173);
+			this->groupBox5->Location = System::Drawing::Point(550, 175);
 			this->groupBox5->Name = L"groupBox5";
 			this->groupBox5->Size = System::Drawing::Size(143, 106);
 			this->groupBox5->TabIndex = 21;
@@ -244,7 +244,7 @@ namespace TecHouseView {
 			this->groupBox3->Controls->Add(this->label10);
 			this->groupBox3->Controls->Add(this->label11);
 			this->groupBox3->Controls->Add(this->label12);
-			this->groupBox3->Location = System::Drawing::Point(175, 162);
+			this->groupBox3->Location = System::Drawing::Point(230, 162);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(256, 125);
 			this->groupBox3->TabIndex = 19;
@@ -352,7 +352,7 @@ namespace TecHouseView {
 			this->groupBox2->Controls->Add(this->label7);
 			this->groupBox2->Controls->Add(this->textBox6);
 			this->groupBox2->Controls->Add(this->label8);
-			this->groupBox2->Location = System::Drawing::Point(303, 20);
+			this->groupBox2->Location = System::Drawing::Point(421, 20);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(272, 109);
 			this->groupBox2->TabIndex = 18;
@@ -444,7 +444,7 @@ namespace TecHouseView {
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(12, 20);
+			this->groupBox1->Location = System::Drawing::Point(41, 20);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(272, 109);
 			this->groupBox1->TabIndex = 16;
@@ -532,7 +532,7 @@ namespace TecHouseView {
 			this->menuStrip1->Location = System::Drawing::Point(0, 24);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(628, 28);
+			this->menuStrip1->Size = System::Drawing::Size(740, 28);
 			this->menuStrip1->TabIndex = 15;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -597,7 +597,7 @@ namespace TecHouseView {
 			this->menuStrip2->Location = System::Drawing::Point(0, 0);
 			this->menuStrip2->Name = L"menuStrip2";
 			this->menuStrip2->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip2->Size = System::Drawing::Size(628, 24);
+			this->menuStrip2->Size = System::Drawing::Size(740, 24);
 			this->menuStrip2->TabIndex = 17;
 			this->menuStrip2->Text = L"menuStrip2";
 			// 
@@ -619,7 +619,7 @@ namespace TecHouseView {
 			this->groupBox6->Controls->Add(this->groupBox1);
 			this->groupBox6->Location = System::Drawing::Point(0, 51);
 			this->groupBox6->Name = L"groupBox6";
-			this->groupBox6->Size = System::Drawing::Size(627, 299);
+			this->groupBox6->Size = System::Drawing::Size(740, 299);
 			this->groupBox6->TabIndex = 22;
 			this->groupBox6->TabStop = false;
 			// 
@@ -628,7 +628,7 @@ namespace TecHouseView {
 			this->textBox12->Enabled = false;
 			this->textBox12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox12->Location = System::Drawing::Point(302, 24);
+			this->textBox12->Location = System::Drawing::Point(421, 24);
 			this->textBox12->Name = L"textBox12";
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 22;
@@ -637,7 +637,7 @@ namespace TecHouseView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(628, 350);
+			this->ClientSize = System::Drawing::Size(740, 350);
 			this->Controls->Add(this->textBox12);
 			this->Controls->Add(this->groupBox6);
 			this->Controls->Add(this->menuStrip1);

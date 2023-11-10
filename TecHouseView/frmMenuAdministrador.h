@@ -79,9 +79,6 @@ namespace TecHouseView {
 	private: System::Windows::Forms::TextBox^ textBox1;
 
 
-
-
-
 	protected:
 
 
@@ -130,7 +127,7 @@ namespace TecHouseView {
 			this->menuStrip3->Location = System::Drawing::Point(0, 0);
 			this->menuStrip3->Name = L"menuStrip3";
 			this->menuStrip3->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip3->Size = System::Drawing::Size(667, 24);
+			this->menuStrip3->Size = System::Drawing::Size(751, 24);
 			this->menuStrip3->TabIndex = 12;
 			this->menuStrip3->Text = L"menuStrip3";
 			// 
@@ -202,7 +199,7 @@ namespace TecHouseView {
 			this->menuStrip2->Location = System::Drawing::Point(0, 24);
 			this->menuStrip2->Name = L"menuStrip2";
 			this->menuStrip2->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip2->Size = System::Drawing::Size(667, 28);
+			this->menuStrip2->Size = System::Drawing::Size(751, 28);
 			this->menuStrip2->TabIndex = 11;
 			this->menuStrip2->Text = L"menuStrip2";
 			this->menuStrip2->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &frmMenuAdministrador::menuStrip2_ItemClicked);
@@ -226,7 +223,7 @@ namespace TecHouseView {
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(0, 55);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(667, 235);
+			this->pictureBox1->Size = System::Drawing::Size(739, 322);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 13;
 			this->pictureBox1->TabStop = false;
@@ -247,9 +244,9 @@ namespace TecHouseView {
 			this->textBox1->Enabled = false;
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(180, 296);
+			this->textBox1->Location = System::Drawing::Point(180, 338);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(307, 26);
+			this->textBox1->Size = System::Drawing::Size(379, 26);
 			this->textBox1->TabIndex = 15;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmMenuAdministrador::textBox1_TextChanged);
 			// 
@@ -257,7 +254,7 @@ namespace TecHouseView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(667, 346);
+			this->ClientSize = System::Drawing::Size(751, 370);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
@@ -297,7 +294,7 @@ namespace TecHouseView {
 	private: System::Void buscarCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		//EL ADMINISTRADOR PODRÁ TOMAR CONTROL DE UNA CASA
 		frmAdminSeleccionarCasa^ ventanaSeleccionarCasa = gcnew frmAdminSeleccionarCasa();
-		ventanaSeleccionarCasa->Show();
+		ventanaSeleccionarCasa->ShowDialog();
 	}
 
 	private: System::Void configuraciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -306,7 +303,7 @@ namespace TecHouseView {
 	}
 	private: System::Void númeroCasasPorDistritoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmReporteNroUsuariosxTipo^ ventanaReporte = gcnew frmReporteNroUsuariosxTipo();
-		ventanaReporte->Show();
+		ventanaReporte->ShowDialog();
 	}
 	private: System::Void frmMenuAdministrador_Load(System::Object^ sender, System::EventArgs^ e) {
 	//LOAD:

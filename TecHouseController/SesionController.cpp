@@ -139,7 +139,7 @@ void SesionController::actualizarSesion(Sesion^ objSesion) {			//editar una sesi
 	String^ Clave = objSesion->getClave();
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "update TH_Sesiones set codCasa=" + CodCasa + ", ID='" + ID + "', Clave='" + Clave + "' where codigo = " + codigo+1;
+	objSentencia->CommandText = "update TH_Sesiones set codCasa=" + CodCasa + ", ID='" + ID + "', Clave='" + Clave + "' where codigo = " + codigo;
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();

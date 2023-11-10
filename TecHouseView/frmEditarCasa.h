@@ -243,6 +243,12 @@ namespace TecHouseView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		if (textBox1->Text == "" || textBox2->Text == "" || textBox3->Text == "" || textBox4->Text == "" || textBox5->Text == "") {
+			//datos no válidos
+			MessageBox::Show("Por favor, inserte datos en todas las casillas");
+		}
+		else {
 		int codigo = Convert::ToInt32(this->textBox1->Text);
 		String^ Departamento = this->textBox2->Text;
 		String^ Distrito = this->textBox3->Text;
@@ -255,6 +261,7 @@ namespace TecHouseView {
 		objCasaController->actualizarCasa(objCasa);
 		MessageBox::Show("El proyecto se ha agregado con éxito");
 		this->Close();
+		}
 	}
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
