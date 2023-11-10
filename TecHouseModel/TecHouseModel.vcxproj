@@ -117,6 +117,7 @@
     <ClInclude Include="Casa.h" />
     <ClInclude Include="ConfigCasa.h" />
     <ClInclude Include="ConfigDatos.h" />
+    <ClInclude Include="ConfigPuertasYVentanas.h" />
     <ClInclude Include="Figura.h" />
     <ClInclude Include="Iluminacion.h" />
     <ClInclude Include="Pantalla.h" />
@@ -133,6 +134,7 @@
     <ClCompile Include="Casa.cpp" />
     <ClCompile Include="ConfigCasa.cpp" />
     <ClCompile Include="ConfigDatos.cpp" />
+    <ClCompile Include="ConfigPuertasYVentanas.cpp" />
     <ClCompile Include="Figura.cpp" />
     <ClCompile Include="Iluminacion.cpp" />
     <ClCompile Include="Pantalla.cpp" />

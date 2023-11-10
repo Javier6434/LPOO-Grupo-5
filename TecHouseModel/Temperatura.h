@@ -18,5 +18,14 @@ namespace TecHouseModel {
 	public:
 		Temperatura();
 		Temperatura(int codigo, double Min, double Max, double Actual, ConfigDatos^ objConfigDatos);
+		int getCodigo();
+		void setCodigo(int codigo);
+		double getMin();
+		void setMin(double min);
+		double getMax();
+		void setMax(double max);
+		double getActual();
+		void setActual(double actual);
+
 	};
 }

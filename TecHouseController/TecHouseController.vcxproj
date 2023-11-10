@@ -20,14 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasaController.h" />
+    <ClInclude Include="ConfigPyVController.h" />
     <ClInclude Include="FiguraController.h" />
     <ClInclude Include="SesionController.h" />
+    <ClInclude Include="TemperaturaController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasaController.cpp" />
+    <ClCompile Include="ConfigPyVController.cpp" />
     <ClCompile Include="FiguraController.cpp" />
     <ClCompile Include="SesionController.cpp" />
+    <ClCompile Include="TemperaturaController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>

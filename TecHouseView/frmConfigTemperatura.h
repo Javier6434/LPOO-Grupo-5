@@ -8,6 +8,8 @@ namespace TecHouseView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace TecHouseController;
+	using namespace TecHouseModel;
 
 	/// <summary>
 	/// Resumen de frmConfigTemperatura
@@ -373,18 +375,24 @@ namespace TecHouseView {
 		}
 		else {
 			//Los datos ingresados son correctos:
-			double rangoMin = Convert::ToDouble(textBox1->Text);
-			double rangoMax = Convert::ToDouble(textBox2->Text);
+			EstablecerTempMin = Convert::ToDouble(textBox1->Text);
+			EstablecerTempMax = Convert::ToDouble(textBox2->Text);
 			//comprobando que uno sea mayor que el otro
-			if (rangoMax < rangoMin) {
-				double aux = rangoMin;
-				rangoMin = rangoMax;
-				rangoMax = aux;
+			if (EstablecerTempMax < EstablecerTempMin) {
+				double aux = EstablecerTempMin;
+				EstablecerTempMin = EstablecerTempMax;
+				EstablecerTempMax = aux;
 			}
 			estadoAutomatizacion = 1;	//activado
-			textBox4->Text = Convert::ToString(rangoMin);
-			textBox3->Text = Convert::ToString(rangoMax);
+			textBox4->Text = Convert::ToString(EstablecerTempMin);
+			textBox3->Text = Convert::ToString(EstablecerTempMax);
 			textBox5->Text = "En Funcionamiento";
+			//lo paso a la base de datos:
+			TemperaturaController^ objController = gcnew TemperaturaController();
+			ConfigDatos^ objConfigDatos;
+			estadoAutomatizacion = 1;		//esto significa que Actual será 1 tmb
+			Temperatura^ objTemperatura = gcnew Temperatura(1,EstablecerTempMin,EstablecerTempMax,estadoAutomatizacion,objConfigDatos);
+			objController->actualizarTemperatura(objTemperatura);
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -393,12 +401,30 @@ namespace TecHouseView {
 		textBox4->Text = "Desactivado";
 		textBox3->Text = "Desactivado";
 		textBox5->Text = "Desactivado";
-
+		TemperaturaController^ objController = gcnew TemperaturaController();
+		ConfigDatos^ objConfigDatos;
+		Temperatura^ objTemperatura = gcnew Temperatura(1, EstablecerTempMin, EstablecerTempMax, estadoAutomatizacion, objConfigDatos);
+		objController->actualizarTemperatura(objTemperatura);
 	}
 	private: System::Void frmConfigTemperatura_Load(System::Object^ sender, System::EventArgs^ e) {
 		//LOAD:
-		TempMinActual = 20, TempMaxActual = 24;
+		TemperaturaController^ objController = gcnew TemperaturaController();
+		Temperatura^ objTemperatura = gcnew Temperatura();
+		objTemperatura = objController->buscarConfiguracionxCodigo(1);
+		TempMinActual = objTemperatura->getMin();
+		TempMaxActual = objTemperatura->getMax();
+
 		TempHab1 = 23, TempHab2 = 22, TempHab3 = 21;		//estos 5 valores se obtendrán del arduino y se mostrarán en sus respectivos textBoxs
+		//sea Actual=0 entonces estadoAutomatizacion es 0. Si actual es 1, estadoAutomatizacion tmb será 1.
+		if (objTemperatura->getActual() == 0) {
+			estadoAutomatizacion = 0;
+		}
+		else {
+			estadoAutomatizacion = 1;
+		}
+		
+		
+		
 		if (estadoAutomatizacion == 0) {
 			//está desactivada la automatizacion y rangos de temperatura
 			textBox4->Text = "Desactivado";

@@ -24,7 +24,5 @@ namespace TecHouseController {
 		int buscarCodigoSesionxID(String^ ID);
 		Sesion^ buscarSesionxCodigo(int codigo);
 		void actualizarSesion(Sesion^ objSesion);
-		//void ModificarCodCasa(int CodCasa);
-		//List<String^>^ obtenerDistritos();
 	};
 }
