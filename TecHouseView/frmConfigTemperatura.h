@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 
 namespace TecHouseView {
 
@@ -67,6 +68,8 @@ namespace TecHouseView {
 	private: double TempHab2;
 	private: double TempHab3;
 	private: bool estadoAutomatizacion = 1;		//1 para activar o actualizar automa. 0 para permanecer desactivada
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::ComponentModel::IContainer^ components;
 
 	protected:
 
@@ -75,7 +78,7 @@ namespace TecHouseView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -84,6 +87,7 @@ namespace TecHouseView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmConfigTemperatura::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
@@ -107,6 +111,7 @@ namespace TecHouseView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -343,6 +348,11 @@ namespace TecHouseView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Establecer rango de valores:";
 			// 
+			// timer1
+			// 
+			this->timer1->Interval = 3000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &frmConfigTemperatura::timer1_Tick);
+			// 
 			// frmConfigTemperatura
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -408,6 +418,8 @@ namespace TecHouseView {
 	}
 	private: System::Void frmConfigTemperatura_Load(System::Object^ sender, System::EventArgs^ e) {
 		//LOAD:
+		timer1->Start();	//para inicializar la cuenta constantemente.
+
 		TemperaturaController^ objController = gcnew TemperaturaController();
 		Temperatura^ objTemperatura = gcnew Temperatura();
 		objTemperatura = objController->buscarConfiguracionxCodigo(1);
@@ -441,6 +453,27 @@ namespace TecHouseView {
 		textBox7->Text = Convert::ToString(TempHab1);
 		textBox6->Text = Convert::ToString(TempHab2);
 		textBox8->Text = Convert::ToString(TempHab3);
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		//función de interrupcion, se ejecutará cada 3 segundos
+		ExtraerValoresArduino();
+		TemperaturaController^ objController = gcnew TemperaturaController();
+		ConfigDatos^ objConfigDatos;
+		Temperatura^ objTemperatura = gcnew Temperatura(1, TempMinActual, TempMaxActual, estadoAutomatizacion, objConfigDatos);
+		objController->actualizarTemperatura(objTemperatura);
+		textBox7->Text = Convert::ToString(TempHab1);
+		textBox6->Text = Convert::ToString(TempHab2);
+		textBox8->Text = Convert::ToString(TempHab3);
+
+	}
+
+	private: void ExtraerValoresArduino() {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<int> distributionHabit(19, 24);
+		TempHab1 = distributionHabit(gen);
+		TempHab2 = distributionHabit(gen);
+		TempHab3 = distributionHabit(gen);
 	}
 };
 }

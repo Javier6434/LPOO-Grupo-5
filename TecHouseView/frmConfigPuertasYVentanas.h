@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <random>		//se puso para generar números randoms, borrar cuando ya se extraigan datos del arduino
 
 namespace TecHouseView {
 
@@ -51,6 +53,8 @@ namespace TecHouseView {
 	private: int gradoAutomatizacion = 2;	//del 1 al 3, siendo al 3 máximo grado de automatización, mientras que en 1 el menor
 	private: int codigo = 1;
 	private: int codigoCasa = 1;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -61,7 +65,7 @@ namespace TecHouseView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -70,6 +74,7 @@ namespace TecHouseView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmConfigPuertasYVentanas::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
@@ -78,6 +83,7 @@ namespace TecHouseView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -169,6 +175,12 @@ namespace TecHouseView {
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"Establecer modo:";
 			// 
+			// timer1
+			// 
+			this->timer1->Enabled = true;
+			this->timer1->Interval = 3000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &frmConfigPuertasYVentanas::timer1_Tick);
+			// 
 			// frmConfigPuertasYVentanas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -230,11 +242,15 @@ namespace TecHouseView {
 		ConfigPuertasYVentanas^ objConfiguracion = gcnew ConfigPuertasYVentanas(codigo,codigoCasa,estadoAutomatizacion,gradoAutomatizacion);
 		objController->actualizarConfigPyV(objConfiguracion);
 	}
+
+
 	private: System::Void comboBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 
 	}
 	private: System::Void frmConfigPuertasYVentanas_Load(System::Object^ sender, System::EventArgs^ e) {
 		//LOAD:
+		timer1->Start();	//para inicializar la cuenta constantemente.
+
 		ConfigPyVController^ objController = gcnew ConfigPyVController();
 		ConfigPuertasYVentanas^ objConfiguracion = gcnew ConfigPuertasYVentanas();
 		objConfiguracion = objController->buscarConfiguracionxCodigo(1);
@@ -260,8 +276,39 @@ namespace TecHouseView {
 
 		}
 				//se tendrá que extraer el valor del arduino o de la base de datos
+
+
+		//voy a colocar la funcion de interrupcion aqui
+
 	}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+	//TIMER TICK, es como un Systick, cada cierto tiempo se ejecuta una función (el intervalo de tiempo se configura en la ventana misma)
+	//click derecho al Timer1 y el Intervale ahí se coloca en ms
+		int EstadoActual = extraerArduinoEstadoConfigPuertas();	//lo tendría que definir en un .ino creo
+		if (EstadoActual == 1) {
+			textBox5->Text = "1, casi libre albedrío";
+
+		}
+		else if (EstadoActual == 2) {
+			textBox5->Text = "2, seguridad regular";
+		}
+		else {
+			//grado automatizacion es 3:
+			textBox5->Text = "3, seguridad absoluta";
+		}
+	}				
+
+	private: int extraerArduinoEstadoConfigPuertas() { //BORRAR ESTO LUEGO
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		int min = 1;
+		int max = 3;
+		std::uniform_int_distribution<int> distribution(min, max);
+		int numeroAleatorio = distribution(gen);
+		return numeroAleatorio;	//simulando que busca valores
+	}
 };
 }

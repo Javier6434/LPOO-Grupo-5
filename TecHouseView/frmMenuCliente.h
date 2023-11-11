@@ -3,6 +3,7 @@
 #include "frmVerCasaNoAdmin.h"
 #include "frmConfigPuertasYVentanas.h"
 #include "frmConfigTemperatura.h"
+#include <random>		//para generar valores del arduino, borrar luego
 
 namespace TecHouseView {
 
@@ -103,13 +104,15 @@ namespace TecHouseView {
 	private: int cantPerH1, cantPerH2, cantPerH3;	//cantidad de personas por habitación, solo enteros del 0 a más
 	private: int estadoCasa = 0;					//inicializada con 0 para mostrar Casa Segura, 1 para EN PELIGRO (por incendio) 
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::ComponentModel::IContainer^ components;
 	private:
 
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -118,6 +121,7 @@ namespace TecHouseView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmMenuCliente::typeid));
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
@@ -165,6 +169,7 @@ namespace TecHouseView {
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -633,6 +638,11 @@ namespace TecHouseView {
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 22;
 			// 
+			// timer1
+			// 
+			this->timer1->Interval = 3000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &frmMenuCliente::timer1_Tick);
+			// 
 			// frmMenuCliente
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -681,6 +691,8 @@ namespace TecHouseView {
 	private: System::Void frmMenuCliente_Load(System::Object^ sender, System::EventArgs^ e) {
 	//LOAD:
 	//dará la bienvenida al usuario con su respectivo nombre
+		timer1->Start();	//para inicializar la cuenta constantemente.
+
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
 		String^ nombre = objUsuario->getNombre();
@@ -747,6 +759,24 @@ namespace TecHouseView {
 	private: System::Void temperaturaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmConfigTemperatura^ ventanaConfigTemperatura = gcnew frmConfigTemperatura();
 		ventanaConfigTemperatura->ShowDialog();
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		//funcion de interrupción que se ejecutará cada 3 segundos
+		ObtenerDatosArduino();
+		MostrarTemperaturas(tempH1, tempH2, tempH3);
+		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
+		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3);
+
+	}
+
+	private: void ObtenerDatosArduino() {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<int> distributionHabit(19, 24);
+
+		tempH1 = 20; tempH2 = 22; tempH3 = distributionHabit(gen);		//mostrarán la temperatura de cada habitación
+		LuzH1 = 0, LuzH2 = 1, LuzH3 = 1;			//mostrarán si la luz está encendida (1) o apagada (0) por habitación
+		cantPerH1 = 0, cantPerH2 = 3, cantPerH3 = 1;
 	}
 };
 }

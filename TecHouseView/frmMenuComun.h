@@ -96,6 +96,8 @@ namespace TecHouseView {
 	private: System::Windows::Forms::TextBox^ textBox12;
 	private: System::Windows::Forms::ToolStripMenuItem^ verCasaToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::ComponentModel::IContainer^ components;
 
 	protected:
 
@@ -108,7 +110,7 @@ namespace TecHouseView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -117,6 +119,7 @@ namespace TecHouseView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmMenuComun::typeid));
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
@@ -161,6 +164,7 @@ namespace TecHouseView {
 			this->menuStrip2 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -597,6 +601,11 @@ namespace TecHouseView {
 			this->textBox12->Size = System::Drawing::Size(307, 26);
 			this->textBox12->TabIndex = 23;
 			// 
+			// timer1
+			// 
+			this->timer1->Interval = 3000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &frmMenuComun::timer1_Tick);
+			// 
 			// frmMenuComun
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -639,6 +648,8 @@ namespace TecHouseView {
 		}
 #pragma endregion
 	private: System::Void frmMenuComun_Load(System::Object^ sender, System::EventArgs^ e) {
+		timer1->Start();	//para inicializar la cuenta constantemente.
+
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
 		String^ nombre = objUsuario->getNombre();
@@ -708,6 +719,23 @@ namespace TecHouseView {
 	private: System::Void temperaturaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmConfigTemperatura^ ventanaConfigTemperatura = gcnew frmConfigTemperatura();
 		ventanaConfigTemperatura->ShowDialog();
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		//función de interrupción:
+		ObtenerDatosArduino();
+		MostrarTemperaturas(tempH1, tempH2, tempH3);
+		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
+		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3);
+	}
+
+	private: void ObtenerDatosArduino() {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<int> distributionHabit(19, 24);
+
+		tempH1 = 17, tempH2 = 21, tempH3 = distributionHabit(gen);		//mostrarán la temperatura de cada habitación
+		LuzH1 = 1, LuzH2 = 0, LuzH3 = 1;			//mostrarán si la luz está encendida (1) o apagada (0) por habitación
+		cantPerH1 = 2, cantPerH2 = 0, cantPerH3 = 4;
 	}
 };
 }
