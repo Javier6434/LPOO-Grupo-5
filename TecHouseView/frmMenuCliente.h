@@ -4,6 +4,7 @@
 #include "frmConfigPuertasYVentanas.h"
 #include "frmConfigTemperatura.h"
 #include <random>		//para generar valores del arduino, borrar luego
+#include "frmConfigLuces.h"
 
 namespace TecHouseView {
 
@@ -105,6 +106,7 @@ namespace TecHouseView {
 	private: int estadoCasa = 0;					//inicializada con 0 para mostrar Casa Segura, 1 para EN PELIGRO (por incendio) 
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::ToolStripMenuItem^ lucesToolStripMenuItem;
 	private: System::ComponentModel::IContainer^ components;
 	private:
 
@@ -170,6 +172,7 @@ namespace TecHouseView {
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->lucesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -551,9 +554,9 @@ namespace TecHouseView {
 			// 
 			// configuraciónDeControlAutomáticoToolStripMenuItem
 			// 
-			this->configuraciónDeControlAutomáticoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->configuraciónDeControlAutomáticoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->puertasYVentanasToolStripMenuItem,
-					this->temperaturaToolStripMenuItem
+					this->temperaturaToolStripMenuItem, this->lucesToolStripMenuItem
 			});
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Name = L"configuraciónDeControlAutomáticoToolStripMenuItem";
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Size = System::Drawing::Size(275, 22);
@@ -562,14 +565,14 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
 			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
 			this->temperaturaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::temperaturaToolStripMenuItem_Click);
 			// 
@@ -642,6 +645,13 @@ namespace TecHouseView {
 			// 
 			this->timer1->Interval = 3000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmMenuCliente::timer1_Tick);
+			// 
+			// lucesToolStripMenuItem
+			// 
+			this->lucesToolStripMenuItem->Name = L"lucesToolStripMenuItem";
+			this->lucesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->lucesToolStripMenuItem->Text = L"Luces";
+			this->lucesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuCliente::lucesToolStripMenuItem_Click);
 			// 
 			// frmMenuCliente
 			// 
@@ -777,6 +787,10 @@ namespace TecHouseView {
 		tempH1 = 20; tempH2 = 22; tempH3 = distributionHabit(gen);		//mostrarán la temperatura de cada habitación
 		LuzH1 = 0, LuzH2 = 1, LuzH3 = 1;			//mostrarán si la luz está encendida (1) o apagada (0) por habitación
 		cantPerH1 = 0, cantPerH2 = 3, cantPerH3 = 1;
+	}
+	private: System::Void lucesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		frmConfigLuces^ ventanaConfigLuces = gcnew frmConfigLuces();
+		ventanaConfigLuces->ShowDialog();
 	}
 };
 }

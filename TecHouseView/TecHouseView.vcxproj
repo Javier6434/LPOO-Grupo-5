@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmAdminSeleccionarCasa.cpp" />
+    <ClCompile Include="frmConfigLuces.cpp" />
     <ClCompile Include="frmConfigPuertasYVentanas.cpp" />
     <ClCompile Include="frmConfigTemperatura.cpp" />
     <ClCompile Include="frmDiseñoCasa.cpp" />
@@ -144,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmAdminSeleccionarCasa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmConfigLuces.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmConfigPuertasYVentanas.h">
@@ -195,6 +199,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAdminSeleccionarCasa.resx">
       <DependentUpon>frmAdminSeleccionarCasa.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigLuces.resx">
+      <DependentUpon>frmConfigLuces.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfigPuertasYVentanas.resx">
       <DependentUpon>frmConfigPuertasYVentanas.h</DependentUpon>

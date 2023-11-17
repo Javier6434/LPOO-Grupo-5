@@ -32,3 +32,4 @@ C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHous
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmAdminSeleccionarCasa.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmConfigPuertasYVentanas.resources
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmConfigTemperatura.resources
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\x64\Debug\TecHouseView.frmConfigLuces.resources
