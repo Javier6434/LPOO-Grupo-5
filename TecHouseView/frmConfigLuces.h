@@ -8,7 +8,7 @@ namespace TecHouseView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace System::IO::Ports;
+	using namespace System::IO::Ports;		//estos 3 últimos para la conexión serial con arduino y Visual
 	using namespace System::Text;
 	using namespace System::Net;
 
@@ -322,7 +322,7 @@ namespace TecHouseView {
 			this->ClientSize = System::Drawing::Size(497, 304);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmConfigLuces";
-			this->Text = L"frmConfigLuces";
+			this->Text = L"Luces";
 			this->Load += gcnew System::EventHandler(this, &frmConfigLuces::frmConfigLuces_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);

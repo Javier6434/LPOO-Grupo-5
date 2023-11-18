@@ -1,5 +1,5 @@
 #pragma once
-#include <random>
+#include <windows.h>
 
 namespace TecHouseView {
 
@@ -11,6 +11,9 @@ namespace TecHouseView {
 	using namespace System::Drawing;
 	using namespace TecHouseController;
 	using namespace TecHouseModel;
+	using namespace System::IO::Ports;		//estos 3 últimos para la conexión serial con arduino y Visual
+	using namespace System::Text;
+	using namespace System::Net;
 
 	/// <summary>
 	/// Resumen de frmConfigTemperatura
@@ -24,6 +27,18 @@ namespace TecHouseView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			if (!serialPort1->IsOpen)
+			{
+				try
+				{
+					serialPort1->Open();
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->ToString());
+				}
+
+			}
 		}
 
 	protected:
@@ -69,7 +84,11 @@ namespace TecHouseView {
 	private: double TempHab3;
 	private: bool estadoAutomatizacion = 1;		//1 para activar o actualizar automa. 0 para permanecer desactivada
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::IO::Ports::SerialPort^ serialPort1;
 	private: System::ComponentModel::IContainer^ components;
+	bool recibirTemperaturas = 0;
+	bool recibirRangos = 0;
+	private: String^ recibir;
 
 	protected:
 
@@ -112,6 +131,7 @@ namespace TecHouseView {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -353,6 +373,12 @@ namespace TecHouseView {
 			this->timer1->Interval = 3000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmConfigTemperatura::timer1_Tick);
 			// 
+			// serialPort1
+			// 
+			this->serialPort1->BaudRate = 115200;
+			this->serialPort1->PortName = L"COM5";
+			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmConfigTemperatura::serialPort1_DataReceived);
+			// 
 			// frmConfigTemperatura
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -394,6 +420,8 @@ namespace TecHouseView {
 				EstablecerTempMax = aux;
 			}
 			estadoAutomatizacion = 1;	//activado
+			array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("AutomaTemperaturaON");
+			serialPort1->Write(miBuffer, 0, miBuffer->Length);
 			textBox4->Text = Convert::ToString(EstablecerTempMin);
 			textBox3->Text = Convert::ToString(EstablecerTempMax);
 			textBox5->Text = "En Funcionamiento";
@@ -403,11 +431,17 @@ namespace TecHouseView {
 			estadoAutomatizacion = 1;		//esto significa que Actual será 1 tmb
 			Temperatura^ objTemperatura = gcnew Temperatura(1,EstablecerTempMin,EstablecerTempMax,estadoAutomatizacion,objConfigDatos);
 			objController->actualizarTemperatura(objTemperatura);
+			//lo paso al arduino
+			//rango temperaturas que sea RT-20+30
+			MandarRangoTemperaturas();
+
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		//desactivar automatizacion y rangos de temperatura
 		estadoAutomatizacion = 0;	//desactivado
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("AutomaTemperaturaOFF");
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
 		textBox4->Text = "Desactivado";
 		textBox3->Text = "Desactivado";
 		textBox5->Text = "Desactivado";
@@ -426,13 +460,19 @@ namespace TecHouseView {
 		TempMinActual = objTemperatura->getMin();
 		TempMaxActual = objTemperatura->getMax();
 
-		TempHab1 = 23, TempHab2 = 22, TempHab3 = 21;		//estos 5 valores se obtendrán del arduino y se mostrarán en sus respectivos textBoxs
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("Temperaturas");
+		recibirTemperaturas = 1;
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
 		//sea Actual=0 entonces estadoAutomatizacion es 0. Si actual es 1, estadoAutomatizacion tmb será 1.
 		if (objTemperatura->getActual() == 0) {
 			estadoAutomatizacion = 0;
+			array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("AutomaTemperaturaOFF");
+			serialPort1->Write(miBuffer, 0, miBuffer->Length);
 		}
 		else {
 			estadoAutomatizacion = 1;
+			array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("AutomaTemperaturaON");
+			serialPort1->Write(miBuffer, 0, miBuffer->Length);
 		}
 		
 		
@@ -456,7 +496,13 @@ namespace TecHouseView {
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		//función de interrupcion, se ejecutará cada 3 segundos
-		ExtraerValoresArduino();
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("Temperaturas");
+		recibirTemperaturas = 1;
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
+
+		Sleep(15);	//es un delay de 20ms
+		MandarRangoTemperaturas();
+		
 		TemperaturaController^ objController = gcnew TemperaturaController();
 		ConfigDatos^ objConfigDatos;
 		Temperatura^ objTemperatura = gcnew Temperatura(1, TempMinActual, TempMaxActual, estadoAutomatizacion, objConfigDatos);
@@ -466,14 +512,53 @@ namespace TecHouseView {
 		textBox8->Text = Convert::ToString(TempHab3);
 
 	}
+	
+	private: void MandarRangoTemperaturas() {
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("RangosTemperaturas");
+		recibirRangos = 1;
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
 
-	private: void ExtraerValoresArduino() {
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_int_distribution<int> distributionHabit(19, 24);
-		TempHab1 = distributionHabit(gen);
-		TempHab2 = distributionHabit(gen);
-		TempHab3 = distributionHabit(gen);
+		//el arduino esperará hasta que reciba los nuevos rangos de temperaturas.
+		Sleep(5);	//delay de 5ms
+		String^ rangoAmandar = Convert::ToString(TempMinActual) + Convert::ToString(TempMaxActual);
+		miBuffer = Encoding::ASCII->GetBytes(rangoAmandar);		//manda -15+20 algo asi, 6 caracteres
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
+		//ya obtuve las temperaturas de las habitaciones, y el rango actual minimo y maximo permitido
+		Sleep(15);
+	}
+
+	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+	//cuando va a recibir temperaturas
+		if (recibirTemperaturas) {
+			//recibo temperaturas
+			//formato que pienso recibir    +15-21+30, a la izquierda de cada valor, habrá un signo, el arduino mandara un string de 9 caracteres
+			//estas son las temperaturas, 15, -21 y 30°C (un ejemplo), son TH1,TH2 y TH3 respectivamente
+			char unidad;
+			char decena;
+			char signo;
+			double numero;
+			double Temperaturas[3];
+			recibir = serialPort1->ReadLine();	//ya tengo los 9 caracteres
+			for (int i = 0; i <= 2; i++) {
+				//3 iteraciones, 3 temperaturas de 2 cifras cada una extraeré
+				signo = recibir[0];
+				decena = recibir[1];
+				unidad = recibir[2];
+				recibir->Remove(0, 3);
+				if (signo == '-') {
+					numero = (decena * 10 + unidad)*-1;
+				}
+				else {
+					//signo es positivo
+					numero = decena * 10 + unidad;
+				}
+				Temperaturas[i] = numero;
+			}
+			TempHab1 = Temperaturas[0];
+			TempHab2 = Temperaturas[1];
+			TempHab3 = Temperaturas[2];
+			recibirTemperaturas = 0;
+		}
 	}
 };
 }

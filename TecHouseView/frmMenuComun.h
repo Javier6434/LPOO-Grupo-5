@@ -2,6 +2,7 @@
 #include "frmVerCasaNoAdmin.h"
 #include "frmConfigPuertasYVentanas.h"
 #include "frmConfigTemperatura.h"
+#include "frmConfigLuces.h"
 
 namespace TecHouseView {
 
@@ -14,6 +15,9 @@ namespace TecHouseView {
 	using namespace TecHouseController;
 	using namespace TecHouseModel;
 	using namespace System::Collections::Generic;
+	using namespace System::IO::Ports;		//estos 3 últimos para la conexión serial con arduino y Visual
+	using namespace System::Text;
+	using namespace System::Net;
 
 	/// <summary>
 	/// Resumen de frmMenuComun
@@ -27,12 +31,36 @@ namespace TecHouseView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			if (!serialPort1->IsOpen)
+			{
+				try
+				{
+					serialPort1->Open();
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->ToString());
+				}
+
+			}
 		}
 
 		frmMenuComun(int codigo)
 		{
 			InitializeComponent();
 			this->codigo = codigo;
+			if (!serialPort1->IsOpen)
+			{
+				try
+				{
+					serialPort1->Open();
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->ToString());
+				}
+
+			}
 		}
 
 	protected:
@@ -88,7 +116,7 @@ namespace TecHouseView {
 	private: int codigo;
 	private: double tempH1, tempH2, tempH3;		//mostrarán la temperatura de cada habitación
 	private: bool LuzH1, LuzH2, LuzH3;			//mostrarán si la luz está encendida (1) o apagada (0) por habitación
-	private: int cantPerH1, cantPerH2, cantPerH3;	//cantidad de personas por habitación, solo enteros del 0 a más
+	private: int cantPerH1, cantPerH2, cantPerH3, cantPerH4;	//cantidad de personas por habitación, solo enteros del 0 a más
 	private: int estadoCasa = 0;					//inicializada con 0 para mostrar Casa Segura
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip2;
@@ -97,14 +125,15 @@ namespace TecHouseView {
 	private: System::Windows::Forms::ToolStripMenuItem^ verCasaToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::IO::Ports::SerialPort^ serialPort1;
+	private: System::Windows::Forms::TextBox^ textBox13;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::ToolStripMenuItem^ lucesToolStripMenuItem;
 	private: System::ComponentModel::IContainer^ components;
+	private: String^ recibir;
+	private: bool recibirTemperaturas = 0, recibirLuces = 0, recibirCantPersonas = 0;
 
 	protected:
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -127,6 +156,8 @@ namespace TecHouseView {
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
@@ -165,6 +196,8 @@ namespace TecHouseView {
 			this->menúPrincipalActualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->serialPort1 = (gcnew System::IO::Ports::SerialPort(this->components));
+			this->lucesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox5->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -233,6 +266,8 @@ namespace TecHouseView {
 			// groupBox3
 			// 
 			this->groupBox3->BackColor = System::Drawing::SystemColors::Info;
+			this->groupBox3->Controls->Add(this->textBox13);
+			this->groupBox3->Controls->Add(this->label14);
 			this->groupBox3->Controls->Add(this->textBox10);
 			this->groupBox3->Controls->Add(this->textBox7);
 			this->groupBox3->Controls->Add(this->label13);
@@ -245,10 +280,27 @@ namespace TecHouseView {
 			this->groupBox3->Controls->Add(this->label12);
 			this->groupBox3->Location = System::Drawing::Point(236, 204);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(272, 125);
+			this->groupBox3->Size = System::Drawing::Size(272, 147);
 			this->groupBox3->TabIndex = 12;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Cantidad de Personas";
+			// 
+			// textBox13
+			// 
+			this->textBox13->Enabled = false;
+			this->textBox13->Location = System::Drawing::Point(89, 108);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(44, 20);
+			this->textBox13->TabIndex = 16;
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(13, 111);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(70, 13);
+			this->label14->TabIndex = 15;
+			this->label14->Text = L"Habitacion 4:";
 			// 
 			// textBox10
 			// 
@@ -545,9 +597,9 @@ namespace TecHouseView {
 			// 
 			// configuraciónDeControlAutomáticoToolStripMenuItem
 			// 
-			this->configuraciónDeControlAutomáticoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->configuraciónDeControlAutomáticoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->puertasYVentanasToolStripMenuItem,
-					this->temperaturaToolStripMenuItem
+					this->temperaturaToolStripMenuItem, this->lucesToolStripMenuItem
 			});
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Name = L"configuraciónDeControlAutomáticoToolStripMenuItem";
 			this->configuraciónDeControlAutomáticoToolStripMenuItem->Size = System::Drawing::Size(275, 22);
@@ -556,14 +608,14 @@ namespace TecHouseView {
 			// puertasYVentanasToolStripMenuItem
 			// 
 			this->puertasYVentanasToolStripMenuItem->Name = L"puertasYVentanasToolStripMenuItem";
-			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->puertasYVentanasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->puertasYVentanasToolStripMenuItem->Text = L"Puertas Y Ventanas";
 			this->puertasYVentanasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::puertasYVentanasToolStripMenuItem_Click);
 			// 
 			// temperaturaToolStripMenuItem
 			// 
 			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(173, 22);
+			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
 			this->temperaturaToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::temperaturaToolStripMenuItem_Click);
 			// 
@@ -605,6 +657,19 @@ namespace TecHouseView {
 			// 
 			this->timer1->Interval = 3000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmMenuComun::timer1_Tick);
+			// 
+			// serialPort1
+			// 
+			this->serialPort1->BaudRate = 115200;
+			this->serialPort1->PortName = L"COM5";
+			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmMenuComun::serialPort1_DataReceived);
+			// 
+			// lucesToolStripMenuItem
+			// 
+			this->lucesToolStripMenuItem->Name = L"lucesToolStripMenuItem";
+			this->lucesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->lucesToolStripMenuItem->Text = L"Luces";
+			this->lucesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmMenuComun::lucesToolStripMenuItem_Click);
 			// 
 			// frmMenuComun
 			// 
@@ -648,27 +713,32 @@ namespace TecHouseView {
 		}
 #pragma endregion
 	private: System::Void frmMenuComun_Load(System::Object^ sender, System::EventArgs^ e) {
+		//LOAD:
+		//dará la bienvenida al usuario con su respectivo nombre
 		timer1->Start();	//para inicializar la cuenta constantemente.
 
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
 		Usuario^ objUsuario = objUsuarioController->buscarUsuarioxCodigo(codigo);
 		String^ nombre = objUsuario->getNombre();
 		this->textBox12->Text = "Bienvenido de nuevo " + nombre + "!";
-		this->textBox10->Text = Convert::ToString((objUsuario->getCodigo()-1));
+		this->textBox10->Text = Convert::ToString((objUsuario->getCodigo() - 1));
 		this->textBox11->Text = "Activa";
 
 		//cargará los datos actuales del Arduino a la pantalla como temperatura en cuartos, Sistema de luces y cantidad de personas
-		tempH1 = 17, tempH2 = 21, tempH3 = 19;		//las inicializo con esos números pq no hay conexión con el arduino todavía
-		LuzH1 = 1, LuzH2 = 0, LuzH3 = 1;				//cuando la haya se extraerán los datos del Arduino y se les asignarán a los valores de esta ventana
-		cantPerH1 = 2, cantPerH2 = 0, cantPerH3 = 4;
+		ObtenerDatosArduino();
 		MostrarTemperaturas(tempH1, tempH2, tempH3);
 		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
-		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3);
-		if (estadoCasa == 0) {	//estado de la casa: Seguro (0) o En Peligro (Por incendio,1)
+		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3, cantPerH4);
+		if (estadoCasa == 0) { //estado de la casa: Seguro (0) o En Peligro (Por incendio,1)
 			textBox11->Text = "Seguro";
+			pictureBox5->Visible = true;
+			pictureBox4->Visible = false;
 		}
 		else if (estadoCasa == 1) {
+			//estado de casa en rieso
 			textBox11->Text = "EN PELIGRO!";
+			pictureBox5->Visible = false;	//no muestro el boton rojo apagado, y muestro el rojo de alerta
+			pictureBox4->Visible = true;
 		}
 	}
 
@@ -701,10 +771,11 @@ namespace TecHouseView {
 		}
 	}
 
-	private: Void MostrarCantPersonas(int cantPerH1, int cantPerH2, int cantPerH3) {
+	private: Void MostrarCantPersonas(int cantPerH1, int cantPerH2, int cantPerH3, int cantPerH4) {
 		textBox9->Text = Convert::ToString(cantPerH1);
 		textBox8->Text = Convert::ToString(cantPerH2);
 		textBox7->Text = Convert::ToString(cantPerH3);
+		textBox13->Text = Convert::ToString(cantPerH4);
 	}
 
 	private: System::Void verCasaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -721,21 +792,115 @@ namespace TecHouseView {
 		ventanaConfigTemperatura->ShowDialog();
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		//función de interrupción:
+		//funcion de interrupción que se ejecutará cada 3 segundos
 		ObtenerDatosArduino();
 		MostrarTemperaturas(tempH1, tempH2, tempH3);
 		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
-		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3);
+		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3, cantPerH4);
+
+		if (estadoCasa == 0) {
+			textBox11->Text = "Seguro";
+			pictureBox5->Visible = true;
+			pictureBox4->Visible = false;
+		}
+		else if (estadoCasa == 1) {
+			//estado de casa en rieso
+			textBox11->Text = "EN PELIGRO!";
+			pictureBox5->Visible = false;	//no muestro el boton rojo apagado, y muestro el rojo de alerta
+			pictureBox4->Visible = true;
+		}
 	}
 
 	private: void ObtenerDatosArduino() {
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_int_distribution<int> distributionHabit(19, 24);
+		//temperatura
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("Temperaturas");
+		recibirTemperaturas = 1;
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
 
-		tempH1 = 17, tempH2 = 21, tempH3 = distributionHabit(gen);		//mostrarán la temperatura de cada habitación
-		LuzH1 = 1, LuzH2 = 0, LuzH3 = 1;			//mostrarán si la luz está encendida (1) o apagada (0) por habitación
-		cantPerH1 = 2, cantPerH2 = 0, cantPerH3 = 4;
+		Sleep(15);		//delay para darle tiempo al arduino y visual de intercambiar datos
+		//luces
+		miBuffer = Encoding::ASCII->GetBytes("Leds");
+		recibirLuces = 1;
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
+
+
+		Sleep(15);		//delay para darle tiempo al arduino y visual de intercambiar datos
+
+		//Cantidad de personas por cuarto
+		miBuffer = Encoding::ASCII->GetBytes("CantidadPersonas");
+		recibirCantPersonas = 1;
+		serialPort1->Write(miBuffer, 0, miBuffer->Length);
+	}
+
+	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
+		//recibe datos
+		//cuando va a recibir temperaturas
+		if (recibirTemperaturas) {
+			//recibo temperaturas
+			//formato que pienso recibir    +15-21+30, a la izquierda de cada valor, habrá un signo, el arduino mandara un string de 9 caracteres
+			//estas son las temperaturas, 15, -21 y 30°C (un ejemplo), son TH1,TH2 y TH3 respectivamente
+			char unidad;
+			char decena;
+			char signo;
+			double numero;
+			double Temperaturas[3];
+			recibir = serialPort1->ReadLine();	//ya tengo los 9 caracteres
+			for (int i = 0; i <= 2; i++) {
+				//3 iteraciones, 3 temperaturas de 2 cifras cada una extraeré
+				signo = recibir[0];
+				decena = recibir[1];
+				unidad = recibir[2];
+				recibir->Remove(0, 3);
+				if (signo == '-') {
+					numero = (decena * 10 + unidad) * -1;
+				}
+				else {
+					//signo es positivo
+					numero = decena * 10 + unidad;
+				}
+				Temperaturas[i] = numero;
+			}
+			tempH1 = Temperaturas[0];
+			tempH2 = Temperaturas[1];
+			tempH3 = Temperaturas[2];
+			recibirTemperaturas = 0;
+		}
+		else if (recibirLuces) {
+			recibir = serialPort1->ReadLine();	//obtendrá los datos de los leds tipo "101" significa led1 a 1, led 2 a 0 y led3 a 1
+			int aux = Convert::ToInt32(recibir);
+			LuzH3 = aux % 10;//la 3ra cifra
+			LuzH2 = (aux / 10) % 10;
+			LuzH1 = aux / 100;	//la 1ra cifra (de 100, obtendría 1)
+			recibirLuces = 0;
+		}
+		else if (recibirCantPersonas) {
+			//ya que son 4 habitaciones, entonces el arduino enviará  1011 
+			recibir = serialPort1->ReadLine();	//obtendrá los datos de los leds tipo "101" significa led1 a 1, led 2 a 0 y led3 a 1
+			int aux = Convert::ToInt32(recibir);
+			cantPerH1 = aux / 1000;
+			cantPerH2 = (aux - 1000 * cantPerH1) / 100;
+			cantPerH3 = (aux / 10) % 10;
+			cantPerH4 = aux % 10;
+			recibirCantPersonas = 0;
+		}
+
+
+		//momento incendio:, el arduino enviaría estos textos
+		if (serialPort1->ReadLine() == "ALERTA") {
+			//CASO EN QUE LA CASA ESTÁ EN INCENDIO
+			estadoCasa = 1;
+		}
+		else if (serialPort1->ReadLine() == "NOALERTA") {		//el arduino manda esto pque se acabó la alerta
+			estadoCasa = 0;
+		}
+	
+	
+	}
+	private: System::Void lucesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		//abro ventana de luces
+		frmConfigLuces^ ventanaConfigLuces = gcnew frmConfigLuces();
+		ventanaConfigLuces->ShowDialog();
+
 	}
 };
 }
