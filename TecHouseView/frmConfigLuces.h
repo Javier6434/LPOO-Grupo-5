@@ -21,14 +21,22 @@ namespace TecHouseView {
 		frmConfigLuces(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
+			serialPort1 = gcnew SerialPort();
 
-			//
-			//TODO: agregar código de constructor aquí
-			//
-			// Abrir puerto mientras se ejecuta la aplicación.  
+			// Obtiene todos los nombres de puertos COM disponibles
+			array<String^>^ portNames = SerialPort::GetPortNames();
+
+			if (portNames->Length > 0)
+			{
+				// Asigna automáticamente el primer puerto disponible
+				serialPort1->PortName = portNames[0];
+			}
+			else
+			{
+				MessageBox::Show("No se encontraron puertos COM disponibles.");
+			}
+
+
 			if (!serialPort1->IsOpen)
 			{
 				try
