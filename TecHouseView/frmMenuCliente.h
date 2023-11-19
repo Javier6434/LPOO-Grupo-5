@@ -33,6 +33,7 @@ namespace TecHouseView {
 			//TODO: agregar código de constructor aquí
 			//
 			serialPort1 = gcnew SerialPort();
+			serialPort1->DataReceived += gcnew SerialDataReceivedEventHandler(this, &frmMenuCliente::serialPort1_DataReceived);
 
 			// Obtiene todos los nombres de puertos COM disponibles
 			array<String^>^ portNames = SerialPort::GetPortNames();
@@ -67,8 +68,9 @@ namespace TecHouseView {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			//serialPort1 = gcnew SerialPort();
 			serialPort1 = gcnew SerialPort();
-
+			serialPort1->DataReceived += gcnew SerialDataReceivedEventHandler(this, &frmMenuCliente::serialPort1_DataReceived);
 			// Obtiene todos los nombres de puertos COM disponibles
 			array<String^>^ portNames = SerialPort::GetPortNames();
 
@@ -88,6 +90,7 @@ namespace TecHouseView {
 				try
 				{
 					serialPort1->Open();
+					Sleep(100);
 				}
 				catch (Exception^ ex)
 				{
@@ -167,6 +170,9 @@ namespace TecHouseView {
 	private: System::ComponentModel::IContainer^ components;
 	private: String^ recibir;
 	private: bool recibirTemperaturas=0,recibirLuces=0,recibirCantPersonas=0;
+
+
+
 private: System::Windows::Forms::TextBox^ textBox13;
 private: System::Windows::Forms::Label^ label14;
 	private:
@@ -739,7 +745,7 @@ private: System::Windows::Forms::Label^ label14;
 			// serialPort1
 			// 
 			this->serialPort1->BaudRate = 115200;
-			this->serialPort1->PortName = L"COM5";
+			this->serialPort1->PortName = L"COM4";
 			this->serialPort1->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &frmMenuCliente::serialPort1_DataReceived);
 			// 
 			// frmMenuCliente
@@ -781,11 +787,13 @@ private: System::Windows::Forms::Label^ label14;
 	private: System::Void puertasYVentanasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmConfigPuertasYVentanas^ ventanaConfigPuertasYVentanas = gcnew frmConfigPuertasYVentanas();
 		ventanaConfigPuertasYVentanas->ShowDialog();
+		
 	}
 
 	private: System::Void actualizarContraseñaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmMantenimientoUsuarios^ ventanaMantenimientoUsuarios = gcnew frmMantenimientoUsuarios(codigo);
 		ventanaMantenimientoUsuarios->ShowDialog();
+		
 	}
 	private: System::Void frmMenuCliente_Load(System::Object^ sender, System::EventArgs^ e) {
 	//LOAD:
@@ -865,10 +873,7 @@ private: System::Windows::Forms::Label^ label14;
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		//funcion de interrupción que se ejecutará cada 3 segundos
-		ObtenerDatosArduino();
-		MostrarTemperaturas(tempH1, tempH2, tempH3);
-		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
-		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3, cantPerH4);
+		ObtenerDatosArduino();	//y mostrarlos en los textBoxs
 
 		if (estadoCasa == 0) {
 			textBox11->Text = "Seguro";
@@ -885,89 +890,92 @@ private: System::Windows::Forms::Label^ label14;
 
 	private: void ObtenerDatosArduino() {
 		//temperatura
-		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("Temperaturas");
 		recibirTemperaturas = 1;
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("Temperaturas");
 		serialPort1->Write(miBuffer, 0, miBuffer->Length);
-
-		Sleep(15);		//delay para darle tiempo al arduino y visual de intercambiar datos
+		MostrarTemperaturas(tempH1, tempH2, tempH3);
+		Sleep(500);		//delay para darle tiempo al arduino y visual de intercambiar datos
 		//luces
-		miBuffer = Encoding::ASCII->GetBytes("Leds");
 		recibirLuces = 1;
+		miBuffer = Encoding::ASCII->GetBytes("Leds");
 		serialPort1->Write(miBuffer, 0, miBuffer->Length);
+		MostrarEstadoLuces(LuzH1, LuzH2, LuzH3);
 
-
-		Sleep(15);		//delay para darle tiempo al arduino y visual de intercambiar datos
+		Sleep(500);		//delay para darle tiempo al arduino y visual de intercambiar datos
 
 		//Cantidad de personas por cuarto
-		miBuffer = Encoding::ASCII->GetBytes("CantidadPersonas");
 		recibirCantPersonas = 1;
+		miBuffer = Encoding::ASCII->GetBytes("CantidadPersonas");
 		serialPort1->Write(miBuffer, 0, miBuffer->Length);
+		MostrarCantPersonas(cantPerH1, cantPerH2, cantPerH3, cantPerH4);
 	}
 	private: System::Void lucesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmConfigLuces^ ventanaConfigLuces = gcnew frmConfigLuces();
 		ventanaConfigLuces->ShowDialog();
+		
 	}
 	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
 		//recibe datos
 			//cuando va a recibir temperaturas
-		if (recibirTemperaturas) {
-			//recibo temperaturas
-			//formato que pienso recibir    +15-21+30, a la izquierda de cada valor, habrá un signo, el arduino mandara un string de 9 caracteres
-			//estas son las temperaturas, 15, -21 y 30°C (un ejemplo), son TH1,TH2 y TH3 respectivamente
-			char unidad;
-			char decena;
-			char signo;
-			double numero;
-			double Temperaturas[3];
-			recibir = serialPort1->ReadLine();	//ya tengo los 9 caracteres
-			for (int i = 0; i <= 2; i++) {
-				//3 iteraciones, 3 temperaturas de 2 cifras cada una extraeré
-				signo = recibir[0];
-				decena = recibir[1];
-				unidad = recibir[2];
-				recibir->Remove(0, 3);
-				if (signo == '-') {
-					numero = (decena * 10 + unidad) * -1;
+				recibir = serialPort1->ReadLine();
+				if (recibirTemperaturas) {
+					//recibo temperaturas
+					//formato que pienso recibir    +15-21+30, a la izquierda de cada valor, habrá un signo, el arduino mandara un string de 9 caracteres
+					//estas son las temperaturas, 15, -21 y 30°C (un ejemplo), son TH1,TH2 y TH3 respectivamente
+					char unidad;
+					char decena;
+					char signo;
+					double numero;
+					double Temperaturas[3];
+					//recibir = serialPort1->ReadLine();	//ya tengo los 9 caracteres
+					for (int i = 0; i <= 2; i++) {
+						//3 iteraciones, 3 temperaturas de 2 cifras cada una extraeré
+						signo = recibir[0];
+						decena = recibir[1];
+						unidad = recibir[2];
+						recibir->Remove(0, 3);
+						if (signo == '-') {
+							numero = (int(decena - '0') * 10 + int(unidad - '0')) * -1;
+						}
+						else {
+							//signo es positivo
+							numero = int(decena - '0') * 10 + int(unidad - '0');
+						}
+						Temperaturas[i] = numero;
+					}
+					tempH1 = Temperaturas[0];
+					tempH2 = Temperaturas[1];
+					tempH3 = Temperaturas[2];
+					recibirTemperaturas = 0;
 				}
-				else {
-					//signo es positivo
-					numero = decena * 10 + unidad;
+				else if (recibirLuces) {
+					//recibir = serialPort1->ReadLine();	//obtendrá los datos de los leds tipo "101" significa led1 a 1, led 2 a 0 y led3 a 1
+					int aux = Convert::ToInt32(recibir);
+					LuzH3 = aux % 10;//la 3ra cifra
+					LuzH2 = (aux / 10) % 10;
+					LuzH1 = aux / 100;	//la 1ra cifra (de 100, obtendría 1)
+					recibirLuces = 0;
 				}
-				Temperaturas[i] = numero;
-			}
-			tempH1 = Temperaturas[0];
-			tempH2 = Temperaturas[1];
-			tempH3 = Temperaturas[2];
-			recibirTemperaturas = 0;
-		}
-		else if (recibirLuces) {
-			recibir = serialPort1->ReadLine();	//obtendrá los datos de los leds tipo "101" significa led1 a 1, led 2 a 0 y led3 a 1
-			int aux = Convert::ToInt32(recibir);
-			LuzH3 = aux % 10;//la 3ra cifra
-			LuzH2 = (aux / 10) % 10;
-			LuzH1 = aux / 100;	//la 1ra cifra (de 100, obtendría 1)
-			recibirLuces = 0;
-		} 
-		else if (recibirCantPersonas) {
-			//ya que son 4 habitaciones, entonces el arduino enviará  1011 
-			recibir = serialPort1->ReadLine();	//obtendrá los datos de los leds tipo "101" significa led1 a 1, led 2 a 0 y led3 a 1
-			int aux = Convert::ToInt32(recibir);
-			cantPerH1 = aux / 1000;
-			cantPerH2 = (aux - 1000 * cantPerH1)/100;
-			cantPerH3 = (aux / 10) % 10;
-			cantPerH4 = aux % 10;
-			recibirCantPersonas = 0;
-		}
+				else if (recibirCantPersonas) {
+					//ya que son 4 habitaciones, entonces el arduino enviará  1011 
+					//recibir = serialPort1->ReadLine();	//obtendrá los datos de los leds tipo "101" significa led1 a 1, led 2 a 0 y led3 a 1
+					int aux = Convert::ToInt32(recibir);
+					cantPerH1 = aux / 1000;
+					cantPerH2 = (aux - 1000 * cantPerH1) / 100;
+					cantPerH3 = (aux / 10) % 10;
+					cantPerH4 = aux % 10;
+					recibirCantPersonas = 0;
+				}
 
 
-		//momento incendio:, el arduino enviaría estos textos
-		if (serialPort1->ReadLine() == "ALERTA") {
-			//CASO EN QUE LA CASA ESTÁ EN INCENDIO
-			estadoCasa = 1;
-		}
-		else if (serialPort1->ReadLine() == "NOALERTA") {		//el arduino manda esto pque se acabó la alerta
-			estadoCasa = 0;
-		}
+				//momento incendio:, el arduino enviaría estos textos
+				if (recibir == "ALERTA") {
+					//CASO EN QUE LA CASA ESTÁ EN INCENDIO
+					estadoCasa = 1;
+				}
+				else if (recibir == "NOALERTA") {		//el arduino manda esto pque se acabó la alerta
+					estadoCasa = 0;
+				}
 	}
 };
 }

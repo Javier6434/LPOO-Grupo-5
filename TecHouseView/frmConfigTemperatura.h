@@ -43,18 +43,7 @@ namespace TecHouseView {
 			}
 
 
-			if (!serialPort1->IsOpen)
-			{
-				try
-				{
-					serialPort1->Open();
-				}
-				catch (Exception^ ex)
-				{
-					MessageBox::Show(ex->ToString());
-				}
-
-			}
+			
 		}
 
 	protected:
@@ -421,14 +410,14 @@ namespace TecHouseView {
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		//activar o actualizar automatización y rangos de temperaturas
 		//comprobando que el usuario coloque algo en las casillas:
-		if (textBox1->Text == "" || textBox2->Text=="" || Convert::ToDouble(textBox1->Text)<-20 || Convert::ToDouble(textBox2->Text) < -20 || Convert::ToDouble(textBox1->Text) > 45 || Convert::ToDouble(textBox2->Text) > 45 || Convert::ToDouble(textBox2->Text) == Convert::ToDouble(textBox1->Text)) {
+		if (textBox1->Text == "" || textBox2->Text=="" || Convert::ToInt32(textBox1->Text)<-20 || Convert::ToInt32(textBox2->Text) < -20 || Convert::ToInt32(textBox1->Text) > 45 || Convert::ToInt32(textBox2->Text) > 45 || Convert::ToInt32(textBox2->Text) == Convert::ToInt32(textBox1->Text)) {
 			//si es que no hay nada en alguno de los campos, no actualizará
 			MessageBox::Show("Por favor, ingrese valores válidos para el rango de temperaturas [-20;45] °C.");
 		}
 		else {
 			//Los datos ingresados son correctos:
-			EstablecerTempMin = Convert::ToDouble(textBox1->Text);
-			EstablecerTempMax = Convert::ToDouble(textBox2->Text);
+			EstablecerTempMin = Convert::ToInt32(textBox1->Text);
+			EstablecerTempMax = Convert::ToInt32(textBox2->Text);
 			//comprobando que uno sea mayor que el otro
 			if (EstablecerTempMax < EstablecerTempMin) {
 				double aux = EstablecerTempMin;
@@ -445,6 +434,8 @@ namespace TecHouseView {
 			TemperaturaController^ objController = gcnew TemperaturaController();
 			ConfigDatos^ objConfigDatos;
 			estadoAutomatizacion = 1;		//esto significa que Actual será 1 tmb
+			TempMinActual = EstablecerTempMin;
+			TempMaxActual = EstablecerTempMax;
 			Temperatura^ objTemperatura = gcnew Temperatura(1,EstablecerTempMin,EstablecerTempMax,estadoAutomatizacion,objConfigDatos);
 			objController->actualizarTemperatura(objTemperatura);
 			//lo paso al arduino
@@ -530,17 +521,25 @@ namespace TecHouseView {
 	}
 	
 	private: void MandarRangoTemperaturas() {
-		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes("RangosTemperaturas");
+		String^ mandar;
+		char signo1,signo2;
+		int aux1, aux2;
+		if (TempMinActual < 0) {
+			aux1 = TempMinActual * -1;
+			signo1 = '-';
+		}
+		else { aux1 = TempMinActual; signo1 = '+'; }
+
+		if (TempMaxActual < 0) {
+			aux2 = TempMaxActual * -1;
+			signo2 = '-';
+		}
+		else { aux2 = TempMaxActual; signo2 = '+'; }
+
+		mandar = "RangoTemperaturas" + signo1 + Convert::ToString(aux1) + signo2 + Convert::ToString(aux2);
+		array<Byte>^ miBuffer = Encoding::ASCII->GetBytes(mandar); //manda RangoTemperaturas-15+20 algo asi, 17+6 caracteres
 		recibirRangos = 1;
 		serialPort1->Write(miBuffer, 0, miBuffer->Length);
-
-		//el arduino esperará hasta que reciba los nuevos rangos de temperaturas.
-		Sleep(5);	//delay de 5ms
-		String^ rangoAmandar = Convert::ToString(TempMinActual) + Convert::ToString(TempMaxActual);
-		miBuffer = Encoding::ASCII->GetBytes(rangoAmandar);		//manda -15+20 algo asi, 6 caracteres
-		serialPort1->Write(miBuffer, 0, miBuffer->Length);
-		//ya obtuve las temperaturas de las habitaciones, y el rango actual minimo y maximo permitido
-		Sleep(15);
 	}
 
 	private: System::Void serialPort1_DataReceived(System::Object^ sender, System::IO::Ports::SerialDataReceivedEventArgs^ e) {
@@ -552,8 +551,8 @@ namespace TecHouseView {
 			char unidad;
 			char decena;
 			char signo;
-			double numero;
-			double Temperaturas[3];
+			int numero;
+			int Temperaturas[3];
 			recibir = serialPort1->ReadLine();	//ya tengo los 9 caracteres
 			for (int i = 0; i <= 2; i++) {
 				//3 iteraciones, 3 temperaturas de 2 cifras cada una extraeré
@@ -562,11 +561,11 @@ namespace TecHouseView {
 				unidad = recibir[2];
 				recibir->Remove(0, 3);
 				if (signo == '-') {
-					numero = (decena * 10 + unidad)*-1;
+					numero = (int(decena - '0') * 10 + int(unidad - '0')) * -1;
 				}
 				else {
 					//signo es positivo
-					numero = decena * 10 + unidad;
+					numero = int(decena - '0') * 10 + int(unidad - '0');
 				}
 				Temperaturas[i] = numero;
 			}

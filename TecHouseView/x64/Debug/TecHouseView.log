@@ -1,59 +1,53 @@
-﻿  frmAdminSeleccionarCasa.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+﻿  frmIniciarSesion.cpp
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(528,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(531,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(534,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(537,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(559,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(925,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(926,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(927,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(882,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(883,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(884,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-  frmConfigPuertasYVentanas.cpp
-  frmConfigTemperatura.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-  frmIniciarSesion.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(925,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(926,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(927,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(933,24): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(934,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(935,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(882,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(883,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(884,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
   frmMenuAdministrador.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(528,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(531,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(534,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(537,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(559,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(925,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(926,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(927,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(933,24): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(934,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(935,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(882,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(883,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(884,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
   frmMenuCliente.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(528,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(531,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(534,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(537,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(559,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(925,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(926,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(927,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-  frmMenuComun.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(882,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(883,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(884,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(933,24): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(934,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(935,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
   main.cpp
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(528,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(531,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(534,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(537,17): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(559,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(560,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(561,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmConfigTemperatura.h(562,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(925,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(926,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
-C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(927,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(933,24): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(934,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
+C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuCliente.h(935,25): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(882,22): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(883,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
 C:\Users\pauc0\Desktop\LPOO\ProyectoLPOO-SincronizadoGitHub\LPOO-Grupo-5\TecHouseView\frmMenuComun.h(884,23): warning C4244: '=': conversión de 'wchar_t' a 'char'; posible pérdida de datos
